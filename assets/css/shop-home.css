@@ -669,7 +669,7 @@ section {
 
 #button {
     display: inline-block;
-    background-color: green;
+    background-color: #cb5959;
     width: 7vh;
     height: 7vh;
     text-align: center;
@@ -684,7 +684,7 @@ section {
 }
 
 #button::after {
-    content: "\f6d3 ";
+    content: "\f1fd ";
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
