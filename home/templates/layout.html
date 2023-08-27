@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>
+          PetsNclaws | 
+          {% block title %}
+          {% endblock %}
+        
+        </title>
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="/assets/css/cart.css">
+        <link rel="stylesheet" href="/assets/css/cake.css">
+ 
+        
+        <link rel="stylesheet"  href="/assets/css/ourwork.css">
+
+
+        <link rel="stylesheet" href="/assets/css/shop-home.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+
+        <div class="notify" id="notify">
+            <div class="popup">
+              <span class="popuptext alert alert-success" id="myPopup">
+                <i class="fas fa-check-circle"></i> 
+                added success
+                {% comment %} {{ __('layout.added') }} {% endcomment %}
+              </span>
+            </div>
+        </div>
+
+
+
+        <a id="button"></a>
+        
+  
+        <div id="myDiv" ><!-- style="display:none;"-->
+
+            <div class="overlay"></div>
+              <div class="utility-nav d-block d-md-block " >
+          
+                      <p class="text-center text-top">Payment in USD and LBP,Rate is determined upon delivery(Orders being delivered now 90,000)</p>
+              
+              </div>
+
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light main-menu" style="box-shadow:none">
+            <div class="container">
+                <button type="button" id="sidebarCollapse" class="btn btn-link d-block d-md-none">
+                <i class="fas fa-bars text-dark icon-single"></i>
+                </button>
+                <a class="navbar-brand" href="{% url 'home:home' %}" >
+
+
+                  <div class="row align-items-center">
+                    <div class="col-md-3 col-3">
+                        <!-- Logo -->
+                        <img src="/assets/logo.jpg" alt="Logo" class="rounded-logo">
+
+                    </div>
+                    <div class="col-md-3 col-3">
+                        <!-- Company Name -->
+                        <h4>PetsNclaws</h4>
+                    </div>
+                </div>
+
+
+                
+                </a>
+                <ul class="navbar-nav ml-auto d-block d-md-none">
+                  <li class="nav-item" >
+                      <a class="btn btn-link" href="/shop/cart"><i class="fas fa-shopping-cart icon-single"></i>
+                        <span class="badge badge-danger item-nb cart_qty">
+                         22
+                        </span>
+                      </a>
+                  </li>
+                </ul>
+                <div class="collapse navbar-collapse">
+                  <form class="form-inline my-2 my-lg-0 mx-auto" action="/shop/search" method="POST">
+                      <input class="form-control text-search" type="text" name="search" placeholder="search products ..." aria-label="Search">
+                      <button class="btn search-btn my-2 my-sm-0"  type="submit"><i class="fas fa-search"></i></button>
+                  </form>
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="btn btn-link" href="/shop/cart"><i class="fas fa-shopping-cart icon-single"></i><span class="badge badge-danger item-nb cart_qty">2</span></a>
+                      </li>
+                      <li class="nav-item ml-md-3">
+                        <a class="btn btn-login"  href="/shop/login"><i class="fas fa-user-circle mr-1"></i>login</a>
+                      </li>
+                  </ul>
+                </div>
+            </div>
+          </nav>
+          <nav class="navbar navbar-expand-md navbar-light bg-light sub-menu">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbar">
+                  <ul class="nav navbar-nav navbar-nav mx-auto">
+                   
+                            <li class="nav-item ">
+                            <a class="nav-link active" href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+                            </li>
+                            {% comment %} <li class="nav-item">
+                            <a class="nav-link" href="/shop/customize">customize</a>
+                            </li>
+                       {% endcomment %}
+                            <li class="nav-item">
+                            <a class="nav-link" href="/shop/contact">Contact Us</a>
+                            </li>
+
+                  </ul>
+                </div>
+            </div>
+          </nav>
+      
+          <div class="search-bar d-block d-md-none">
+            <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <form class="form-inline my-2 my-lg-0 mx-auto" action="/shop/search" method="POST">
+                        <input class="form-control" type="text" name="search" placeholder="search" aria-label="Search">
+                        <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
+                      </form>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <!-- Sidebar -->
+          <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="container">
+                  <div class="row align-items-center">
+                      <div class="col-10 pl-0">
+                        <a class="btn btn-login" href="/shop/login"><i class="fas fa-user-circle mr-1"></i>Log In / Register</a>
+                      </div>
+                      <div class="col-2 text-left">
+                        <button type="button" id="sidebarCollapseX" class="btn btn-link">
+                          <i class="fas fa-times icon-single text-dark"></i>
+                        </button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <ul class="list-unstyled components links">
+                
+            </ul>
+          </nav>
+
+
+</div><!-- end myDiv -->
+
+
+
+{% block main %}
+{% endblock %}
+
+
+
+
+<!-- Start Contact info -->
+<div class="contact-imfo-box ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 form-group  ">
+          <i class="fa fa-phone  "></i>
+          <div class="overflow-hidden" >
+            <h4 >Phone</h4>
+            <p class="lead ">
+            +961 81 602 936
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 form-group  " >
+          <i class="fa fa-instagram  "></i>
+          <div class="overflow-hidden">
+            <h4>Instagram</h4>
+            <p class="lead">
+              sweetpoint.lb
+  
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 form-group  ">
+          <i class="fa fa-map-marker  "></i>
+          <div class="overflow-hidden">
+            <h4>Location</h4>
+            <p class="lead">
+             Addre
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Contact info -->
+  
+  
+  
+    <!-- Start Footer -->
+      <footer class="footer-area bg-f">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-3 col-md-6">
+                      <h3 class=" ">short story</h3>
+                      <p class=" ">About us
+            </p>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <h3 class=" ">openings</h3>
+                      <p><span class="text-color">Monday: </span>2:00 Am - 8:00 PM</p>
+                      <p><span class="text-color">Tue-Wed :</span> 2:00 Am - 8:00 PM</p>
+                      <p><span class="text-color">Thu :</span> 2:00 Am - 8:00 PM</p>
+                      <p><span class="text-color">Fri </span>closed</p>
+                      <p><span class="text-color">Sat-Sun :</span> 2:00 Am - 8:00 PM</p>
+                  </div>
+                  <div class="col-lg-3 col-md-6  ">
+                      <h3 >contact us</h3>
+                      <p class="lead">address</p>
+                      <p class="lead">number</p>
+                      <p class="lead">adeljaradli@gmail.com</p>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <h3 class=" ">follow</h3>
+  
+                      <ul class="list-inline f-social  ">
+                          <li class="list-inline-item"><a href="https://www.facebook.com/adel.jardali"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://wa.me/+96181936963"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://www.instagram.com/sweetpoint.lb/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="copyright">
+              <div class="container">
+                  <div class="row">
+  
+                      <div class="col-lg-12">
+                          <p class="company-name text-center"> all rights reserved &copy; 2023:
+                      <a href="https://mostafanawam.github.io/" target="_blank" class="signiture">Mostafa Nawam</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+      </footer>
+
+
+      <script src="/assets/js/ourwork.js"></script>
+
+      <script src="/assets/js/shop-home.js"></script>

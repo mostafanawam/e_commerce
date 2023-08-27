@@ -1,0 +1,17 @@
+[{
+        "model": "cart.category",
+        "pk": 1,
+        "fields": {
+            "name": "cat",
+            "description": "this is cats products"
+        }
+    },
+    {
+        "model": "cart.category",
+        "pk": 2,
+        "fields": {
+            "name": "dog",
+            "description": "this is for dog products"
+        }
+    }
+]

@@ -1,0 +1,52 @@
+
+.prd-img{
+  width: 50%;
+  height: 8vh;
+}
+
+  .row2{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+.header-ch{
+  margin-top:3rem;
+  margin-bottom:3rem;
+}
+
+
+.your_order{}
+
+
+.mrgn{
+  margin-left: 20rem;
+}
+.mrgn-radio{
+  margin-left: 18rem;
+}
+
+  @media only screen and (max-width: 600px) {
+    .row2{
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
+    .prd-img{
+      width: 100%;
+      height: 7vh;
+    }
+    .mrgn{
+      margin-left: 1rem;
+    }
+    .mrgn-radio{
+      margin-left: 0;
+    }
+  }
+.col-form-label{
+  color: gray;
+}
+
+.success-not img{
+  width: 15rem;
+  height: 15rem;
+}

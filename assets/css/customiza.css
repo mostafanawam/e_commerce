@@ -1,0 +1,15 @@
+input[type=radio]{
+    cursor: pointer;
+}
+label{
+    font-size: 1rem;
+    cursor: pointer;
+}
+legend{
+    color: #cb5959;
+}
+.border_color{
+    border: 3px wheat solid;
+}
+
+

@@ -1,0 +1,1 @@
+[{"model": "cart.status", "pk": 1, "fields": {"name": "list"}}, {"model": "cart.status", "pk": 2, "fields": {"name": "suggested"}}]

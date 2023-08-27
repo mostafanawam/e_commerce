@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for item in cart %}
+            <li>{{ item.title }} - ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total: ${{ total }}</p>
+
+    count : {{cart|length}} products <br>
+    <a href="{% url 'cart:product_list' %}">View Products</a>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+[{
+        "model": "cart.product",
+        "pk": 1,
+        "fields": {
+            "name": "dadasd",
+            "description": "dasdad",
+            "price": "1231.00",
+            "category": 2,
+            "image": "products/dasd/dasd.jpg",
+            "status": 2
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 2,
+        "fields": {
+            "name": "ddasd",
+            "description": "dasdsa",
+            "price": "223.00",
+            "category": 1,
+            "image": "products/dasd/dasd.jpg",
+            "status": 2
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 3,
+        "fields": {
+            "name": "wewadas",
+            "description": "dsadsadas",
+            "price": "22.00",
+            "category": 1,
+            "image": "products/dasd/dasd.jpg",
+            "status": 1
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 4,
+        "fields": {
+            "name": "dsad",
+            "description": "adsadsad",
+            "price": "2131.00",
+            "category": 1,
+            "image": "products/dasd/dasd.jpg",
+            "status": 2
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 5,
+        "fields": {
+            "name": "2312",
+            "description": "dsada",
+            "price": "2131.00",
+            "category": 2,
+            "image": "products/dasd/dasd.jpg",
+            "status": 1
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 6,
+        "fields": {
+            "name": "21312dsad",
+            "description": "dasdad",
+            "price": "213.00",
+            "category": 1,
+            "image": "products/dasd/dasd.jpg",
+            "status": 1
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 7,
+        "fields": {
+            "name": "dasdadas",
+            "description": "dasda",
+            "price": "21.00",
+            "category": 1,
+            "image": "products/dasd/dasd.jpg",
+            "status": 1
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 8,
+        "fields": {
+            "name": "dasdsa",
+            "description": "dasdsad",
+            "price": "23.00",
+            "category": 2,
+            "image": "products/dasd/dasd.jpg",
+            "status": 1
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 9,
+        "fields": {
+            "name": "dasdsa",
+            "description": "dasdsad",
+            "price": "32.00",
+            "category": 1,
+            "image": "products/dasd/dasd.jpg",
+            "status": 1
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 10,
+        "fields": {
+            "name": "dasd",
+            "description": "adasd",
+            "price": "2.00",
+            "category": 1,
+            "image": "products/dasd/dasd.jpg",
+            "status": 1
+        }
+    }
+]
