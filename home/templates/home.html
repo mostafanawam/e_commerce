@@ -2,7 +2,7 @@
 
 
 
-{% block title %} test {% endblock %}
+{% block title %} Home {% endblock %}
 
 
 
@@ -105,14 +105,48 @@
             </div>
             {% endfor %}
         </div>
-
+        <div class="text-center">
+          <a class="btn btn-outline" href="{% url 'home:products' %}">View All</a>
+        </div>
     </div>
+
+
+<div class="row">
+  {% for product in products %}
+  <div class="col-md-4">
+    <figure class="snip1396 green hover prod-img">
+      {% if product.image %}
+      <img src="{{ product.image.url }}"  width="350" height="350" >
+  {% else %}
+      <img src="/assets/empty.png" >
+  {% endif %}   
+      <figcaption>
+        <h3>  {{ product.name }}</h3>
+        <p>All this modern technology just makes people try to do everything at once.</p>
+      </figcaption>
+      <div class="price">
+        {% comment %} <s>$24.00</s> {% endcomment %}
+        {{ product.price }} $
+      </div>
+      <a href="#" class="add-to-cart btn btn-sm btn-login">
+        Add to Cart
+      </a>
+    </figure>
+  </div>
+  {% endfor %}
+
+</div>
+<div class="text-center m-4">
+  <a class="btn btn-outline" href="{% url 'home:products' %}">View All</a>
+</div>
+
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 
-
+{% if gallery|length > 0 %}
  <h2 class="title-sell">Our Work</h2>
   <div class="row row1 rowtable">
 
@@ -124,6 +158,24 @@
       </a>
       {% endfor %}
   </div>
+  {% endif %}
+
+  {% if brands|length > 0 %}
+  <h2 class="title-sell"> Our Brands </h2>
+  <div class="row mb-4">
+
+    {% for brand in brands %}
+      <div class="col-md-3 brands-img ">
+        <img src="{{ brand.image.url }}" class=" img-fluid ">
+
+      </div>
+ 
+      {% endfor %}
+  </div>
+  {% endif %}
+
+
+
 
 </div>
   {% endblock %}

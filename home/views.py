@@ -10,10 +10,11 @@ def homepage(request):
     products = Product.objects.filter(status__name="suggested")
 
     gallery=Gallery.objects.all()
-
+    brands=Brands.objects.all()
     context = {
         'products': products,
-        'gallery':gallery
+        'gallery':gallery,
+        'brands':brands
     }
     return render(request, 'home.html',context)
 
