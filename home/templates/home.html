@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 {% block title %} Home {% endblock %}
 
@@ -39,10 +39,58 @@
       <span class="carousel-control-next-icon"></span>
     </a>
   </div>
-  
+  <!-- Start Contact info -->
+<div class="services ">
+  <div class="services-container">
+    <div class="row">
+      <div class="col-md-3 form-group  ">
+        <i class="fa fa-truck  "></i>
+        <div class="overflow-hidden" >
+          <h6> Shipping Fee </h6>
+          <p class="lead ">
+            $1 flat rate on every 25kgs on all orders everywhere in Lebanon.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3 form-group  " >
+        <i class="fas fa-money-check"></i>
+        <div class="overflow-hidden">
+          <h6> Easy Payment </h6>
+          <p class="lead">
+            Payment is cash on delivery only LBP or USD.
+
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3 form-group  ">
+        <i class="fas fa-shipping-fast  "></i>
+        <div class="overflow-hidden">
+          <h6> Fast Delivery </h6>
+          <p class="lead">
+            Same day delivery in Saida and up to 2 days all over Lebanon.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3 form-group  ">
+        <i class="fa fa-comments  "></i>
+        <div class="overflow-hidden">
+          <h6> Contact our Experts </h6>
+          <p class="lead">
+            +961 81 602 936
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Contact info -->
+
   
 
   <div class="container">
+
+
+
     <h2 class="title-sell">Short Story</h2>
       <!-- Start About -->
       <div class="about-section-box">
@@ -55,7 +103,7 @@
                       <div class="inner-column">
                           <h1 class="text-center ">
                             
-                            Welcome to PetsN<span>claws</span></h1>
+                            Welcome to PetsN<span class="fw-bold">claws</span></h1>
                           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
               </p>
               <div class="text-center">
@@ -69,14 +117,12 @@
       </div>
       <!-- End About -->
   
-  </div>
 
   
 
-  <div class="container">
-    <h2 class="title-sell">Suggested Products</h2>
 
-    <div class="container mt-5 mb-5">
+
+    {% comment %} <div class="container mt-5 mb-5">
         <div class="row g-2">
             {% for product in products %}
             <div class="form-group col-md-3 d-flex justify-content-center">
@@ -107,10 +153,9 @@
         </div>
         <div class="text-center">
           <a class="btn btn-outline" href="{% url 'home:products' %}">View All</a>
-        </div>
-    </div>
+        </div>{% endcomment %}
 
-
+  <h2 class="title-sell">Suggested Products</h2>
 <div class="row">
   {% for product in products %}
   <div class="col-md-4">
@@ -140,7 +185,7 @@
   <a class="btn btn-outline" href="{% url 'home:products' %}">View All</a>
 </div>
 
-
+<br>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>

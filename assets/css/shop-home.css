@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt|Shadows+Into+Light|Cedarville+Cursive');
 body {
-    font-family: 'Monospace', cursive;
+    font-family: 'Arial', cursive;
 }
 
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
@@ -92,7 +92,7 @@ body {
 .snip1396 .add-to-cart {
     position: absolute;
     bottom: 10px;
-    padding: 0 20px;
+    padding: 0 10px;
     line-height: 35px;
 }
 
@@ -115,6 +115,10 @@ body {
     text-decoration: none;
     font-size: 0.9em;
     right: 10px;
+}
+
+.add-to-cart {
+    width: 8rem;
 }
 
 .snip1396 .add-to-cart i {
@@ -484,7 +488,6 @@ ul.social-icons li {
     grid-gap: 20px;
     margin: 30px 0;
     color: #071330;
-    font-family: 'Open Sans', cursive;
     font-style: italic;
 }
 
@@ -625,7 +628,6 @@ section {
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
 .footer-distributed .footer-right {
-    font-family: 'Open Sans', cursive;
     display: inline-block;
     vertical-align: top;
 }
@@ -743,7 +745,6 @@ section {
 }
 
 .footer-distributed .footer-company-about {
-    font-family: 'Open Sans', cursive;
     line-height: 20px;
     color: #cb5959;
     font-size: 13px;
@@ -809,7 +810,6 @@ section {
 
 .txt-link {
     font-size: 0.8rem;
-    font-family: 'Open Sans', cursive;
     color: #071330;
 }
 
@@ -875,6 +875,57 @@ section {
 .inner-column p,
 h1 {
     color: #071330;
+}
+
+.services {
+    background: #faf5f5;
+    padding: 20px 0;
+}
+
+.services-container {
+    margin-left: 15%;
+    /* Example padding value */
+    margin-right: 15px;
+    /* Example padding value */
+}
+
+@media only screen and (max-width: 600px) {
+    .services-container {
+        margin-left: 2rem;
+        /* Example padding value */
+        margin-right: 15px;
+        /* Example padding value */
+    }
+}
+
+.services i {
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #cb5959;
+    color: white;
+    font-size: 1.6rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.services h6 {
+    margin: 0px;
+    margin-top: 5px;
+    color: #071330;
+}
+
+.services p {
+    font-size: 0.8rem;
+    margin: 0px;
+    color: #071330;
+    font-weight: 300;
 }
 
 
@@ -1136,7 +1187,6 @@ iframe {
 
 .signiture {
     font-weight: bolder;
-    font-family: 'Cedarville Cursive', cursive;
     font-size: 3rem;
 }
 
