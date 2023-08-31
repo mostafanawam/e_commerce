@@ -3,6 +3,22 @@ body {
     font-family: 'Arial', cursive;
 }
 
+.container-main {
+    margin-left: 15%;
+    /* Example padding value */
+    margin-right: 15%;
+    /* Example padding value */
+}
+
+@media only screen and (max-width: 600px) {
+    .container-main {
+        margin-left: 2rem;
+        /* Example padding value */
+        margin-right: 15px;
+        /* Example padding value */
+    }
+}
+
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 @import url(https://fonts.googleapis.com/css?family=Raleway:500,700);
 .snip1396 {
