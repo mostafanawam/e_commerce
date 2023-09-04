@@ -2,7 +2,7 @@
 
 
 
-{% block title %} Products {% endblock %}
+{% block title %} Contact Us {% endblock %}
 
 
 
@@ -13,18 +13,18 @@
   </li>
 
   <li class="nav-item">
-  <a class="nav-link active" href="{% url 'home:products' %}">Products</a>
+  <a class="nav-link " href="{% url 'home:products' %}">Products</a>
   </li>
   {% comment %} <li class="nav-item">
   <a class="nav-link" href="/shop/customize">customize</a>
   </li>
 {% endcomment %}
   <li class="nav-item">
-  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  <a class="nav-link active" href="{% url 'home:contactUs' %}">Contact Us</a>
   </li>
   
 {% endblock %}
 
 
 
-{% block main %} products {% endblock %}
+{% block main %} contact us {% endblock %}

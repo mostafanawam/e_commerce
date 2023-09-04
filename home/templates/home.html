@@ -6,6 +6,27 @@
 
 
 
+{% block links %} 
+<li class="nav-item ">
+  <a class="nav-link active" href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link"  href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+
+
+
 {% block main %} 
 
 
@@ -46,8 +67,8 @@
       <div class="col-md-3 form-group  ">
         <i class="fa fa-truck  "></i>
         <div class="overflow-hidden" >
-          <h6> Shipping Fee </h6>
-          <p class="lead ">
+          <h5> Shipping Fee </h5>
+          <p class="text-services ">
             $1 flat rate on every 25kgs on all orders everywhere in Lebanon.
           </p>
         </div>
@@ -55,8 +76,8 @@
       <div class="col-md-3 form-group  " >
         <i class="fas fa-money-check"></i>
         <div class="overflow-hidden">
-          <h6> Easy Payment </h6>
-          <p class="lead">
+          <h5> Easy Payment </h5>
+          <p class="text-services">
             Payment is cash on delivery only LBP or USD.
 
           </p>
@@ -65,8 +86,8 @@
       <div class="col-md-3 form-group  ">
         <i class="fas fa-shipping-fast  "></i>
         <div class="overflow-hidden">
-          <h6> Fast Delivery </h6>
-          <p class="lead">
+          <h5> Fast Delivery </h5>
+          <p class="text-services">
             Same day delivery in Saida and up to 2 days all over Lebanon.
           </p>
         </div>
@@ -74,8 +95,8 @@
       <div class="col-md-3 form-group  ">
         <i class="fa fa-comments  "></i>
         <div class="overflow-hidden">
-          <h6> Contact our Experts </h6>
-          <p class="lead">
+          <h5> Contact our Experts </h5>
+          <p class="text-services">
             +961 81 602 936
           </p>
         </div>
@@ -97,15 +118,17 @@
           <div class="container-fluid">
               <div class="row justify-content-center">
                   <div class="col-lg-4 col-md-6 col-sm-12">
-                      <img src="/assets/logo.jpg" alt="" class="img-fluid rounded form-group">
+                      <img src="/assets/logo.png" alt="" class="img-fluid rounded form-group">
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-12">
                       <div class="inner-column">
                           <h1 class="text-center ">
                             
-                            Welcome to PetsN<span class="fw-bold">claws</span></h1>
-                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-              </p>
+                            Welcome to Zoo<span class="fw-bold">Store</span></h1>
+                          <p class="text-center " >Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+                             printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                          </p>
               <div class="text-center">
                 <a class="btn btn-outline" href="{% url 'home:products' %}">Our Products</a>
               </div>

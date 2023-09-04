@@ -3,6 +3,19 @@ body {
     font-family: 'Arial', cursive;
 }
 
+:root {
+    --red1: #ff2134;
+    --red2: #c50700;
+    --green1: #63f895;
+    --green2: #226b42;
+    --yellow: #e5ba10
+}
+
+.overflow-hidden .text-services {
+    font-size: 1rem;
+    color: rgb(88, 85, 85);
+}
+
 .container-main {
     margin-left: 15%;
     /* Example padding value */
@@ -98,7 +111,7 @@ body {
 }
 
 .snip1396 p {
-    font-size: 0.9em;
+    font-size: 1rem;
     /* letter-spacing: 1px; */
     font-weight: 400;
     color: black;
@@ -181,7 +194,7 @@ body {
     font-size: 1.15rem;
 }
 
-.navbar-brand h2 {
+.navbar-brand h3 {
     color: #071330;
 }
 
@@ -873,6 +886,10 @@ section {
 .about-section-box img {
     width: 100%;
     height: 35vh;
+}
+
+.inner-column p {
+    font-size: 1.4rem;
 }
 
 @media (max-width: 576px) {

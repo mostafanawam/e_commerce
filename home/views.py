@@ -21,3 +21,6 @@ def homepage(request):
 def productsPage(request):
     return render(request, 'products.html')
 
+def contactUs(request):
+    return render(request, 'contact_us.html')
+

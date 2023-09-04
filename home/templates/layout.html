@@ -77,27 +77,23 @@
 
 
         <nav class="navbar navbar-expand-md navbar-light bg-light main-menu" style="box-shadow:none">
-            <div class="container">
+            <div class="container-fluid">
                 <button type="button" id="sidebarCollapse" class="btn btn-link d-block d-md-none">
                 <i class="fas fa-bars text-dark icon-single"></i>
                 </button>
                 <a class="navbar-brand" href="{% url 'home:home' %}" >
-
-
                   <div class="row align-items-center">
                     <div class="col-md-3 col-3">
-                        <!-- Logo -->
-                        <img src="/assets/logo.jpg" alt="Logo" class="rounded-logo">
+                          <!-- Logo -->
+                          <img src="/assets/logo.png" alt="Logo" class="rounded-logo">
 
                     </div>
                     <div class="col-md-3 col-3">
-                        <!-- Company Name -->
-                        <h4>PetsNclaws</h4>
+                      <!-- Company Name -->
+  
+                      <h3 class="companyName">Zoo<span class="fw-bold">Store</span></h3>
                     </div>
-                </div>
-
-
-                
+                  </div>
                 </a>
                 <ul class="navbar-nav ml-auto d-block d-md-none">
                   <li class="nav-item" >
@@ -124,25 +120,14 @@
                 </div>
             </div>
           </nav>
+
           <nav class="navbar navbar-expand-md navbar-light bg-light sub-menu">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbar">
                   <ul class="nav navbar-nav navbar-nav mx-auto">
                    
-                            <li class="nav-item ">
-                            <a class="nav-link active" href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
-                            </li>
-
-                            <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home:products' %}">Products</a>
-                            </li>
-                            {% comment %} <li class="nav-item">
-                            <a class="nav-link" href="/shop/customize">customize</a>
-                            </li>
-                       {% endcomment %}
-                            <li class="nav-item">
-                            <a class="nav-link" href="/shop/contact">Contact Us</a>
-                            </li>
+                    {% block links %}
+                    {% endblock %}
 
                   </ul>
                 </div>
@@ -272,8 +257,8 @@
                   <div class="row">
   
                       <div class="col-lg-12">
-                          <p class="company-name text-center"> all rights reserved &copy; 2023:
-                      <a href="https://mostafanawam.github.io/" target="_blank" class="signiture">Mostafa Nawam</a></p>
+                          <p class="company-name text-center"> All Rights Reserved &copy; 2023<br>
+                            Developed By<a href="https://mostafanawam.github.io/" target="_blank" class="signiture"> Mostafa Nawam</a></p>
                       </div>
                   </div>
               </div>

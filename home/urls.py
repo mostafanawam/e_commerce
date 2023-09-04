@@ -12,5 +12,9 @@ urlpatterns = [
 
 
 
+    path('contact-us/',contactUs, name='contactUs'),
+
+
+
     
 ]
