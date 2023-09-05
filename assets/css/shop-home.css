@@ -4,11 +4,11 @@ body {
 }
 
 :root {
-    --red1: #ff2134;
-    --red2: #c50700;
-    --green1: #63f895;
-    --green2: #226b42;
-    --yellow: #e5ba10
+    --red1: #e24f39;
+    --red2: #ad2512;
+    --green1: #3cb9b0;
+    --green2: #0a6869;
+    --yellow: #d3b03f;
 }
 
 .overflow-hidden .text-services {
@@ -106,8 +106,7 @@ body {
 .snip1396 h3 {
     font-weight: 700;
     margin-bottom: 5px;
-    text-transform: uppercase;
-    color: var(--red2);
+    color: var(--red1);
 }
 
 .snip1396 p {
@@ -163,9 +162,9 @@ body {
 }
 
 .rounded-logo {
-    border-radius: 50%;
     /* Make the image circular */
-    max-width: 75px;
+    max-width: 8rem;
+    max-height: 10vh;
 }
 
 .prod-img {
@@ -194,7 +193,7 @@ body {
     font-size: 1.15rem;
 }
 
-.navbar-brand h3 {
+.navbar-brand h2 {
     color: var(--green2);
 }
 
