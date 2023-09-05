@@ -11,10 +11,15 @@ def homepage(request):
 
     gallery=Gallery.objects.all()
     brands=Brands.objects.all()
+
+    cart = request.session.get('cart', [])
+
+    
     context = {
         'products': products,
         'gallery':gallery,
-        'brands':brands
+        'brands':brands,
+        "cart":cart
     }
     return render(request, 'home.html',context)
 

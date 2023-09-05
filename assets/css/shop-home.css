@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt|Shadows+Into+Light|Cedarville+Cursive');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 body {
-    font-family: 'Arial', cursive;
+    font-family: 'Cabin', 'Arial', cursive;
 }
 
 :root {
@@ -165,7 +165,7 @@ body {
 .rounded-logo {
     border-radius: 50%;
     /* Make the image circular */
-    max-width: 50px;
+    max-width: 75px;
 }
 
 .prod-img {
@@ -285,9 +285,10 @@ body {
     outline: none;
 }
 
-.navbar {
+
+/* .navbar {
     padding: 1rem;
-}
+} */
 
 .main-menu {
     position: relative;

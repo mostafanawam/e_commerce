@@ -25,6 +25,23 @@
 {% endblock %}
 
 
+{% block links1 %} 
+<li class="nav-item ">
+  <a class="nav-link active" href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link"  href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
 
 
 {% block main %} 
@@ -196,9 +213,10 @@
         {% comment %} <s>$24.00</s> {% endcomment %}
         {{ product.price }} $
       </div>
-      <a href="#" class="add-to-cart btn btn-sm btn-login">
+      {% csrf_token %}
+      <button  class="add-to-cart btn btn-sm btn-login"  data-product-id="{{ product.id }}" >
         Add to Cart
-      </a>
+      </button>
     </figure>
   </div>
   {% endfor %}
@@ -247,3 +265,5 @@
 
 </div>
   {% endblock %}
+
+
