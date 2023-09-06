@@ -38,7 +38,7 @@
 
         <link rel="stylesheet" href="/assets/css/cart.css">
         <link rel="stylesheet" href="/assets/css/cake.css">
- 
+        <link rel="stylesheet" href="/assets/css/menu.css">
         
         <link rel="stylesheet"  href="/assets/css/ourwork.css">
 
@@ -55,8 +55,7 @@
             <div class="popup">
               <span class="popuptext alert alert-success" id="myPopup">
                 <i class="fas fa-check-circle"></i> 
-                added success
-                {% comment %} {{ __('layout.added') }} {% endcomment %}
+                Product added to cart
               </span>
             </div>
         </div>
@@ -96,7 +95,7 @@
                 </a>
                 <ul class="navbar-nav ml-auto d-block d-md-none">
                   <li class="nav-item" >
-                      <a class="btn btn-link" href="/shop/cart"><i class="fas fa-shopping-cart icon-single"></i>
+                      <a class="btn btn-link" href="/cart"><i class="fas fa-shopping-cart icon-single"></i>
                         <span class="badge badge-danger item-nb cart_qty">
                           {{cart|length}}
                         </span>
@@ -110,7 +109,7 @@
                   </form>
                   <ul class="navbar-nav">
                       <li class="nav-item">
-                        <a class="btn btn-link" href="/shop/cart">
+                        <a class="btn btn-link" href="/cart">
                           <i class="fas fa-shopping-cart icon-single"></i>
                           <span class="badge badge-danger item-nb cart_qty">
                             {{cart|length}}

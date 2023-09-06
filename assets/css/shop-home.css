@@ -647,6 +647,10 @@ ul.social-icons li {
     color: white;
 }
 
+.btn-outline:hover i {
+    color: #fff !important;
+}
+
 .form-control:focus {
     border-color: var(--green2);
     box-shadow: 0 0 0 0.2rem rgba(5, 80, 2, 0.25);
@@ -1304,7 +1308,7 @@ p {
 
 .notify {
     position: fixed;
-    right: 1%;
+    right: 0%;
     top: 5%;
     z-index: 10;
 }

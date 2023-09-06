@@ -6,12 +6,7 @@ urlpatterns = [
     
 
     path('',homepage, name='home'),
-
-
     path('products/',productsPage, name='products'),
-
-
-
     path('contact-us/',contactUs, name='contactUs'),
 
 

@@ -24,8 +24,24 @@ def homepage(request):
     return render(request, 'home.html',context)
 
 def productsPage(request):
-    return render(request, 'products.html')
+    products = Product.objects.filter(status__name="list")
+
+    categories=Category.objects.all()
+
+    cart = request.session.get('cart', [])
+    context = {
+        'products': products,
+        "cart":cart,
+        "categories":categories
+    }
+
+    return render(request, 'products.html',context)
 
 def contactUs(request):
-    return render(request, 'contact_us.html')
+    cart = request.session.get('cart', [])
+    context = {
+        "cart":cart,
+    }
+
+    return render(request, 'contact_us.html',context)
 

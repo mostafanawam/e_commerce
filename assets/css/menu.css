@@ -1,3 +1,10 @@
+:root {
+    --red1: #e24f39;
+    --red2: #ad2512;
+    --green1: #3cb9b0;
+    --green2: #0a6869;
+    --yellow: #d3b03f;
+}
 
 .filter-button-group {
     border: 1px solid #e4e4e4;
@@ -20,24 +27,24 @@
 }
 
 .filter-button-group .btn-cat.active {
-    background: #cb5959;
+    background: var(--green2);
     color: #fff;
-    box-shadow: 2px 20px 45px 5px rgba(0,0,0,.2);
+    box-shadow: 2px 20px 45px 5px rgba(0, 0, 0, .2);
 }
 
-
-.hidden{
-  display:none;
+.hidden {
+    display: none;
 }
 
-input[type=checkbox] + label {
-  position:relative;
-} 
+input[type=checkbox]+label {
+    position: relative;
+}
 
-input[type=checkbox]:checked + label {
-  animation: closing 0.3s forwards ease-in-out,
-             moving 0.3s forwards ease-in-out;
-} 
-.pointer-cursor{
-   cursor: pointer; cursor: hand;
+input[type=checkbox]:checked+label {
+    animation: closing 0.3s forwards ease-in-out, moving 0.3s forwards ease-in-out;
+}
+
+.pointer-cursor {
+    cursor: pointer;
+    cursor: hand;
 }

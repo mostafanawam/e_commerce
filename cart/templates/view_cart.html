@@ -1,19 +1,145 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cart</title>
-</head>
-<body>
-    <h1>Your Cart</h1>
-    <ul>
-        {% for item in cart %}
-            <li>{{ item.title }} - ${{ item.price }}</li>
-        {% endfor %}
-    </ul>
-    <p>Total: ${{ total }}</p>
+{% extends 'layout.html' %}
 
-    count : {{cart|length}} products <br>
-    <a href="{% url 'cart:product_list' %}">View Products</a>
 
-</body>
-</html>
+
+{% block title %} Products {% endblock %}
+
+
+
+
+{% block links %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+{% block links1 %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+
+{% block main %} 
+
+
+<div class="container">
+    <h2 class="title-sell">Your Cart</h2>
+
+   {% if cart|length > 0 %}
+   
+
+    <div class="row">
+      <div class="col-lg-6">
+        <form action="/cart/empty/" method="POST"> 
+          {% csrf_token %}
+          <button class="form-group btn btn-cart ">
+            Clear Cart
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    
+<div class="shopping-cart">
+
+  <div class="column-labels">
+   
+    <label class="product-image">image</label>
+    <label class="product-details">product</label>
+    <label class="product-price">price</label>
+    <label class="product-quantity">qty</label>
+    <label class="product-removal">remove</label>
+    <label class="product-line-price">total</label>
+  </div>
+
+    {% for prod in cart %}
+    
+  
+        <div class="product">
+          <div class="product-image">
+            <img src="{{prod.image}}" class="rounded-circle">
+          </div>
+          <div class="product-details">
+            <div class="product-title">{{prod.name}} </div>
+            <p class="product-description">{{prod.description}} </p>
+          </div>
+          <div class="product-price">{{prod.price}} $</div>
+          <div class="product-quantity">
+            <input type="text" value="1" class="text-center" readonly>
+          </div>
+          <div class="product-removal">
+            <a href=""><i class="fas fa-trash text-danger"></i></a>
+          </div>
+          <div class="product-line-price">{{prod.price}} $</div>
+          
+        </div>
+    {% endfor %}
+
+
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Total</label>
+      <div class="totals-value" id="cart-subtotal">{{total_price}} $</div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-3">
+      <a class="btn btn-outline float-right btn-block form-group"href="{% url 'home:products' %}">
+        Continue Shopping 
+        <i class="fa fa-shopping-cart green-icon" aria-hidden="true"></i>
+      </a>
+    </div>
+    <div class="col-lg-3">
+        <a class="btn btn-cart btn-block form-group" href="checkout">
+          Checkout
+          &nbsp;
+          <i class="fa fa-credit-card" aria-hidden="true"></i>
+        </a>
+    </div>
+  </div>
+  
+  {% else %}
+  <div class="empty-cart text-center">
+   <img src="/assets/empty-cart.png"  class="img-fluid" alt="">
+   <h3>Empty cart</h3>
+   <p>Add something to make me happy :)</p>
+   <a class="btn btn-outline" href="{% url 'home:products' %}">Go Shopping</a>
+</div>
+  {% endif %}
+  <br>
+
+<br>
+    
+</div>
+
+
+{% endblock %}

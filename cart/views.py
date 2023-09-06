@@ -21,8 +21,6 @@ def product_list(request):
     }
 
     
-
-
     return render(request, 'product_list.html', context)
 
 
@@ -51,6 +49,7 @@ def add_to_cart(request, product_id):
         'id': product.pk,
         'title': product.name,
         'price': str(product.price),
+        'image': product.image.url,
     })
     request.session.modified = True
     
@@ -58,10 +57,22 @@ def add_to_cart(request, product_id):
 
 def view_cart(request):
     cart = request.session.get('cart', [])
-    total = sum(float(item['price']) for item in cart)
+    total_price = sum(float(item['price']) for item in cart)
     
     context = {
         'cart': cart,
-        'total': total,
+        'total_price': total_price,
+    }
+    return render(request, 'view_cart.html', context)
+
+def empty_cart(request):
+    if(request.method == 'POST'):
+        if 'cart'  in request.session:
+            del request.session['cart']
+
+    cart = request.session.get('cart', [])
+    context = {
+        'cart': cart,
+        'total_price': 0,
     }
     return render(request, 'view_cart.html', context)

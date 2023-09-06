@@ -19,6 +19,12 @@ $(document).ready(function() {
             data: {},
             success: function(data) {
                 $('.cart_qty').text(data);
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+
+                window.setTimeout(function() {
+                    popup.classList.toggle("show");
+                }, 2000);
 
             }
         });
