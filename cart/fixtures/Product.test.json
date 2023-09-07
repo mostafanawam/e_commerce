@@ -86,7 +86,7 @@
         "model": "cart.product",
         "pk": 8,
         "fields": {
-            "name": "dasdsa",
+            "name": "dasds3a",
             "description": "dasdsad",
             "price": "23.00",
             "category": 2,
@@ -98,7 +98,7 @@
         "model": "cart.product",
         "pk": 9,
         "fields": {
-            "name": "dasdsa",
+            "name": "dasd3sa",
             "description": "dasdsad",
             "price": "32.00",
             "category": 1,

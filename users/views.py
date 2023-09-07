@@ -6,29 +6,67 @@ from django.contrib.auth import authenticate, login
 
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        email = request.POST['email']
         password = request.POST['password']
-        user = authenticate(username=username, password=password)
+
+        if(email=="" or password==""):
+            if(email==""):
+                error_message = 'Email field is required'
+                return render(request, 'login.html', {'error_message': error_message})
+            if(password==""):
+                error_message = 'Password field is required'
+                return render(request, 'login.html', {'error_message': error_message})
+        
+        user = authenticate(email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('list_products')  # Replace 'home' with the appropriate URL name
+            return redirect('/products')  # Replace 'home' with the appropriate URL name
         else:
             error_message = 'Invalid username or password. Please try again.'
             return render(request, 'login.html', {'error_message': error_message})
+        
+    cart = request.session.get('cart', [])
     
-    return render(request, 'login.html')
+    context = {
+        'cart': cart,
+    }
+    return render(request, 'login.html',context)
+
+
+from django.contrib.auth import logout
+def user_logout(request):
+
+    logout(request)
+
+    cart = request.session.get('cart', [])
+    context = {
+        'cart': cart,
+    }
+    return render(request, 'login.html',context)
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        email = request.POST['email']
         password = request.POST['password']
-        user = authenticate(username=username, password=password)
+        
+        if(email=="" or password==""):
+            if(email==""):
+                error_message = 'Email field is required'
+            if(password==""):
+                error_message = 'Password field is required'
+            return render(request, 'login.html', {'error_message': error_message})
+        
+        user = authenticate(email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('list_products')  # Replace 'home' with the appropriate URL name
+            return redirect('/products')  # Replace 'home' with the appropriate URL name
         else:
-            error_message = 'Invalid username or password. Please try again.'
+            error_message = 'Invalid email or password. Please try again.'
             return render(request, 'login.html', {'error_message': error_message})
-    
-    return render(request, 'register.html')
+
+    cart = request.session.get('cart', [])  
+    context = {
+        'cart': cart,
+    }
+    return render(request, 'register.html',context)
 

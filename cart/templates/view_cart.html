@@ -88,14 +88,16 @@
             <div class="product-title">{{prod.name}} </div>
             <p class="product-description">{{prod.description}} </p>
           </div>
-          <div class="product-price">{{prod.price}} $</div>
+          <div class="product-price">{{prod.price}} {{settings.currency}}</div>
           <div class="product-quantity">
-            <input type="text" value="1" class="text-center" readonly>
+            <input type="text" value="{{prod.qty}}" class="text-center" readonly>
           </div>
           <div class="product-removal">
-            <a href=""><i class="fas fa-trash text-danger"></i></a>
+            <a href="/cart/delete/{{ forloop.counter }}/">
+              <i class="fas fa-trash text-danger"></i>
+            </a>
           </div>
-          <div class="product-line-price">{{prod.price}} $</div>
+          <div class="product-line-price">{{prod.price}} {{settings.currency}}</div>
           
         </div>
     {% endfor %}
@@ -105,7 +107,7 @@
   <div class="totals">
     <div class="totals-item">
       <label>Total</label>
-      <div class="totals-value" id="cart-subtotal">{{total_price}} $</div>
+      <div class="totals-value" id="cart-subtotal">{{total_price}} {{settings.currency}}</div>
     </div>
   </div>
 
@@ -119,7 +121,7 @@
       </a>
     </div>
     <div class="col-lg-3">
-        <a class="btn btn-cart btn-block form-group" href="checkout">
+        <a class="btn btn-cart btn-block form-group" href="{% url 'cart:checkout' %}" >
           Checkout
           &nbsp;
           <i class="fa fa-credit-card" aria-hidden="true"></i>

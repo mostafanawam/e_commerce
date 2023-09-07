@@ -11,6 +11,10 @@ body {
     --yellow: #d3b03f;
 }
 
+.text-green {
+    color: var(--green2);
+}
+
 .overflow-hidden .text-services {
     font-size: 1rem;
     color: rgb(88, 85, 85);
@@ -451,7 +455,7 @@ ul.social-icons li {
 }
 
 .search-bar {
-    background-color: wheat;
+    background-color: white;
     position: relative;
     z-index: 2;
     box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
@@ -934,7 +938,7 @@ h1 {
 }
 
 .services {
-    background: #faf5f5;
+    background: #f5f1f1;
     padding: 20px 0;
 }
 

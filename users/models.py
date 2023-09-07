@@ -68,8 +68,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     isAdmin=models.BooleanField(default=False,null=True,blank=True)
     # upload_to=user_directory_path,
     # is_superuser = models.BooleanField(default=False)
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['password', 'email']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['password',]
 
     objects = UserAccountManager()
 

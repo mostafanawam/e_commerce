@@ -12,9 +12,17 @@
     <div class="row justify-content-center" >
         <div class="col-md-4 col-md-offset-4">
 
-        
+            {% if  error_message%}
+            <div class="alert alert-danger">
+                {{error_message}}
+            </div>
+            {% endif %}
 
-        <form action="/shop/login/signin" method="post" class="">
+            {% if not user.is_authenticated %}
+
+
+
+        <form action="/users/login/" method="post" class="">
             {% csrf_token %}
             <div class="form-group">
                 <label style="color: #33383b">Email:</label>
@@ -28,10 +36,12 @@
             </div>
             <button type="submit" class="btn btn-block btn-cart">Login</button>
             <p class="text-center" style="color: #33383b">Not Registered?
-                <a href="{% url 'users:register' %}" class="text-center" style="color: #cb5959">Sign Up</a>
+                <a href="{% url 'users:register' %}" class="text-center text-green">Sign Up</a>
             </p>
         </form>
-
+        {% else %}
+            logout
+        {% endif %}
 
     </div>
     </div>

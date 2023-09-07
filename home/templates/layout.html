@@ -117,7 +117,11 @@
                         </a>
                       </li>
                       <li class="nav-item ml-md-3">
+                        {% if not user.is_authenticated %}
                         <a class="btn btn-login"  href="{% url 'users:login' %}"><i class="fas fa-user-circle mr-1"></i>login</a>
+                        {% else %}
+                        <a class="btn btn-login"  href="{% url 'users:logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></i>logout</a>
+                        {% endif %}
                       </li>
                   </ul>
                 </div>

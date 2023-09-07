@@ -1,0 +1,192 @@
+{% extends 'layout.html' %}
+
+
+
+{% block title %} Products {% endblock %}
+
+
+
+
+{% block links %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+{% block links1 %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+
+{% block main %} 
+
+    <div class="container-main">
+    <h2 class="title-sell">Checkout</h2>
+
+
+    <div class='success-not text-center' id="success"></div>
+    </div>
+
+ <div class="container-main mb-4 " id="allpage">
+
+    {% if not user.is_authenticated %}
+        <div class="alert alert-secondary " style="padding: 20px">
+            Returning customer? Click <a href="{% url 'users:login' %}" class="text-red">here</a> to login
+        </div>
+
+    {% endif %}
+
+
+
+        <div class="row p-4">
+            <div class="col-md-8">
+                <h2 class="header-ch mb-4 ">Delivery Address Information</h2>
+                <form method="POST" action="" id="new_address_temp"> 
+                    {% csrf_token %} 
+
+                    <div class=" row">
+                        <label for="fn" class="col-12 col-form-label"> Name *</label>
+                        <div class=" col-md-6 col-12">
+                            <input type="text" class=" form-control" placeholder="Firstname" id="firstname" name="firstname1">
+                        </div>
+                        <div class="mt-md-0 mt-2  col-md-6 col-12">
+                            <input type="text" class=" form-control" placeholder="Lastname" id="lastname">
+                        </div>
+                    </div>
+
+                    <div class=" row">
+                        <label for="city" class="col-12 col-form-label">Address *</label>
+                        <div class="col-md-6 col-12">
+                            <input type="text" class="form-control" id="city" placeholder="city">
+                        </div>
+                        <div class="mt-md-0 mt-2  col-md-6 col-12">
+                            <input type="text" class=" form-control" placeholder="Street" id="street">
+                        </div>
+                    </div>
+
+        
+
+                    <div class=" row">
+                        <label for="building" class="col-12 col-form-label">building *</label>
+                        <div class="col-12">
+                        <input type="text" class="form-control" id="building" placeholder="building">
+                        </div>
+                    </div>
+
+                    <div class=" row">
+                        <label for="mobile" class="col-12 col-form-label">Phone *</label>
+                        <div class="col-12">
+                        <input type="tel" class="form-control" id="mobile" placeholder="Phone">
+                        <span class="text-danger" id='alertmobile'></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="note" class="col-12 col-form-label">Note</label>
+                        <div class="col-12">
+                        <textarea name="note" id="note" style="width: 100%" rows="5" class="form-control" placeholder="Note"></textarea>
+                        </div>
+                    </div>
+             
+            </div>
+            <div class="col-md-4 ">
+                <h2 class="header-ch mb-5 mt-4  mt-md-0">Order Summary</h2>
+
+                
+
+                {% for prod in cart %}
+                    <div class="row row2 text-center form-group" >
+                        <div class="col-3">
+                            <img src="{{prod.image}}" class="img-fluid rounded-circle prd-img" >
+                        </div>
+                        <div class="col-3">
+                            {{prod.name}} 
+                        </div>
+                        <div class="col-2">
+                            x{{prod.qty}}
+                        </div>
+                        <div class="col-4 text-right">
+                            {{prod.price}}  {{settings.currency}}
+                        </div>  
+                    </div>
+                    {% endfor %}
+
+
+                    <div class="  row p-2">
+                        <div class="col-6 ">
+                           Sub-Total 
+                        </div>
+                        <div class="col-6 text-right">
+                            {{total_price}} {{settings.currency}}
+                         </div>
+                    </div>
+
+                    <div class="  row p-2">
+                        <div class="col-6 ">
+                            Delivery  
+                        </div>
+                        <div class="col-6 text-right">
+                            {{settings.delivery}} {{settings.currency}} 
+                         </div>
+                    </div>
+                    <hr>
+                    <div class="  row p-2">
+                        <div class="col-6 text-green">
+                            Total  
+                        </div>
+                        <div class="col-6 text-right text-green">
+                            {{grand_total}} {{settings.currency}}
+                         </div>
+                    </div>
+
+                    <div class="  row p-2 ">
+                        <div class="col-12">
+                            <input type="button" class="btn btn-block btn-cart" value="Place Your Order" style="padding:10px" id="btnPlace" onclick="PlaceOrder()">
+  
+                        </div>
+                      
+                    </div>
+
+                   
+              </div>
+        </div>
+
+    
+
+          
+
+         
+
+           
+
+ 
+
+</div>
+
+{% endblock %}

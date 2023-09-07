@@ -6,6 +6,10 @@
     --yellow: #d3b03f;
 }
 
+.text-red {
+    color: var(--red2) !important;
+}
+
 .filter-button-group {
     border: 1px solid #e4e4e4;
     border-radius: 4px;

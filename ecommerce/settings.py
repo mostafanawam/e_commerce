@@ -43,7 +43,8 @@ INSTALLED_APPS += [
  
     'cart',
     'users',
-    'home'
+    'home',
+    'settings'
 ]
     
 

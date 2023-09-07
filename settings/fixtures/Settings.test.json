@@ -1,0 +1,8 @@
+[{
+    "model": "settings.settings",
+    "pk": 1,
+    "fields": {
+        "currency": "$",
+        "delivery": "3.00"
+    }
+}]
