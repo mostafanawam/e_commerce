@@ -18,6 +18,28 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     --yellow: #d3b03f;
 }
 
+.img-caption {
+    position: relative;
+    text-align: center;
+}
+
+.caption-text {
+    position: absolute;
+    top: 8rem;
+    /* Adjust this value to control the distance from the top edge */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 5px 10px;
+    font-size: 5rem;
+}
+
+@media screen and (max-width: 650px) {
+    .caption-text {
+        font-size: 2.5rem;
+    }
+}
+
 .green-icon {
     color: var(--green2) !important;
 }
