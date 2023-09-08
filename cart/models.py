@@ -73,7 +73,7 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"order_id={self.order_id}"
+        return f"#{self.order_id}"
 
 class OrderItem(models.Model):
     order = models.ForeignKey(

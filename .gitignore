@@ -1,0 +1,175 @@
+## Go lang
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+#file updated by redis
+*.rdb
+backend/notary/dump.rdb
+backend/notary/output.txt
+
+backend/notary/tmp/*.html
+
+# Test binary, build with `go test -c`
+*.test
+
+# Test binary, build with `go test -c`
+*.test
+
+# API testing files
+*.http
+
+
+
+# generated pdf
+*.pdf
+*.docx
+*.odt
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+## --
+
+## Terraform
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfplan
+*.tfplan
+*.lock.hcl
+
+# Crash log files
+crash.log
+
+# Ignore any .tfvars files that are generated automatically for each Terraform run. Most
+# .tfvars files are managed as part of configuration and so should be included in
+# version control.
+#
+# example.tfvars
+
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in#
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Include override files you do wish to add to version control using negated pattern
+#
+# !example_override.tf
+## --
+
+# sphinx build folder
+_build
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor backup files #
+#######################
+*~
+
+notary/contracts/docs
+
+# django #
+##########
+*.egg-info
+*.pot
+*.py[co]
+#[0-9]*.py
+.tox/
+__pycache__
+MANIFEST
+docs/_build/
+docs/locale/
+node_modules/
+tests/coverage_html/
+tests/.coverage
+build/
+tests/report/
+db.sqlite*
+db.sqlite3
+
+# testing #
+###########
+testscoverage/
+.coverage
+coverage_*_report/
+*.ipynb*
+
+# metronic7 bootstrap4 vuejs
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+yarn.lock
+package-lock.json
+
+# key files
+*.csr
+*.pem
+*.crt
+*.key
+
+# migration files
+**/migrations/*
+**/migrations/postgres-dev/*
+**/migrations/postgres-local/*
+!**/migrations/__init__.py
+!**/migrations/postgres-dev/__init__.py
+!**/migrations/postgres-local/__init__.py

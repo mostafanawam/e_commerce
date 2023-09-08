@@ -12,6 +12,8 @@ admin.site.register(Category,CategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):  
     list_display = ("id","name","description","price","status","category")
+
+    list_filter=["category","status"]
 admin.site.register(Product,ProductAdmin)
 
 class StatusAdmin(admin.ModelAdmin):  
@@ -29,6 +31,7 @@ class OrderAdmin(admin.ModelAdmin):
         "address",
         "order_date"
     )
+    list_filter=["customer"]
 admin.site.register(Order,OrderAdmin)
 
 
@@ -40,4 +43,5 @@ class OrderItemAdmin(admin.ModelAdmin):
         "product",
         "quantity",
     )
+    list_filter=["order","order__customer","product"]
 admin.site.register(OrderItem,OrderItemAdmin)

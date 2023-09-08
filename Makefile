@@ -40,3 +40,6 @@ broker-start:
 
 
 
+
+clear-cache:
+	find . -name "__pycache__" | xargs rm -r
