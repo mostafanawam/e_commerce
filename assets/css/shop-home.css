@@ -927,10 +927,6 @@ section {
     }
 }
 
-.inner-column span {
-    color: var(--green2);
-}
-
 .inner-column p,
 h1 {
     color: black;

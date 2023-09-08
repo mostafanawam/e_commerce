@@ -14,8 +14,8 @@ class CustomUserCreationForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self)
-        user.first_name = self.cleaned_data.get('first_name')
-        user.last_name = self.cleaned_data.get('last_name')
+        # user.first_name = self.cleaned_data.get('first_name')
+        # user.last_name = self.cleaned_data.get('last_name')
         user.email = self.cleaned_data.get('email')
         user.is_staff = self.cleaned_data.get('is_staff')
         # user.phone = self.cleaned_data.get('phone')
@@ -44,5 +44,5 @@ class CustomUserChangeForm(UserChangeForm):
 class LoginForm(Form):
     class Meta(Form):
         model = User
-        fields = ['username', 'password']
+        fields = ['email', 'password']
 

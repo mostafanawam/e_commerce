@@ -19,3 +19,25 @@ class StatusAdmin(admin.ModelAdmin):
 admin.site.register(Status,StatusAdmin)
 
 
+
+class OrderAdmin(admin.ModelAdmin):  
+    list_display = (
+        "id",
+        "order_id",
+        "customer",
+        "total_price",
+        "address",
+        "order_date"
+    )
+admin.site.register(Order,OrderAdmin)
+
+
+
+class OrderItemAdmin(admin.ModelAdmin):  
+    list_display = (
+        "id",
+        "order",
+        "product",
+        "quantity",
+    )
+admin.site.register(OrderItem,OrderItemAdmin)

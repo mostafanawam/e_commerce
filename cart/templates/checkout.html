@@ -47,63 +47,140 @@
 {% block main %} 
 
     <div class="container-main">
-    <h2 class="title-sell">Checkout</h2>
+        <h2 class="title-sell">Checkout</h2>
 
-
-    <div class='success-not text-center' id="success"></div>
+    
     </div>
 
+  
+
+
+
+    
  <div class="container-main mb-4 " id="allpage">
 
-    {% if not user.is_authenticated %}
-        <div class="alert alert-secondary " style="padding: 20px">
-            Returning customer? Click <a href="{% url 'users:login' %}" class="text-red">here</a> to login
+    <!-- if order is placed and success -->
+    {% if success %} 
+        <div class="text-center">
+            <img src="/assets/place_order.png" />
+            <h3>Order Placed</h3>
+            <p>
+                Your order has been placed successfully
+            </p>
+        </div>
+        <div class="row justify-content-center text-center">
+            <div class="col-md-3">
+                
+                <h5>Date</h5>
+            </div> 
+            <div class="col-md-3">
+                <h5>Order ID</h5>
+            </div> 
         </div>
 
-    {% endif %}
+        <div class="row justify-content-center text-center">
+            <div class="col-md-3 text-muted">
+                {{date}}
+            </div> 
+            <div class="col-md-3 text-muted">
+            #{{order_id}}
+            </div> 
+        </div>
+        <br>
+        <div class="row justify-content-center text-center">
+            <div class="col-md-3">
+                
+                <h5>Shipping To</h5>
+            </div> 
+            <div class="col-md-3">
+                <h5>Payment Method</h5>
+            </div> 
+        </div>
+
+        <div class="row justify-content-center text-center">
+            <div class="col-md-3 text-muted">
+                {{address}}
+            </div> 
+            <div class="col-md-3 text-muted">
+            Cash on Delivery
+            </div> 
+        </div>
+
+        <div class="row justify-content-center my-4 mb-4">
+            <div class="col-md-6 text-center">
+                <a class="btn btn-login  w-50" href="/">Done</a>
+            </div> 
+           
+        </div>
+        
+<!-- no order placed -->
+    {% else %}
+
+
+
+        {% if not user.is_authenticated %}
+            <div class="alert alert-secondary " style="padding: 20px">
+                Returning customer? Click <a href="{% url 'users:login' %}" class="text-red">here</a> to login
+            </div>
+
+        {% endif %}
 
 
 
         <div class="row p-4">
+
+            {% if not user.is_authenticated %} <!-- if user is not logged in -->
             <div class="col-md-8">
                 <h2 class="header-ch mb-4 ">Delivery Address Information</h2>
-                <form method="POST" action="" id="new_address_temp"> 
+                <form method="POST" action="/cart/checkout/" id="new_address_temp"> 
                     {% csrf_token %} 
 
                     <div class=" row">
-                        <label for="fn" class="col-12 col-form-label"> Name *</label>
+                        <label for="firstname" class="col-12 col-form-label"> Name *</label>
                         <div class=" col-md-6 col-12">
-                            <input type="text" class=" form-control" placeholder="Firstname" id="firstname" name="firstname1">
+                            <input type="text" class=" form-control" placeholder="Firstname" required id="firstname" name="firstname">
                         </div>
                         <div class="mt-md-0 mt-2  col-md-6 col-12">
-                            <input type="text" class=" form-control" placeholder="Lastname" id="lastname">
+                            <input type="text" class=" form-control" placeholder="Lastname" required id="lastname" name="lastname">
                         </div>
                     </div>
 
+
+
                     <div class=" row">
-                        <label for="city" class="col-12 col-form-label">Zone *</label>
+
+                        <label for="mobile" class="col-md-6 col-form-label ">Phone *</label>
+
+
+                        <label for="region" class="col-md-6 col-form-label d-md-block d-none">Region *</label>
+
+                    </div>
+                    <div class=" row">
+                     
                         <div class="col-md-6 col-12">
-                            <input type="text" class="form-control" id="city" placeholder="city">
+                            <input type="tel" class=" form-control" placeholder="Phone" required id="phone" name="phone">
                         </div>
-                
-                    </div>
 
-        
+                        <label for="mobile" class="col-md-6 col-form-label d-block d-md-none">Region *</label>
 
-                    <div class=" row">
-                        <label for="building" class="col-12 col-form-label">building *</label>
-                        <div class="col-12">
-                        <input type="text" class="form-control" id="building" placeholder="building">
-                        </div>
-                    </div>
+                        <div class="col-md-6 col-12">
+                            <select class="form-control" id="region" name="region" required>
+                                <option value="" selected>Select Region</option>
 
-                    <div class=" row">
-                        <label for="mobile" class="col-12 col-form-label">Phone *</label>
-                        <div class="col-12">
-                        <input type="tel" class="form-control" id="mobile" placeholder="Phone">
-                        <span class="text-danger" id='alertmobile'></span>
+                                {% for reg in  regions%}
+                                    <option value="{{reg.id}}">{{reg.name}}</option>
+                         
+                                {% endfor %}
+                              </select>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <label for="note" class="col-12 col-form-label">Address *</label>
+                        <div class="col-md-12 col-12">
+                            <input type="text" class=" form-control" placeholder="Address" required id="address" name="address">
+                        </div>
+                    </div> 
 
                     <div class="row">
                         <label for="note" class="col-12 col-form-label">Note</label>
@@ -113,6 +190,11 @@
                     </div>
              
             </div>
+            {% else %}<!-- if user is  logged in -->
+            <div class="col-md-8">
+            </div>
+            {% endif %}
+
             <div class="col-md-4 ">
                 <h2 class="header-ch mb-5 mt-4  mt-md-0">Order Summary</h2>
 
@@ -165,25 +247,19 @@
 
                     <div class="  row p-2 ">
                         <div class="col-12">
-                            <input type="button" class="btn btn-block btn-cart" value="Place Your Order" style="padding:10px" id="btnPlace" onclick="PlaceOrder()">
-  
+                            <input type="submit" class="btn btn-block btn-cart" value="Place Your Order" style="padding:10px" id="btnPlace">
                         </div>
-                      
                     </div>
-
-                   
               </div>
+            </form>
         </div>
 
     
 
           
 
-         
 
-           
-
- 
+        {% endif %}  <!-- end if order is placed -->
 
 </div>
 

@@ -1,0 +1,22 @@
+[{
+        "model": "users.regions",
+        "pk": 1,
+        "fields": {
+            "name": "Saida"
+        }
+    },
+    {
+        "model": "users.regions",
+        "pk": 2,
+        "fields": {
+            "name": "Beirut"
+        }
+    },
+    {
+        "model": "users.regions",
+        "pk": 3,
+        "fields": {
+            "name": "Tyre"
+        }
+    }
+]

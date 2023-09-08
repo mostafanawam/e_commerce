@@ -49,65 +49,72 @@ from django.core.files.storage import FileSystemStorage
 # python manage.py dumpdata users.user --output users/fixtures/users.test.json
 class User(AbstractBaseUser, PermissionsMixin):
     """ BmUser model """
-
-    first_name = models.CharField(blank=True, null=True,max_length=50,unique=False,)
-    last_name = models.CharField(blank=True, null=True,max_length=50,unique=False)
     email = models.EmailField(max_length=250, unique=True,null=True,blank=True)
     password = models.CharField(max_length=250,null=True,blank=True)
     date_joined = models.DateTimeField(verbose_name='date joined',auto_now_add=True,null=True,blank=True)
     last_login = models.DateTimeField(verbose_name='last login',auto_now_add=True,null=True,blank=True)
-    # phone=models.CharField(max_length=50,null=True,blank=True,unique=True)              
-    # is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False,null=True,blank=True)    # admin
     is_enabled = models.BooleanField(default=True,null=True,blank=True)
-    isAdmin=models.BooleanField(default=False,null=True,blank=True)
-    # upload_to=user_directory_path,
-    # is_superuser = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['password',]
 
     objects = UserAccountManager()
 
     def __str__(self):
-        if(self.fullName()):
-            return f"{self.fullName()}"
-        else:
-            return "user"
+        return f"{self.email}"
+  
     
-    def fullName(self):
-        name=""
-        if(self.first_name):
-            name+=self.first_name+" "
-
-        if(self.father_name):
-            name+=self.father_name+" "
-
-        if(self.last_name):
-            name+=self.last_name
-
-        return name
-    
-
-    
-
     def has_module_perms(self, app_label):
         return True
-    
-    
+
     class Meta:
         ordering = ['id']
 
 
 
+class Customer(models.Model):
+    user=models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,blank=True
+    )
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=15,null=True,blank=True)
+    address = models.ManyToManyField(
+        "users.Address"
+    )
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    class Meta:
+        verbose_name = "Customers"
+        verbose_name_plural = "Customers"
+
+
+
+# python manage.py dumpdata users.Regions --output users/fixtures/Regions.test.json
+class Regions(models.Model):
+    name=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name = "Regions"
+        verbose_name_plural = "Regions"
+
 
 class Address(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
-    city=models.CharField(max_length=100)
+    region=models.ForeignKey(
+        Regions,
+        on_delete=models.CASCADE
+    )
+    address=models.TextField()
+    note=models.TextField()
 
-
-    # def __str__(self):
-    #     return self.name
-
+    def __str__(self):
+        return self.address
     class Meta:
-        verbose_name = "Settings"
-        verbose_name_plural = "Settings"
+        verbose_name = "Address"
+        verbose_name_plural = "Address"
+    

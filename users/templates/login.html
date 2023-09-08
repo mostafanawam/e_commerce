@@ -26,12 +26,12 @@
             {% csrf_token %}
             <div class="form-group">
                 <label style="color: #33383b">Email:</label>
-                <input type="text" class="form-control" name="email" placeholder="Email">
+                <input type="text" class="form-control" name="email" placeholder="Email" required>
                 {% comment %} @error('email')<span class="text-danger">{{ $message }} </span>@enderror {% endcomment %}
             </div>
             <div class="form-group">
                 <label style="color: #33383b">Password:</label>
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
                 {% comment %} @error('password')<span class="text-danger">{{ $message }}</span> @enderror {% endcomment %}
             </div>
             <button type="submit" class="btn btn-block btn-cart">Login</button>

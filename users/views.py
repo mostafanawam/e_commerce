@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
-from users.models import User
+from users.models import Customer, User
 
 def user_login(request):
     if request.method == 'POST':
@@ -40,11 +40,7 @@ def user_logout(request):
 
     logout(request)
 
-    cart = request.session.get('cart', [])
-    context = {
-        'cart': cart,
-    }
-    return render(request, 'login.html',context)
+    return redirect("/users/login/")
 
 def user_register(request):
     if request.method == 'POST':
@@ -58,19 +54,33 @@ def user_register(request):
                 error_message = 'Email field is required'
             if(password==""):
                 error_message = 'Password field is required'
-            return render(request, 'login.html', {'error_message': error_message})
+            return render(request, 'register.html', {'error_message': error_message})
+            
+        if(User.objects.filter(email=email).exists()):
+            error_message = f'{email} is already used'
+            return render(request, 'register.html', {'error_message': error_message})
         
         user = User.objects.create(
-            first_name=first_name,
-            last_name=last_name,
             email=email,
         )
         user.set_password(password)
+        user.save()
+        Customer.objects.create(
+            user=user,
+            first_name=first_name,
+            last_name=last_name
+                            
+        )
 
         if user is not None:
-            return redirect('/users/login/')  # Replace 'home' with the appropriate URL name
+            print("test")
+            cart = request.session.get('cart', [])  
+            context = {
+                'cart': cart,
+            }
+            return redirect("/users/login/")  # Replace 'home' with the appropriate URL name
         
-
+        
     cart = request.session.get('cart', [])  
     context = {
         'cart': cart,
