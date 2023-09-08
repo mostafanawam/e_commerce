@@ -8,7 +8,7 @@
 
 {% block main %} 
 <div class="container">
-    <form action="register/signup" method="POST">
+    <form action="/users/register/" method="POST">
         {% csrf_token %}
     <h2 class="title-sell">SignUp</h2>
     
@@ -21,13 +21,13 @@
 
     <div class="row justify-content-center  " >
         <div class="form-group col-md-3">
-                <label style="color: #33383b">firstname:</label>
-                <input type="text" class="form-control" name="firstname" placeholder="firstname">
+                <label style="color: #33383b">Firstname:</label>
+                <input type="text" class="form-control" name="first_name" placeholder="firstname">
         </div>
 
         <div class="form-group col-md-3">
-            <label style="color: #33383b">lastname:</label>
-            <input type="text" class="form-control" name="lastname" placeholder="lastname">
+            <label style="color: #33383b">Lastname:</label>
+            <input type="text" class="form-control" name="last_name" placeholder="lastname">
         </div>
        
     </div>
@@ -37,35 +37,12 @@
             <input type="text" class="form-control" name="email" placeholder="Email" >
         </div>
         <div class="form-group col-md-3">
-            <label style="color: #33383b">password:</label>
+            <label style="color: #33383b">Password:</label>
             <input type="password" class="form-control" name="password" placeholder="password">
         </div>
     </div>
 
-    <div class="row justify-content-center  " >
-        <div class="form-group col-md-3">
-            <label style="color: #33383b">Phone:</label>
-            <input type="tel" class="form-control" name="phone" placeholder="phone">
-    </div>
-        <div class="form-group col-md-3">
-            <label style="color: #33383b">City:</label>
-            <input type="text" class="form-control" name="city" placeholder="city">
-        </div>
-        
-    </div>
-
-    <div class="row justify-content-center  " >
-        <div class="form-group col-md-3">
-            <label style="color: #33383b">Street:</label>
-            <input type="text" class="form-control" name="street" placeholder="street">
-        </div>
-        <div class="form-group col-md-3">
-            <label style="color: #33383b">building:</label>
-            <input type="text" class="form-control" name="building" placeholder="building"
-           >
-            
-        </div>
-    </div>
+   
     <div class="row justify-content-center">
             <div class="col-lg-3">
                 <button type="submit" class="btn btn-block btn-cart">Sign Up</button>

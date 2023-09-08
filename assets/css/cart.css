@@ -165,7 +165,6 @@ h1 {
 
 .product .product-details .product-title {
     margin-right: 20px;
-    font-family: 'Open Sans', cursive;
 }
 
 .product .product-details .product-description {
@@ -187,7 +186,6 @@ h1 {
     padding: 4px 8px;
     background-color: #c66;
     color: #fff;
-    font-family: 'Open Sans', cursive;
     font-size: 12px;
     border-radius: 3px;
 }
@@ -218,10 +216,6 @@ h1 {
     float: right;
     width: 21%;
     text-align: right;
-}
-
-.totals .totals-item-total {
-    font-family: 'Open Sans', cursive;
 }
 
 

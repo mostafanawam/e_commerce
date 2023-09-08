@@ -90,7 +90,8 @@
           </div>
           <div class="product-price">{{prod.price}} {{settings.currency}}</div>
           <div class="product-quantity">
-            <input type="text" value="{{prod.qty}}" class="text-center" readonly>
+            {% comment %} <input type="text" value="{{prod.qty}}" class="text-center" readonly> {% endcomment %}
+            x {{prod.qty}}
           </div>
           <div class="product-removal">
             <a href="/cart/delete/{{ forloop.counter }}/">

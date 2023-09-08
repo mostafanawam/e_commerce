@@ -50,18 +50,13 @@ from django.core.files.storage import FileSystemStorage
 class User(AbstractBaseUser, PermissionsMixin):
     """ BmUser model """
 
-    username = models.CharField(blank=True, null=True,max_length=20,unique=True,)
     first_name = models.CharField(blank=True, null=True,max_length=50,unique=False,)
-    father_name = models.CharField(blank=True, null=True,max_length=50,unique=False,)
     last_name = models.CharField(blank=True, null=True,max_length=50,unique=False)
-    first_name_en = models.CharField(blank=True, null=True,max_length=50,unique=False,)
-    father_name_en = models.CharField(blank=True, null=True,max_length=50,unique=False,)
-    last_name_en = models.CharField(blank=True, null=True,max_length=50,unique=False)
     email = models.EmailField(max_length=250, unique=True,null=True,blank=True)
     password = models.CharField(max_length=250,null=True,blank=True)
     date_joined = models.DateTimeField(verbose_name='date joined',auto_now_add=True,null=True,blank=True)
     last_login = models.DateTimeField(verbose_name='last login',auto_now_add=True,null=True,blank=True)
-    phone=models.CharField(max_length=50,null=True,blank=True,unique=True)              
+    # phone=models.CharField(max_length=50,null=True,blank=True,unique=True)              
     # is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False,null=True,blank=True)    # admin
     is_enabled = models.BooleanField(default=True,null=True,blank=True)
@@ -104,3 +99,15 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 
+
+class Address(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    city=models.CharField(max_length=100)
+
+
+    # def __str__(self):
+    #     return self.name
+
+    class Meta:
+        verbose_name = "Settings"
+        verbose_name_plural = "Settings"

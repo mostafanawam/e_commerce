@@ -14,15 +14,12 @@ class CustomUserCreationForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self)
-        user.username = self.cleaned_data.get('username')
         user.first_name = self.cleaned_data.get('first_name')
-        user.father_name = self.cleaned_data.get('father_name')
         user.last_name = self.cleaned_data.get('last_name')
-        user.username = self.cleaned_data.get('username')
         user.email = self.cleaned_data.get('email')
         user.is_staff = self.cleaned_data.get('is_staff')
-        user.phone = self.cleaned_data.get('phone')
-        user.gender = self.cleaned_data.get('gender')
+        # user.phone = self.cleaned_data.get('phone')
+        # user.gender = self.cleaned_data.get('gender')
         
         # user.is_active = self.cleaned_data.get('is_active')
         user.is_enabled = self.cleaned_data.get('is_enabled')

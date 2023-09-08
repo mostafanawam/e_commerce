@@ -38,7 +38,8 @@ def add_to_cart(request, product_id):
     cart = request.session['cart']
     cart.append({
         'id': product.pk,
-        'title': product.name,
+        'name': product.name,
+        'description': product.description,
         'price': str(product.price),
         'image': product.image.url,
         'qty':1
