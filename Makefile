@@ -36,10 +36,3 @@ shell-plus:
 broker-start:
 	sudo systemctl  start docker
 	sudo docker run --rm -it -p 15672:15672 -p 5672:5672 rabbitmq:3-management
-
-
-
-
-
-clear-cache:
-	find . -name "__pycache__" | xargs rm -r

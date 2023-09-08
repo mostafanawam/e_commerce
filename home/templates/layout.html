@@ -70,7 +70,7 @@
             <div class="overlay"></div>
               <div class="utility-nav d-block d-md-block " >
           
-                      <p class="text-center text-top">Payment in USD and LBP,Rate is determined upon delivery(Orders being delivered now 90,000)</p>
+                      <p class="text-center text-top">Payment in USD and LBP,Rate is determined upon delivery</p>
               
               </div>
 
@@ -88,7 +88,6 @@
                     </div>
                     <div class="col-md-3 col-3 ">
                       <!-- Company Name -->
-  
                       <h2 class=" mx-2 text-green">Zoo<span class="fw-bold text-red">Store</span></h2>
                     </div>
                   </div>
@@ -103,8 +102,9 @@
                   </li>
                 </ul>
                 <div class="collapse navbar-collapse">
-                  <form class="form-inline  my-lg-0 mx-auto" action="/shop/search" method="POST">
-                      <input class="form-control text-search" type="text" name="search" placeholder="search products ..." aria-label="Search">
+                  <form class="form-inline  my-lg-0 mx-auto" action="/search_products/" method="POST">
+                    {% csrf_token %}
+                      <input class="form-control text-search" value="{{query}}" type="text" name="query" placeholder="search products ..." aria-label="Search">
                       <button class="btn search-btn "  type="submit"><i class="fas fa-search"></i></button>
                   </form>
                   <ul class="navbar-nav">
@@ -145,8 +145,9 @@
             <div class="container">
                 <div class="row">
                   <div class="col-12">
-                    <form class="form-inline my-2 my-lg-0 mx-auto" action="/shop/search" method="POST">
-                        <input class="form-control" type="text" name="search" placeholder="search products ..." aria-label="Search">
+                    <form class="form-inline my-2 my-lg-0 mx-auto" action="/search_products/" method="POST">
+                      {% csrf_token %}
+                        <input class="form-control" type="text" value="{{query}}" name="query" placeholder="search products ..." aria-label="Search">
                         <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
                       </form>
                   </div>

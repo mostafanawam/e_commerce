@@ -22,7 +22,7 @@ def user_login(request):
         user = authenticate(email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/products')  # Replace 'home' with the appropriate URL name
+            return redirect('/')  # Replace 'home' with the appropriate URL name
         else:
             error_message = 'Invalid username or password. Please try again.'
             return render(request, 'login.html', {'error_message': error_message})
@@ -40,7 +40,7 @@ def user_logout(request):
 
     logout(request)
 
-    return redirect("/users/login/")
+    return redirect("/")
 
 def user_register(request):
     if request.method == 'POST':

@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from cart.models import *
+from settings.models import Settings
 from .models import *
 
 
@@ -13,13 +14,15 @@ def homepage(request):
     brands=Brands.objects.all()
 
     cart = request.session.get('cart', [])
-
+    settings=Settings.objects.get()
     
     context = {
         'products': products,
         'gallery':gallery,
         'brands':brands,
-        "cart":cart
+        "cart":cart,
+        'delivery':int(settings.delivery),
+        'currency':settings.currency
     }
     return render(request, 'home.html',context)
 
@@ -45,3 +48,20 @@ def contactUs(request):
 
     return render(request, 'contact_us.html',context)
 
+
+from django.db.models import Q
+def searchProducts(request):
+    if request.method == 'POST':
+        query = request.POST['query']
+
+        products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+
+
+        cart = request.session.get('cart', [])
+        context = {
+            'products': products,
+            "cart":cart,
+            "query":query
+        }
+
+        return render(request, 'search_products.html',context)

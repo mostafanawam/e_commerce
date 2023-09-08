@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+
+
+{% block title %} Search {% endblock %}
+
+
+
+
+{% block links %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link " href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+{% block links1 %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link " href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+
+{% block main %} 
+<div class="container-main">
+<h2 class="title-sell">Searched Products</h2>
+
+
+
+
+
+
+
+
+
+<div class="row  mb-4 special-list">
+  {% for product in products %}
+  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 special-grid {{ product.category.name }}   ">
+    <figure class="snip1396 green hover prod-img">
+      {% if product.image %}
+      <img src="{{ product.image.url }}"  width="350" height="350" >
+  {% else %}
+      <img src="/assets/empty.png" >
+  {% endif %}   
+      <figcaption>
+        <h3>  {{ product.name }}</h3>
+        <p>All this modern technology just makes people try to do everything at once.</p>
+      </figcaption>
+      <div class="price">
+        {% comment %} <s>$24.00</s> {% endcomment %}
+        {{ product.price }} $
+      </div>
+      {% csrf_token %}
+      <button  class="add-to-cart btn btn-sm btn-login"  data-product-id="{{ product.id }}" id="btn{{ product.id }}" >
+        Add to Cart
+      </button>
+    </figure>
+  </div>
+  {% endfor %}
+</div>
+{% comment %} <script src="/assets/js/menu-filter.js" ></script> {% endcomment %}
+
+
+</div>
+
+</div>
+{% endblock %}
