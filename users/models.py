@@ -80,9 +80,8 @@ class Customer(models.Model):
     )
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    phone_number = models.CharField(max_length=15,null=True,blank=True)
     address = models.ManyToManyField(
-        "users.Address"
+        "users.Address",blank=True
     )
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -110,6 +109,7 @@ class Address(models.Model):
         on_delete=models.CASCADE
     )
     address=models.TextField()
+    phone_number = models.CharField(max_length=15,null=True,blank=True)
     note=models.TextField()
 
     def __str__(self):

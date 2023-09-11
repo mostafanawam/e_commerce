@@ -1364,7 +1364,8 @@ p {
 
 input[type=radio] {
     cursor: pointer;
-    accent-color: #cb5959;
+    accent-color: var(--green2);
+    transform: scale(1.5);
 }
 
 .pointer {

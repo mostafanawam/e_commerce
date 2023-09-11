@@ -29,6 +29,7 @@ class AddressAdmin(admin.ModelAdmin):
         "id",
         "region",
         "address",
+        "phone_number",
         "note"
     )
 admin.site.register(Address,AddressAdmin)
@@ -49,7 +50,6 @@ class CustomerAdmin(admin.ModelAdmin):
         "user",
         "first_name",
         "last_name",
-        "phone_number",
         # "address"
 
     )

@@ -61,21 +61,94 @@ def remove_from_cart(request,id):
     return redirect('/cart')
 
 
-
-
+from datetime import datetime
 from decimal import Decimal
-def checkout(request):
-    cart = request.session.get('cart', [])
 
+def checkout(request):
+        
+    cart = request.session.get('cart', [])
     total_price = sum(float(item['price']) for item in cart)
     if(len(cart)==0):
         return redirect("/products/")
+    settings=Settings.objects.get()
+
     if(request.method == 'POST'):
         user=None
         if request.user.is_authenticated:
             user=request.user
+            address_type = request.POST.get('type')
+            customer=Customer.objects.get(user=request.user)
+            if(address_type=="choose"):
+                # auth ,select from saved address
+                selected_address = request.POST.get('selected_address')
+            
+                address=Address.objects.get(pk=int(selected_address))
+
+                
+                order_id=generate_random_id()
+                order=Order.objects.create(
+                    total_price=total_price,
+                    customer=customer,
+                    address=address,
+                    order_id=order_id
+                )
+                for item in cart:
+                    OrderItem.objects.create(
+                        order=order,
+                        product=Product.objects.get(id=item['id']),
+                        quantity=item['qty'],
+                    )
+                if 'cart'  in request.session:
+                    del request.session['cart']
+
+                context={
+                    "success":'success',
+                    "date": datetime.now().strftime("%b %d, %Y"),
+                    "order_id":order_id,
+                    "address":f"{address.region.name},{address.address}"
+                }
+                return JsonResponse(context)
+            else:
+                # auth but new address
+                phone = request.POST['phone']
+                region=request.POST['region']
+                address=request.POST['address']
+                note = request.POST['note']
+                region=Regions.objects.get(id=region)
+
+                address=Address.objects.create(
+                    region=region,
+                    address=address,
+                    note=note,
+                    phone_number=phone
+                ) 
+                customer.address.add(address)
+
+                order_id=generate_random_id()
+                order=Order.objects.create(
+                    total_price=total_price,
+                    customer=customer,
+                    address=address,
+                    order_id=order_id
+                )
+                for item in cart:
+                    OrderItem.objects.create(
+                        order=order,
+                        product=Product.objects.get(id=item['id']),
+                        quantity=item['qty'],
+                    )
+                if 'cart'  in request.session:
+                    del request.session['cart']
+                context={
+                    "success":'success',
+                    "date": datetime.now().strftime("%b %d, %Y"),
+                    "order_id":order_id,
+                    "address":f"{region.name},{address}"
+                }
+                return JsonResponse(context)
         else:
-            firstname = request.POST['firstname']
+            # not auth
+            firstname = request.POST.get('firstname')
             lastname = request.POST['lastname']
 
             phone = request.POST['phone']
@@ -91,12 +164,12 @@ def checkout(request):
                 user=user,
                 first_name=firstname,
                 last_name=lastname,
-                phone_number=phone
             )
             address=Address.objects.create(
                 region=region,
                 address=address,
-                note=note
+                note=note,
+                phone_number=phone
             )
             customer.address.add(address)
             order_id=generate_random_id()
@@ -115,18 +188,27 @@ def checkout(request):
             if 'cart'  in request.session:
                 del request.session['cart']
 
-            success = f'ORDER submitted'
 
-            from datetime import datetime
+
+            html=f"""
+                <h3>New Order  from {firstname} {lastname} </h3>
+                <p>Hello Dear,<br> You have new order with id={order.order_id} <br>total price={total_price}<br>Delivery address= {region.name},{address}</p>
+                <p>For more details <a style="color:red" href='{settings.admin_link}cart/orderitem//?order__id__exact={order.pk}' >click here</a></p>
+            """
+            # send_email(f'ZooStore New Order',html)
+
             context={
-                "success":success,
+                "success":'success',
                 "date": datetime.now().strftime("%b %d, %Y"),
                 "order_id":order_id,
                 "address":f"{region.name},{address}"
             }
-            return render(request, 'checkout.html', context)
+            return JsonResponse(context)
 
-    settings=Settings.objects.get()
+
+    address=None
+    if request.user.is_authenticated:
+        address=Customer.objects.get(user=request.user).address.all()
 
     regions=Regions.objects.all()
     context = {
@@ -135,6 +217,7 @@ def checkout(request):
         "settings":settings,
         "grand_total":Decimal(total_price)+settings.delivery,
         'regions':regions,
+        'address':address
     }
         
     return render(request, 'checkout.html', context)
@@ -148,3 +231,43 @@ def generate_random_id(length=10):
     characters = string.ascii_letters + string.digits
     random_id = ''.join(random.choice(characters) for _ in range(length))
     return random_id
+
+
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from settings.models import Settings
+
+
+
+def send_email(subject,html):
+    settings=Settings.objects.get()
+    gmail_user =settings.email
+    gmail_password = settings.password  # Use your App Password if you have 2FA enabled
+
+    # Email details
+    reciever_email = settings.reciever_email
+    subject = subject
+
+    # Create the email message
+    msg = MIMEMultipart()
+    msg['From'] = gmail_user
+    msg['To'] = reciever_email
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(html, "html"))
+
+    email_string = msg.as_string()
+
+    # Connect to Gmail's SMTP server
+    with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        server.starttls()  # Enable TLS (Transport Layer Security)
+        
+        # Log in to your Gmail account
+        server.login(gmail_user, gmail_password)
+        
+        # Send the email
+        server.sendmail(gmail_user,reciever_email,email_string)
+
+    print('Email sent successfully!')

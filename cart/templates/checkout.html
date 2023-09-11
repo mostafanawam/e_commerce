@@ -59,8 +59,8 @@
     
  <div class="container-main mb-4 " id="allpage">
 
-    <!-- if order is placed and success -->
-    {% if success %} 
+ 
+    <div id="success" class="hidden">
         <div class="text-center">
             <img src="/assets/place_order.png" />
             <h3>Order Placed</h3>
@@ -79,11 +79,9 @@
         </div>
 
         <div class="row justify-content-center text-center">
-            <div class="col-md-3 text-muted">
-                {{date}}
+            <div class="col-md-3 text-muted" id="order_date">
             </div> 
-            <div class="col-md-3 text-muted">
-            #{{order_id}}
+            <div class="col-md-3 text-muted" id="order_id">
             </div> 
         </div>
         <br>
@@ -98,13 +96,17 @@
         </div>
 
         <div class="row justify-content-center text-center">
-            <div class="col-md-3 text-muted">
-                {{address}}
+            <div class="col-md-3 text-muted" id="order_address">
             </div> 
             <div class="col-md-3 text-muted">
             Cash on Delivery
             </div> 
         </div>
+
+        <div class="text-center my-2">
+            <p>Your order is expected to be delivered within 2-3  days.</p>       
+        </div>
+
 
         <div class="row justify-content-center my-4 mb-4">
             <div class="col-md-6 text-center">
@@ -112,10 +114,12 @@
             </div> 
            
         </div>
-        
-<!-- no order placed -->
-    {% else %}
 
+        </div><!-- end success div -->
+
+
+        <input type="hidden" value="{{user.is_authenticated}}" id="isAuth">
+    <div id="delivery_address">
 
 
         {% if not user.is_authenticated %}
@@ -132,6 +136,13 @@
             {% if not user.is_authenticated %} <!-- if user is not logged in -->
             <div class="col-md-8">
                 <h2 class="header-ch mb-4 ">Delivery Address Information</h2>
+
+
+                <div class="alert alert-danger p-2 hidden" id="error" >
+                    
+                </div>
+
+                
                 <form method="POST" action="/cart/checkout/" id="new_address_temp"> 
                     {% csrf_token %} 
 
@@ -192,6 +203,76 @@
             </div>
             {% else %}<!-- if user is  logged in -->
             <div class="col-md-8">
+                <h2 class="header-ch mb-4 ">Delivery Address Information</h2>
+                <div class="alert alert-danger p-2 hidden" id="error" >
+                    
+                </div>
+
+
+                {% if address|length > 0 %}
+                    <h5 class="text-green"> 
+                        <input type="radio" value="saved" name="delivery"  class="mx-2" id="saved"  /> 
+                       <label for="saved" class="pointer-cursor"> Choose From Saved Address</label> 
+                    </h5>
+
+                    <div class="row p-md-4 p-2 " >
+                        <div class="col-md-1 col-0 "></div>
+                        {% for adr in address %}
+                    
+                            <div class="col-md-5 col-8 text-center">
+                                <input type="radio" value="{{adr.pk}}" name="selected_address" id="{{adr.pk}}"  class="mx-2" /> 
+                                <label for="{{adr.pk}}" class="pointer-cursor ">{{adr.region}} {{adr.address}}</label>
+                            </div>
+                
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <h5 class="mt-md-0 mt-4 text-green" > 
+                    <input type="radio" class="mx-2" value="new_address" name="delivery" id="new_address" />
+                    
+                    <label for="new_address" class="pointer-cursor"> Add New Address</label> 
+                    
+                </h5>
+            
+                <div class=" row justify-content-center">
+
+                    <label for="phone2" class="col-md-6 col-form-label ">Phone *</label>
+
+
+                    <label for="region2" class="col-md-6 col-form-label d-md-block d-none">Region *</label>
+
+                </div>
+                <div class=" row">
+                    <div class="col-md-6 col-12">
+                        <input type="tel" class=" form-control" placeholder="Phone" required id="phone2" name="phone2">
+                    </div>
+
+                    <label for="region2" class="col-md-6 col-form-label d-block d-md-none">Region *</label>
+
+                    <div class="col-md-6 col-12">
+                        <select class="form-control" id="region2" name="region2" required>
+                            <option value="" selected>Select Region</option>
+
+                            {% for reg in  regions%}
+                                <option value="{{reg.id}}">{{reg.name}}</option>
+                     
+                            {% endfor %}
+                          </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="address2" class="col-12 col-form-label">Address *</label>
+                    <div class="col-md-12 col-12">
+                        <input type="text" class=" form-control" placeholder="Address" required id="address2" name="address2">
+                    </div>
+                </div> 
+
+                <div class="row">
+                    <label for="note2" class="col-12 col-form-label">Note</label>
+                    <div class="col-12">
+                    <textarea name="note2" id="note2" style="width: 100%" rows="5" class="form-control" placeholder="Note"></textarea>
+                    </div>
+                </div>
             </div>
             {% endif %}
 
@@ -247,7 +328,12 @@
 
                     <div class="  row p-2 ">
                         <div class="col-12">
-                            <input type="submit" class="btn btn-block btn-cart" value="Place Your Order" style="padding:10px" id="btnPlace">
+
+                   
+                                <button type="button" class="btn btn-block btn-cart" style="padding:10px" id="btnPlace">
+                                    Place Your Order
+                                </button>
+
                         </div>
                     </div>
               </div>
@@ -259,8 +345,185 @@
           
 
 
-        {% endif %}  <!-- end if order is placed -->
+    </div>
 
 </div>
 
+<script>
+
+  
+    $(document).ready(function() {
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                    // Only send the token to relative URLs i.e. locally
+                    xhr.setRequestHeader("X-CSRFToken", $('input[name="csrfmiddlewaretoken"]').val());
+                }
+            }
+        });
+    
+        function validate(firstname,lastname,phone,region,address){
+            if (firstname === "" || !/[a-zA-Z]/.test(firstname)) {
+                return "Firstname field is required."
+            
+              }
+          
+              if (lastname === "" || !/[a-zA-Z]/.test(lastname)) {
+                return "Lastname field is required."
+                 
+              }
+          
+              if (phone === "" || !/^\d{8}$/.test(phone)) {
+                return "Please enter a valid 8-digit phone number."
+                 
+              }
+          
+              if (isNaN(region) || region === "") {
+                return "Region field is required."
+                 
+              }
+          
+              if (address === "") {
+                return "Address field is required."
+              }
+              return ""
+        }
+        function validate2(phone,region,address){
+              if (phone === "" || !/^\d{8}$/.test(phone)) {
+                return "Please enter a valid 8-digit phone number."
+                 
+              }
+          
+              if (isNaN(region) || region === "") {
+                return "Region field is required."
+                 
+              }
+          
+              if (address === "") {
+                return "Address field is required."
+              }
+              return ""
+        }
+
+        $('#btnPlace').click(function(e) {
+
+            const isAuth= $("#isAuth").val();
+
+            const new_address=false
+            e.preventDefault();
+
+            if(isAuth=="False"){ // user not authenticated
+                var firstname = $("#firstname").val();
+                var lastname = $("#lastname").val();
+                var phone = $("#phone").val();
+                var region = $("#region").val();
+                var address = $("#address").val();
+                var note = $("#note").val();
+                var errors=validate(firstname,lastname,phone,region,address)
+                if(errors===""){
+                    $.ajax({
+                        type: 'POST',
+                        url: '/cart/checkout/',
+                        data: {
+                            'firstname':firstname,
+                            'lastname':lastname,
+                            'phone' :phone,
+                            'region':region,
+                            'address':address,
+                            'note' :note,
+                        },
+                        success: function(data) {
+                            if(data.success=="success"){
+                                $('#success').removeClass('hidden')
+                                $('#delivery_address').addClass('hidden')
+    
+                                $('#order_date').text(data.date)
+                                $('#order_id').text('#'+data.order_id)
+                                $('#order_address').text(data.address)
+                            }
+
+                    
+                        }
+                    });
+                }else{
+                    $('#error').removeClass('hidden')
+                    $('#error').text(errors)
+                }
+            }else{ // user is authenticated
+                var selected_type = $("input[name='delivery']:checked").val();
+                if(selected_type=="saved"){
+                    var selected_address = $("input[name='selected_address']:checked").val();
+                    if(selected_address){
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/cart/checkout/',
+                            data: {
+                                'selected_address':selected_address,
+                                'type':'choose'
+                            },
+                            success: function(data) {
+                                if(data.success=="success"){
+                                    $('#success').removeClass('hidden')
+                                    $('#delivery_address').addClass('hidden')
+        
+                                    $('#order_date').text(data.date)
+                                    $('#order_id').text('#'+data.order_id)
+                                    $('#order_address').text(data.address)
+                                }
+    
+                        
+                            }
+                        });
+
+                    }else{
+                        $('#error').removeClass('hidden')
+                        $('#error').text("Please choose from the saved addresses.")
+                    }
+                    //alert(selected_address)
+                }else if(selected_type=="new_address"){
+
+                    var phone = $("#phone2").val();
+                    var region = $("#region2").val();
+                    var address = $("#address2").val();
+                    var note = $("#note2").val();
+                    var errors=validate2(phone,region,address)
+                    if(errors===""){
+                        $.ajax({
+                            type: 'POST',
+                            url: '/cart/checkout/',
+                            data: {
+                                'phone' :phone,
+                                'region':region,
+                                'address':address,
+                                'note' :note,
+                            },
+                            success: function(data) {
+                                if(data.success=="success"){
+                                    $('#success').removeClass('hidden')
+                                    $('#delivery_address').addClass('hidden')
+        
+                                    $('#order_date').text(data.date)
+                                    $('#order_id').text('#'+data.order_id)
+                                    $('#order_address').text(data.address)
+                                }
+    
+                        
+                            }
+                        });
+                    }else{
+                        $('#error').removeClass('hidden')
+                        $('#error').text(errors)
+                    }
+                }else{
+                    alert("no one chosen")
+                }
+            }
+
+           
+        });
+    });
+
+</script>
 {% endblock %}

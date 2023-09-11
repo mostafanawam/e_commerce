@@ -1,6 +1,12 @@
 /*const { fill } = require("lodash");*/
 
 $(document).ready(function() {
+
+
+
+
+
+
     $('#delivery').show();
     $('#takeaway').hide();
 
