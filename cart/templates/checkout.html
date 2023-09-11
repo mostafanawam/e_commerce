@@ -226,13 +226,24 @@
                 
                         {% endfor %}
                     </div>
+
+                    <h5 class="mt-md-0 mt-4 text-green" > 
+                        <input type="radio" class="mx-2" value="new_address" name="delivery" id="new_address" />
+                        
+                        <label for="new_address" class="pointer-cursor"> Add New Address</label> 
+                        
+                    </h5>
+                
+                {% else %}
+                    <h5 class="mt-md-0 mt-4 text-green" > 
+                        
+                        <label for="new_address" class="pointer-cursor"> Add New Address</label> 
+                        
+                    </h5>
+                    <input type="hidden" value="no_selection" id="no_selection">
                 {% endif %}
-                <h5 class="mt-md-0 mt-4 text-green" > 
-                    <input type="radio" class="mx-2" value="new_address" name="delivery" id="new_address" />
-                    
-                    <label for="new_address" class="pointer-cursor"> Add New Address</label> 
-                    
-                </h5>
+                
+          
             
                 <div class=" row justify-content-center">
 
@@ -482,7 +493,7 @@
                         $('#error').text("Please choose from the saved addresses.")
                     }
                     //alert(selected_address)
-                }else if(selected_type=="new_address"){
+                }else if(selected_type=="new_address" || $('#no_selection').val()=="no_selection"){
 
                     var phone = $("#phone2").val();
                     var region = $("#region2").val();
@@ -517,7 +528,8 @@
                         $('#error').text(errors)
                     }
                 }else{
-                    alert("no one chosen")
+                    $('#error').removeClass('hidden')
+                    $('#error').text("Please fill the address information")
                 }
             }
 
