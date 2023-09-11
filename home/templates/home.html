@@ -214,23 +214,30 @@
   {% for product in products %}
   <div class="col-md-4">
     <figure class="snip1396 green hover prod-img">
-      {% if product.image %}
-      <img src="{{ product.image.url }}"  width="350" height="350" >
+      {% if product.stock > 0 %}
+      <img src="{{ product.image.url }}"  style="width:100%">
   {% else %}
-      <img src="/assets/empty.png" >
+      <img src="/assets/out_stock.jpg" >
   {% endif %}   
       <figcaption>
         <h3>  {{ product.name }}</h3>
-        <p>All this modern technology just makes people try to do everything at once.</p>
+        <p>{{ product.description }}</p>
       </figcaption>
       <div class="price">
         {% comment %} <s>$24.00</s> {% endcomment %}
         {{ product.price }} $
       </div>
       {% csrf_token %}
+      {% if product.stock > 0 %}
       <button  class="add-to-cart btn btn-sm btn-login"  data-product-id="{{ product.id }}" >
         Add to Cart
       </button>
+      
+      {% else %}
+        <button  class="add-to-cart btn btn-sm  btn-disabled"  data-product-id="{{ product.id }}" disabled >
+          out of stock
+        </button>
+      {% endif %}
     </figure>
   </div>
   {% endfor %}

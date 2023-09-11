@@ -27,7 +27,7 @@ def homepage(request):
     return render(request, 'home.html',context)
 
 def productsPage(request):
-    products = Product.objects.filter(status__name="list")
+    products = Product.objects.all()
 
     categories=Category.objects.all()
 
