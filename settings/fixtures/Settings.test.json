@@ -6,6 +6,7 @@
         "delivery": "3.00",
         "email": "mostafanawam44@gmail.com",
         "password": "cocjnwdepyrkiqxa",
-        "reciever_email": "mynawam@bluemint.ai"
+        "reciever_email": "mynawam@bluemint.ai",
+        "admin_link": "http://localhost:8050/admin"
     }
 }]

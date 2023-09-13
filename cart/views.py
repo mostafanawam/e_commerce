@@ -64,6 +64,7 @@ def remove_from_cart(request,id):
 from datetime import datetime
 from decimal import Decimal
 
+
 def checkout(request):
         
     cart = request.session.get('cart', [])
@@ -100,6 +101,31 @@ def checkout(request):
                     )
                 if 'cart'  in request.session:
                     del request.session['cart']
+
+                html_customer=f"""
+                <p>Dear Customer,</p>
+                <p>Your order has been processed</p>
+                 <p>Order Number:{order.order_id}</p>
+                 <p>Total price:{total_price}$</p>
+                <p>You will receive it within 2-3 days</p>
+                """
+            
+                try:
+                    send_email(f'ZooStore Order',html_customer,user.email)
+                except Exception as e:
+                    print(f"email didnt send,{e}")
+
+
+                try:
+                    html=f"""
+                    <h3>New Order  from {firstname} {lastname} </h3>
+                    <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
+                    <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
+                    """
+                    send_email(f'ZooStore New Order',html,settings.reciever_email)
+                except Exception as e:
+                    print(f"email didnt send,{e}")
+
 
                 context={
                     "success":'success',
@@ -145,12 +171,39 @@ def checkout(request):
                     "order_id":order_id,
                     "address":f"{region.name},{address}"
                 }
+
+                html_customer=f"""
+                <p>Dear Customer,</p>
+                <p>Your order has been processed</p>
+                 <p>Order Number:{order.order_id}</p>
+                 <p>Total price:{total_price}$</p>
+                <p>You will receive it within 2-3 days</p>
+                """
+                try:
+                    send_email(f'ZooStore Order',html_customer,user.email)
+                except Exception as e:
+                    print(f"email didnt send,{e}")
+
+
+                try:
+                    html=f"""
+                    <h3>New Order  from {firstname} {lastname} </h3>
+                    <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
+                    <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
+                    """
+                    send_email(f'ZooStore New Order',html,settings.reciever_email)
+                except Exception as e:
+                    print(f"email didnt send,{e}")
+
+
+
+
                 return JsonResponse(context)
         else:
             # not auth
             firstname = request.POST.get('firstname')
             lastname = request.POST['lastname']
-
+            email = request.POST['email']
             phone = request.POST['phone']
             region=request.POST['region']
             address=request.POST['address']
@@ -190,12 +243,24 @@ def checkout(request):
 
 
 
+            html_customer=f"""
+                <p>Dear Customer,</p>
+                <p>Your order has been processed</p>
+                 <p>Order Number:{order.order_id}</p>
+                 <p>Total price:{total_price}$</p>
+                <p>You will receive it within 2-3 days</p>
+                """
+            try:
+                send_email(f'ZooStore Order',html_customer,email)
+            except Exception as e:
+                print(f"email didnt send,{e}")
+
             html=f"""
                 <h3>New Order  from {firstname} {lastname} </h3>
-                <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}<br>Delivery address= {region.name},{address}</p>
-                <p>For more details <a style="color:red" href='{settings.admin_link}cart/orderitem//?order__id__exact={order.pk}' >click here</a></p>
+                <p>You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
+                <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
             """
-            send_email(f'ZooStore New Order',html)
+            send_email(f'ZooStore New Order',html,settings.reciever_email)
 
             context={
                 "success":'success',
@@ -234,6 +299,8 @@ def generate_random_id(length=10):
 
 
 
+
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -241,13 +308,12 @@ from settings.models import Settings
 
 
 
-def send_email(subject,html):
+def send_email(subject,html,reciever_email):
     settings=Settings.objects.get()
     gmail_user =settings.email
     gmail_password = settings.password  # Use your App Password if you have 2FA enabled
 
     # Email details
-    reciever_email = settings.reciever_email
     subject = subject
 
     # Create the email message

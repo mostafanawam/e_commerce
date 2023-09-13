@@ -159,39 +159,47 @@
 
 
                     <div class=" row">
-
                         <label for="mobile" class="col-md-6 col-form-label ">Phone *</label>
-
-
                         <label for="region" class="col-md-6 col-form-label d-md-block d-none">Region *</label>
-
                     </div>
                     <div class=" row">
-                     
                         <div class="col-md-6 col-12">
                             <input type="tel" class=" form-control" placeholder="Phone" required id="phone" name="phone">
                         </div>
-
                         <label for="mobile" class="col-md-6 col-form-label d-block d-md-none">Region *</label>
-
                         <div class="col-md-6 col-12">
                             <select class="form-control" id="region" name="region" required>
                                 <option value="" selected>Select Region</option>
-
                                 {% for reg in  regions%}
                                     <option value="{{reg.id}}">{{reg.name}}</option>
-                         
                                 {% endfor %}
                               </select>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <label for="note" class="col-12 col-form-label">Address *</label>
-                        <div class="col-md-12 col-12">
-                            <input type="text" class=" form-control" placeholder="Address" required id="address" name="address">
+
+
+
+                    <div class=" row">
+                        <label for="mobile" class="col-md-6 col-form-label ">Email *</label>
+                        <label for="region" class="col-md-6 col-form-label d-md-block d-none">Address *</label>
+                    </div>
+                    <div class=" row">
+                     
+                        <div class="col-md-6 col-12">
+                            <input type="email" class=" form-control" placeholder="Email" required id="email" name="email">
                         </div>
-                    </div> 
+
+                        <label for="mobile" class="col-md-6 col-form-label d-block d-md-none">Address *</label>
+
+                        <div class="col-md-6 col-12">
+                            <input name="address" id="address"  class="form-control" placeholder="Address" type="text">
+
+                        </div>
+                    </div>
+
+
+
 
                     <div class="row">
                         <label for="note" class="col-12 col-form-label">Note</label>
@@ -375,8 +383,14 @@
                 }
             }
         });
-    
-        function validate(firstname,lastname,phone,region,address){
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return emailRegex.test(email);
+          }
+
+          
+        function validate(firstname,lastname,phone,region,address,email){
             if (firstname === "" || !/[a-zA-Z]/.test(firstname)) {
                 return "Firstname field is required."
             
@@ -396,7 +410,9 @@
                 return "Region field is required."
                  
               }
-          
+              if (!isValidEmail(email)) {
+                return "Please enter a valid email."
+              }
               if (address === "") {
                 return "Address field is required."
               }
@@ -432,8 +448,9 @@
                 var phone = $("#phone").val();
                 var region = $("#region").val();
                 var address = $("#address").val();
+                var email = $("#email").val();
                 var note = $("#note").val();
-                var errors=validate(firstname,lastname,phone,region,address)
+                var errors=validate(firstname,lastname,phone,region,address,email)
                 if(errors === ""){
                     $('#btnPlace').html("Processing <i class='fa fa-spinner fa-spin'></i>")
                     $('#btnPlace').prop('disabled', true);
@@ -447,6 +464,7 @@
                             'phone' :phone,
                             'region':region,
                             'address':address,
+                            'email':email,
                             'note' :note,
                         },
                         success: function(data) {
