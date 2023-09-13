@@ -94,9 +94,12 @@ def checkout(request):
                     order_id=order_id
                 )
                 for item in cart:
+                    product=Product.objects.get(id=item['id'])
+                    product.stock=product.stock-item['qty']
+                    product.save()
                     OrderItem.objects.create(
                         order=order,
-                        product=Product.objects.get(id=item['id']),
+                        product=product,
                         quantity=item['qty'],
                     )
                 if 'cart'  in request.session:
@@ -158,9 +161,12 @@ def checkout(request):
                     order_id=order_id
                 )
                 for item in cart:
+                    product=Product.objects.get(id=item['id'])
+                    product.stock=product.stock-item['qty']
+                    product.save()
                     OrderItem.objects.create(
                         order=order,
-                        product=Product.objects.get(id=item['id']),
+                        product=product,
                         quantity=item['qty'],
                     )
                 if 'cart'  in request.session:
@@ -233,9 +239,12 @@ def checkout(request):
                 order_id=order_id
             )
             for item in cart:
+                product=Product.objects.get(id=item['id'])
+                product.stock=product.stock-item['qty']
+                product.save()
                 OrderItem.objects.create(
                     order=order,
-                    product=Product.objects.get(id=item['id']),
+                    product=product,
                     quantity=item['qty'],
                 )
             if 'cart'  in request.session:

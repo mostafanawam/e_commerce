@@ -11,6 +11,11 @@ body {
     --yellow: #d3b03f;
 }
 
+.large-qty {
+    font-size: 1.1rem;
+    background-color: var(--green2);
+}
+
 .owl-theme .owl-dots .owl-dot span {
     width: 10px;
     height: 10px;
@@ -1629,4 +1634,12 @@ input[type=radio] {
 
 .bbb_viewed_item.is_new .item_new {
     display: inline-block
+}
+
+.img-caption {
+    position: relative;
+    background-color: black;
+    /* Set the background color to black */
+    /* Adjust the height as needed */
+    color: white;
 }
