@@ -192,10 +192,10 @@ def checkout(request):
 
             html=f"""
                 <h3>New Order  from {firstname} {lastname} </h3>
-                <p>Hello Dear,<br> You have new order with id={order.order_id} <br>total price={total_price}<br>Delivery address= {region.name},{address}</p>
+                <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}<br>Delivery address= {region.name},{address}</p>
                 <p>For more details <a style="color:red" href='{settings.admin_link}cart/orderitem//?order__id__exact={order.pk}' >click here</a></p>
             """
-            # send_email(f'ZooStore New Order',html)
+            send_email(f'ZooStore New Order',html)
 
             context={
                 "success":'success',

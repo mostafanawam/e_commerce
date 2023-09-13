@@ -365,6 +365,8 @@
   
     $(document).ready(function() {
 
+ 
+
         $.ajaxSetup({
             beforeSend: function(xhr, settings) {
                 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
@@ -432,7 +434,10 @@
                 var address = $("#address").val();
                 var note = $("#note").val();
                 var errors=validate(firstname,lastname,phone,region,address)
-                if(errors===""){
+                if(errors === ""){
+                    $('#btnPlace').html("Processing <i class='fa fa-spinner fa-spin'></i>")
+                    $('#btnPlace').prop('disabled', true);
+
                     $.ajax({
                         type: 'POST',
                         url: '/cart/checkout/',
@@ -452,6 +457,12 @@
                                 $('#order_date').text(data.date)
                                 $('#order_id').text('#'+data.order_id)
                                 $('#order_address').text(data.address)
+
+
+                                $('#btnPlace').html("Place Your Order")
+                                $('#btnPlace').prop('disabled', false);
+                    
+                                
                             }
 
                     
@@ -466,7 +477,9 @@
                 if(selected_type=="saved"){
                     var selected_address = $("input[name='selected_address']:checked").val();
                     if(selected_address){
-
+                        $('#btnPlace').html("Processing <i class='fa fa-spinner fa-spin'></i>")
+                        $('#btnPlace').prop('disabled', true);
+    
                         $.ajax({
                             type: 'POST',
                             url: '/cart/checkout/',
@@ -482,6 +495,11 @@
                                     $('#order_date').text(data.date)
                                     $('#order_id').text('#'+data.order_id)
                                     $('#order_address').text(data.address)
+
+
+                                    $('#btnPlace').html("Place Your Order")
+                                    $('#btnPlace').prop('disabled', false);
+
                                 }
     
                         
@@ -501,6 +519,11 @@
                     var note = $("#note2").val();
                     var errors=validate2(phone,region,address)
                     if(errors===""){
+                        
+                        $('#btnPlace').html("Processing <i class='fa fa-spinner fa-spin'></i>")
+                        $('#btnPlace').prop('disabled', true);
+
+                        
                         $.ajax({
                             type: 'POST',
                             url: '/cart/checkout/',
@@ -518,6 +541,11 @@
                                     $('#order_date').text(data.date)
                                     $('#order_id').text('#'+data.order_id)
                                     $('#order_address').text(data.address)
+
+
+
+                                    $('#btnPlace').html("Place Your Order")
+                                    $('#btnPlace').prop('disabled', false);
                                 }
     
                         

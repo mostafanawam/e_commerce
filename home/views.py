@@ -27,15 +27,21 @@ def homepage(request):
     return render(request, 'home.html',context)
 
 def productsPage(request):
-    products = Product.objects.all()
 
     categories=Category.objects.all()
 
+    products_list={}
+
+    for category in categories:
+        products = Product.objects.filter(status__listed=True,category=category)
+        if(products.count()> 0):
+            products_list[category.name]=products
+
     cart = request.session.get('cart', [])
     context = {
-        'products': products,
+        'products': products_list,
         "cart":cart,
-        "categories":categories
+        # "categories":categories
     }
 
     return render(request, 'products.html',context)

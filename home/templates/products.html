@@ -45,59 +45,112 @@
 
 
 {% block main %} 
+<style>
+
+
+
+
+</style>
 <div class="container-main">
-<h2 class="title-sell">All Products</h2>
 
 
-<div class="row">
-    <div class="col-lg-12">
+{% comment %} <div class="row">
+    <div class="col-md-12 col-12">
        <div class="special-menu text-center">
           <div class="button-group filter-button-group">
-             <button class="active btn-cat" data-filter="*">All</button>
+             <button class="active btn-cat" data-filter="*" style="width:15vh">All</button>
              {% for cat in categories %}
-                    <button data-filter=".{{cat.name}}" class="btn-cat">{{ cat.name}}</button>
+                    <button data-filter=".{{cat.name}}" class="btn-cat my-1" style="width:15vh">{{ cat.name}}</button>
              {% endfor %}
           
-</div></div></div></div>
+</div></div></div></div> {% endcomment %}
 
 
+  {% for category_name, product_list in products.items %}
+      <h2 class="title-sell">{{ category_name }}</h2> <!-- Display the category name -->
 
-
-
-<div class="row  mb-4 special-list">
-  {% for product in products %}
-  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 special-grid {{ product.category.name }}   ">
-    <figure class="snip1396 green hover prod-img">
-      {% if product.stock > 0 %}
-      <img src="{{ product.image.url }}"  style="width:100%">
-  {% else %}
-      <img src="/assets/out_stock.jpg" >
-  {% endif %}    
-      <figcaption>
-        <h3>  {{ product.name }}</h3>
-        <p>{{product.description}}</p>
-      </figcaption>
-      <div class="price">
-        {% comment %} <s>$24.00</s> {% endcomment %}
-        {{ product.price }} $
+      <div class="owl-carousel owl-theme  mb-4 ">
+  
+        {% for product in product_list %}
+        <div class="form-group item">
+          <figure class="snip1396 green hover prod-img">
+            {% if product.image.url  %}
+            <img src="{{ product.image.url }}"  style="width:100%">
+        {% else %}
+            <img src="/assets/empty.png" >
+        {% endif %}     
+            <figcaption>
+              <h3>  {{ product.name }}</h3>
+              <p>{{product.description}}</p>
+            </figcaption>
+            <div class="price">
+              {% comment %} <s>$24.00</s> {% endcomment %}
+              {{ product.price }} $
+            </div>
+            {% csrf_token %}
+            {% if product.stock > 0 %}
+              <button  class="add-to-cart btn btn-sm btn-login"  data-product-id="{{ product.id }}" >
+                Add to Cart
+              </button>
+            {% else %}
+                <button  class="add-to-cart btn btn-sm  btn-disabled"  data-product-id="{{ product.id }}" disabled >
+                  out of stock
+                </button>
+            {% endif %}
+          </figure>
+        </div>
+        {% endfor %}
       </div>
-      {% csrf_token %}
-      {% if product.stock > 0 %}
-      <button  class="add-to-cart btn btn-sm btn-login"  data-product-id="{{ product.id }}" >
-        Add to Cart
-      </button>
-      
-      {% else %}
-        <button  class="add-to-cart btn btn-sm  btn-disabled"  data-product-id="{{ product.id }}" disabled >
-          out of stock
-        </button>
-      {% endif %}
-    </figure>
-  </div>
+
+     
   {% endfor %}
-</div>
+
+
+
+
 <script src="/assets/js/menu-filter.js" ></script>
 
 
 </div>
+
+
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+
+
+<script>
+  $(document).ready(function(){
+      $(".owl-carousel").owlCarousel({
+          loop: true, // Enable looping
+          margin: 10, // Space between items
+          responsiveClass: true,
+          //nav: true, 
+          autoplay: true,
+          autoplayTimeout: 5000,
+          smartSpeed: 450,
+          responsive:{
+              0:{
+                  items: 1, // Number of items to display at 0-576px screen width
+              },
+              576:{
+                  items: 2, // Number of items to display at 576px-768px screen width
+              },
+              768:{
+                  items: 2, // Number of items to display at 768px-992px screen width
+              },
+              992:{
+                  items: 3, // Number of items to display at 992px and above screen width
+              }
+          }
+      });
+  });
+</script>
 {% endblock %}

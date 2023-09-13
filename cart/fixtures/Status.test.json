@@ -2,14 +2,24 @@
         "model": "cart.status",
         "pk": 1,
         "fields": {
-            "name": "list"
+            "name": "list",
+            "listed": true
         }
     },
     {
         "model": "cart.status",
         "pk": 2,
         "fields": {
-            "name": "suggested"
+            "name": "suggested",
+            "listed": true
+        }
+    },
+    {
+        "model": "cart.status",
+        "pk": 3,
+        "fields": {
+            "name": "removed",
+            "listed": false
         }
     }
 ]

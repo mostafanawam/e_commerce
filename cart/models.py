@@ -4,6 +4,7 @@ from django.db import models
 # python manage.py dumpdata cart.Status --output cart/fixtures/Status.test.json
 class Status(models.Model):
     name = models.CharField(max_length=100)
+    listed=models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -17,7 +18,6 @@ class Status(models.Model):
 # python manage.py dumpdata cart.Category --output cart/fixtures/Category.test.json
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
 
     def __str__(self):
         return self.name

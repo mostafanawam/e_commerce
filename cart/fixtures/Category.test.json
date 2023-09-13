@@ -2,16 +2,35 @@
         "model": "cart.category",
         "pk": 1,
         "fields": {
-            "name": "cat",
-            "description": "this is cats products"
+            "name": "Cats"
         }
     },
     {
         "model": "cart.category",
         "pk": 2,
         "fields": {
-            "name": "dog",
-            "description": "this is for dog products"
+            "name": "Dogs"
+        }
+    },
+    {
+        "model": "cart.category",
+        "pk": 3,
+        "fields": {
+            "name": "Birds"
+        }
+    },
+    {
+        "model": "cart.category",
+        "pk": 4,
+        "fields": {
+            "name": "Fish"
+        }
+    },
+    {
+        "model": "cart.category",
+        "pk": 5,
+        "fields": {
+            "name": "Others"
         }
     }
 ]
