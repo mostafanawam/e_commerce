@@ -65,7 +65,7 @@
         <div class="img-caption">
             <img src="assets/carousel/test1.png" alt="Los Angeles" width="1100" height="500">
           <div class="caption-text">
-              Welcome To ZooStore
+              Welcome To PetsNClaws
           </div>
         </div>
 
@@ -143,6 +143,7 @@
 
 
 
+
     <h2 class="title-sell">About Us</h2>
       <!-- Start About -->
       <div class="about-section-box">
@@ -155,7 +156,10 @@
                       <div class="inner-column">
                           <h1 class="text-center ">
                             
-                            Welcome to <span class="text-green">Zoo</span><span class="fw-bold text-red">Store</span></h1>
+                            Welcome to  <span class="text-green">Pets</span><span>N</span><span class="">Claws</span>
+                           
+                            
+                            </h1>
                           <p class="text-center " >Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
                              printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -170,9 +174,7 @@
           </div>
       </div>
       <!-- End About -->
-  
-
-  
+ 
 
 
 
@@ -220,12 +222,12 @@
       <img src="/assets/empty.png" >
   {% endif %}   
       <figcaption>
+        {% comment %} <p> </p> {% endcomment %}
         <h3>  {{ product.name }}</h3>
-        <p>{{ product.description }}</p>
       </figcaption>
       <div class="price">
         {% comment %} <s>$24.00</s> {% endcomment %}
-        {{ product.price }} $
+        {{ product.price }}{{currency}}
       </div>
       {% csrf_token %}
       {% if product.stock > 0 %}

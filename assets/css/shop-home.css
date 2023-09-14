@@ -1,19 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
 body {
-    font-family: 'Cabin', 'Arial', cursive;
+    font-family: 'Boogaloo', 'Arial', cursive;
 }
 
 :root {
-    --red1: #e24f39;
+    /* --red1: #e24f39;
     --red2: #ad2512;
     --green1: #3cb9b0;
-    --green2: #0a6869;
-    --yellow: #d3b03f;
+    --green3: #3a94ad;  
+    --yellow: #d3b03f; */
+    /*                   */
+    --green3: #83B641;
+    --green4: #b9D532;
+    --black: #010404;
+    --orange: #FBB03C;
+    --blue1: #99D7DB;
+    --blue2: #76BDD1;
+    --blue3: #3C8EA9;
+}
+
+.navbar.bg-light {
+    background: white !important;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.shadowed-text {
+    color: black;
+    /* text-shadow: 3px 3px 0px #F2A063; */
+}
+
+.text-green {
+    color: var(--green3);
+}
+
+.text-green:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.bg-green {
+    background-color: var(--green3);
+}
+
+.text-black {
+    color: var(--black);
 }
 
 .large-qty {
     font-size: 1.1rem;
-    background-color: var(--green2);
+    background-color: var(--green3);
 }
 
 .owl-theme .owl-dots .owl-dot span {
@@ -29,15 +64,11 @@ body {
 
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
-    background: var(--green2) !important;
+    background: var(--green3) !important;
 }
 
 .not-allowed-cursor {
     cursor: not-allowed !important;
-}
-
-.text-green {
-    color: var(--green2);
 }
 
 .overflow-hidden .text-services {
@@ -61,8 +92,6 @@ body {
     }
 }
 
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
-@import url(https://fonts.googleapis.com/css?family=Raleway:500,700);
 .snip1396 {
     position: relative;
     overflow: hidden;
@@ -122,7 +151,7 @@ body {
     bottom: 46px;
     left: 20px;
     right: 20px;
-    padding-top: 20px;
+    padding-top: 50px;
     z-index: 1;
 }
 
@@ -133,8 +162,8 @@ body {
 
 .snip1396 h3 {
     font-weight: 700;
-    margin-bottom: 5px;
-    color: var(--red1);
+    /* margin-bottom: 5px; */
+    color: black;
 }
 
 .snip1396 p {
@@ -155,6 +184,7 @@ body {
 .snip1396 .price {
     left: 0;
     color: black;
+    font-size: 1.3rem;
 }
 
 .snip1396 .price s {
@@ -222,7 +252,7 @@ body {
 }
 
 .navbar-brand h2 {
-    color: var(--green2);
+    color: var(--green3);
 }
 
 .navbar-brand span {
@@ -295,7 +325,7 @@ body {
 .sub-menu.navbar-light .navbar-nav .nav-link.active,
 .sub-menu.navbar-light .navbar-nav .nav-link.show,
 .sub-menu.navbar-light .navbar-nav .show>.nav-link {
-    border-bottom: 3px solid var(--green2);
+    border-bottom: 3px solid var(--green3);
     ;
     color: black;
 }
@@ -338,11 +368,6 @@ body {
     .sub-menu.navbar-expand-md .navbar-nav .nav-link {
         padding: 1rem 1.5rem;
     }
-}
-
-.navbar.bg-light {
-    background: white !important;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 }
 
 .user-dropdown .nav-link {
@@ -398,7 +423,7 @@ body {
 
 #sidebar ul li .active {
     color: white;
-    background: var(--green2);
+    background: var(--green3);
 }
 
 #sidebar ul li.active>a,
@@ -469,7 +494,7 @@ ul.social-icons li {
 }
 
 .utility-nav {
-    background: var(--green2);
+    background: var(--green3);
     padding: 0.5rem 1rem;
 }
 
@@ -516,7 +541,7 @@ ul.social-icons li {
 
 .search-btn {
     border-radius: 0;
-    background-color: var(--green2);
+    background-color: var(--green3);
     color: white;
 }
 
@@ -536,7 +561,7 @@ ul.social-icons li {
 } */
 
 .btn-login {
-    background-color: var(--green2);
+    background-color: var(--green3);
     color: white
 }
 
@@ -558,13 +583,13 @@ ul.social-icons li {
 
 
 /* .btn-login:hover {
-    border: 1px solid var(--green2);
-    color: var(--green2);
+    border: 1px solid var(--green3);
+    color: var(--green3);
     background-color: white;
 } */
 
 .badge-danger {
-    background-color: var(--green2);
+    background-color: var(--green3);
 }
 
 .fa-shopping-cart {
@@ -586,7 +611,7 @@ ul.social-icons li {
 .title-sell:before,
 .title-sell:after {
     content: '';
-    border-top: 3px solid var(--green2);
+    border-top: 3px solid var(--green3);
 }
 
 .img-prod {
@@ -631,7 +656,7 @@ ul.social-icons li {
 }
 
 .btn-cart {
-    background-color: var(--green2);
+    background-color: var(--green3);
     color: white;
 }
 
@@ -682,12 +707,12 @@ ul.social-icons li {
 }
 
 .btn-outline {
-    border: 2px solid var(--green2);
-    color: var(--green2);
+    border: 2px solid var(--green3);
+    color: var(--green3);
 }
 
 .btn-outline:hover {
-    background-color: var(--green2);
+    background-color: var(--green3);
     color: white;
 }
 
@@ -696,11 +721,10 @@ ul.social-icons li {
 }
 
 .form-control:focus {
-    border-color: var(--green2);
+    border-color: var(--green3);
     box-shadow: 0 0 0 0.2rem rgba(5, 80, 2, 0.25);
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 section {
     width: 100%;
     display: inline-block;
@@ -911,7 +935,7 @@ section {
 
 #button {
     display: inline-block;
-    background-color: var(--green2);
+    background-color: var(--green3);
     width: 7vh;
     height: 7vh;
     text-align: center;
@@ -1001,7 +1025,7 @@ h1 {
     height: 50px;
     line-height: 50px;
     text-align: center;
-    background: var(--green2);
+    background: var(--green3);
     color: white;
     font-size: 1.6rem;
     -webkit-border-radius: 50%;
@@ -1042,7 +1066,7 @@ h1 {
     height: 50px;
     line-height: 50px;
     text-align: center;
-    background: var(--green2);
+    background: var(--green3);
     color: white;
     font-size: 1.6rem;
     -webkit-border-radius: 50%;
@@ -1112,27 +1136,27 @@ h1 {
 }
 
 .footer-area h3 {
-    color: #ffffff;
+    color: var(--green3);
     text-transform: uppercase;
     font-size: 24px;
-    border-bottom: 1px solid var(--green2);
+    border-bottom: 1px solid white;
     margin-bottom: 10px;
 }
 
 .footer-area p {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
     margin: 0;
     padding-bottom: 10px;
 }
 
 .footer-area p.lead {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
 }
 
 .footer-area p.lead a {
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
     margin-bottom: 15px;
 }
 
@@ -1215,7 +1239,7 @@ h1 {
 
 .copyright .company-name a {
     font-size: 1.1rem;
-    color: var(--green2);
+    color: var(--green3);
     font-weight: bolder;
 }
 
@@ -1239,19 +1263,17 @@ h1 {
 }
 
 .contact-wrap {
-    background: wheat;
+    background: white;
 }
 
 .contactForm .label {
     color: black;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 600;
 }
 
-.contactForm .form-control {
-    border: none;
-}
+.contactForm .form-control {}
 
 .submitting {
     float: left;
@@ -1405,7 +1427,7 @@ p {
 
 input[type=radio] {
     cursor: pointer;
-    accent-color: var(--green2);
+    accent-color: var(--green3);
     transform: scale(1.5);
 }
 

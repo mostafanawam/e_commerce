@@ -4,7 +4,42 @@
 
 
 {% block title %} Register {% endblock %}
+{% block links %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
 
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link"  href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+
+{% block links1 %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link"  href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
 
 {% block main %} 
 <div class="container">
@@ -31,12 +66,12 @@
 
             
                 <label style="color: #33383b">Firstname:</label>
-                <input type="text" class="form-control" name="first_name" placeholder="firstname" required>
+                <input type="text" class="form-control" name="first_name" placeholder="Firstname" required>
         </div>
 
         <div class="form-group col-md-3">
             <label style="color: #33383b">Lastname:</label>
-            <input type="text" class="form-control" name="last_name" placeholder="lastname" required>
+            <input type="text" class="form-control" name="last_name" placeholder="Lastname" required>
         </div>
        
     </div>
@@ -47,7 +82,7 @@
         </div>
         <div class="form-group col-md-3">
             <label style="color: #33383b">Password:</label>
-            <input type="password" class="form-control" name="password" placeholder="password" required>
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
         </div>
     </div>
 

@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title>
-          ZooStore | 
+          PetsNClaws | 
           {% block title %}
           {% endblock %}
         
@@ -90,11 +90,11 @@
                   <div class="row align-items-center">
                     <div class="col-md-4 col-4">
                           <!-- Logo -->
-                        <img src="/assets/logo.png" alt="Logo" class="rounded-logo">
+                        <img src="/assets/logo-no_bg.png" alt="Logo" class="rounded-logo">
                     </div>
                     <div class="col-md-3 col-3 ">
                       <!-- Company Name -->
-                      <h2 class=" mx-2 text-green">Zoo<span class="fw-bold text-red">Store</span></h2>
+                      <h2 class=" mx-2 text-green">PetsNClaws</span></h2>
                     </div>
                   </div>
                 </a>
@@ -110,7 +110,7 @@
                 <div class="collapse navbar-collapse">
                   <form class="form-inline  my-lg-0 mx-auto" action="/search_products/" method="POST">
                     {% csrf_token %}
-                      <input class="form-control text-search" value="{{query}}" type="text" name="query" placeholder="search products ..." aria-label="Search">
+                      <input class="form-control text-search" value="{{query}}" type="text" name="query" placeholder="Search Products ..." aria-label="Search">
                       <button class="btn search-btn "  type="submit"><i class="fas fa-search"></i></button>
                   </form>
                   <ul class="navbar-nav">
@@ -211,7 +211,7 @@
           <div class="overflow-hidden">
             <h4>Instagram</h4>
             <p class="lead">
-              sweetpoint.lb
+              pets_n_claws.lb
   
             </p>
           </div>
@@ -221,7 +221,7 @@
           <div class="overflow-hidden">
             <h4>Location</h4>
             <p class="lead">
-             Addre
+              Saida-Hlalieh
             </p>
           </div>
         </div>
@@ -237,8 +237,11 @@
           <div class="container">
               <div class="row justify-content-center">
                   <div class="col-lg-3 col-md-6">
-                      <h3 class=" ">short story</h3>
-                      <p class=" ">About us
+                      <h3 class=" ">About Us</h3>
+                      <p class=" ">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      </p>
             </p>
                   </div>
                   {% comment %} <div class="col-lg-3 col-md-6">
@@ -251,17 +254,17 @@
                   </div> {% endcomment %}
                   <div class="col-lg-3 col-md-6  ">
                       <h3 >contact us</h3>
-                      <p class="lead">address</p>
-                      <p class="lead">number +961 03 743 061</p>
-                      <p class="lead">adeljaradli@gmail.com</p>
+                      <p class="lead">  <i class="fa fa-map-marker green-icon  "></i> Saida-Hlalieh </p>
+                      <p class="lead"><i class="fa fa-phone  green-icon"></i> +961 03 743 061</p>
+                      <p class="lead"> <i class="fas fa-envelope green-icon"></i>  adeljaradli@gmail.com</p>
                   </div>
                   <div class="col-lg-3 col-md-6">
                       <h3 class=" ">follow</h3>
   
                       <ul class="list-inline f-social  ">
-                          <li class="list-inline-item"><a href="https://www.facebook.com/adel.jardali"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                          <li class="list-inline-item"><a href="https://wa.me/+96103743061"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
-                          <li class="list-inline-item"><a href="https://www.instagram.com/sweetpoint.lb/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://www.facebook.com/people/Pets-N-Claws"><i class="fa fa-facebook green-icon" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://wa.me/+96103743061"><i class="fa fa-whatsapp green-icon" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://www.instagram.com/pets_n_claws.lb"><i class="fa fa-instagram green-icon" aria-hidden="true"></i></a></li>
                       </ul>
                   </div>
               </div>

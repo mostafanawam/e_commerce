@@ -11,11 +11,13 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 /* Global "table" column settings */
 
 :root {
-    --red1: #e24f39;
-    --red2: #ad2512;
-    --green1: #3cb9b0;
-    --green2: #0a6869;
-    --yellow: #d3b03f;
+    --green3: #83B641;
+    --green4: #b9D532;
+    --black: #010404;
+    --orange: #FBB03C;
+    --blue1: #99D7DB;
+    --blue2: #76BDD1;
+    --blue3: #3C8EA9;
 }
 
 .caption-text {
@@ -36,7 +38,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 }
 
 .green-icon {
-    color: var(--green2) !important;
+    color: var(--green3) !important;
 }
 
 .product-image {

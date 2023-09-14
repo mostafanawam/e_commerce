@@ -269,7 +269,10 @@ def checkout(request):
                 <p>You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
                 <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
             """
-            send_email(f'ZooStore New Order',html,settings.reciever_email)
+            try:
+                send_email(f'ZooStore New Order',html,settings.reciever_email)
+            except Exception as e:
+                print(f"email didnt send,{e}")
 
             context={
                 "success":'success',

@@ -56,7 +56,9 @@
 
 
 
-<div class="row  mb-4 special-list">
+
+  {% if products|length > 0 %}
+  <div class="row  mb-4 special-list">
   {% for product in products %}
   <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 special-grid {{ product.category.name }}   ">
     <figure class="snip1396 green hover prod-img">
@@ -81,7 +83,17 @@
   </div>
   {% endfor %}
 </div>
-{% comment %} <script src="/assets/js/menu-filter.js" ></script> {% endcomment %}
+  {% else %}
+  <div class="text-center mb-4">
+    <img src="/assets/no_found.jpg" class="w-25 h-25  "/>
+    <br>
+    <h2>Sorry! No matching search result :(</h2>
+    <p></p>
+    <a class="btn btn-outline mb-2" href="{% url 'home:products' %}">Our Products</a>
+
+</div>
+  {% endif %}
+
 
 
 </div>
