@@ -82,12 +82,36 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASE_NAME=os.getenv('DATABASE_NAME','sqlite')
+
+
+
+POSTGRES_HOST=os.getenv("POSTGRES_HOST", "127.0.0.1")
+POSTGRES_PASSWORD=os.getenv("POSTGRES_PASSWORD", "1234")
+POSTGRES_USER=os.getenv("POSTGRES_USER", "1234")
+POSTGRES_NAME=os.getenv("POSTGRES_NAME", "postgres")
+POSTGRES_PORT=os.getenv("POSTGRES_PORT", "5432")
+
+
+if(DATABASE_NAME=="postgres"):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'my_postgres.backend',
+            'NAME': POSTGRES_NAME,
+            'USER': POSTGRES_USER,
+            'PASSWORD': POSTGRES_PASSWORD,
+            'HOST': POSTGRES_HOST,
+            'PORT': POSTGRES_PORT,
+            'CONN_MAX_AGE': 20,
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
