@@ -83,6 +83,7 @@ class Customer(models.Model):
     address = models.ManyToManyField(
         "users.Address",blank=True
     )
+    email=models.CharField(null=True,blank=True,max_length=100)
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
     

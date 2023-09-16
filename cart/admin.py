@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from cart.views import send_email
+
 # Register your models here.
 from .models import *
 
@@ -32,6 +34,24 @@ class OrderAdmin(admin.ModelAdmin):
         "order_date"
     )
     list_filter=["customer"]
+
+    actions = ['delivery_notify']
+
+
+    def delivery_notify(self, request, queryset):
+        for obj in queryset:
+            html=f"""
+                <h3>Dear {obj.customer.first_name} {obj.customer.last_name} </h3>
+                <p>Your order with id=#{obj.pk} is now with the delivery company</p>
+            """
+            if(obj.customer.email):
+                email=obj.customer.email
+            else:
+                email=obj.customer.user.email
+            try:
+                send_email(f'PetsNClaws Order Update',html,email)
+            except Exception as e:
+                print(f"email didnt send,{e}")                         
 admin.site.register(Order,OrderAdmin)
 
 

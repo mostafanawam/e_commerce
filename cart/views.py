@@ -114,7 +114,7 @@ def checkout(request):
                 """
             
                 try:
-                    send_email(f'ZooStore Order',html_customer,user.email)
+                    send_email(f'PetsNClaws Order',html_customer,user.email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -125,7 +125,7 @@ def checkout(request):
                     <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
                     <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
                     """
-                    send_email(f'ZooStore New Order',html,settings.reciever_email)
+                    send_email(f'PetsNClaws New Order',html,settings.reciever_email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -186,7 +186,7 @@ def checkout(request):
                 <p>You will receive it within 2-3 days</p>
                 """
                 try:
-                    send_email(f'ZooStore Order',html_customer,user.email)
+                    send_email(f'PetsNClaws Order',html_customer,user.email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -197,7 +197,7 @@ def checkout(request):
                     <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
                     <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
                     """
-                    send_email(f'ZooStore New Order',html,settings.reciever_email)
+                    send_email(f'PetsNClaws New Order',html,settings.reciever_email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -223,6 +223,7 @@ def checkout(request):
                 user=user,
                 first_name=firstname,
                 last_name=lastname,
+                email=email
             )
             address=Address.objects.create(
                 region=region,
@@ -260,7 +261,7 @@ def checkout(request):
                 <p>You will receive it within 2-3 days</p>
                 """
             try:
-                send_email(f'ZooStore Order',html_customer,email)
+                send_email(f'PetsNClaws Order',html_customer,email)
             except Exception as e:
                 print(f"email didnt send,{e}")
 
@@ -270,7 +271,7 @@ def checkout(request):
                 <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
             """
             try:
-                send_email(f'ZooStore New Order',html,settings.reciever_email)
+                send_email(f'PetsNClaws New Order',html,settings.reciever_email)
             except Exception as e:
                 print(f"email didnt send,{e}")
 

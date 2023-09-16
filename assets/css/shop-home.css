@@ -51,6 +51,11 @@ body {
     background-color: var(--green3);
 }
 
+.reach-us:hover {
+    color: white;
+    text-decoration: none;
+}
+
 .owl-theme .owl-dots .owl-dot span {
     width: 10px;
     height: 10px;
@@ -332,6 +337,7 @@ body {
 
 .sub-menu.navbar-light .navbar-nav .nav-link {
     color: #6b6b6b;
+    font-size: 1.3rem;
 }
 
 .navbar .navbar-toggler {
