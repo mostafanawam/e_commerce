@@ -66,7 +66,7 @@
         </div>
 
 
-        {% comment %} <a id="whatsapp" href="https://wa.me/+96181602936" target="__blank"></a> {% endcomment %}
+        <a id="whatsapp" class="d-none d-md-block" href="https://wa.me/+96181602936" target="_blank"></a>
 
         <a id="button"></a>
         
@@ -80,11 +80,12 @@
               
               </div>
 
+           
 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light main-menu" style="box-shadow:none">
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light main-menu" style="box-shadow:none">
             <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-link d-block d-md-none">
+                <button type="button" id="sidebarCollapse" class="btn btn-link d-block d-lg-none">
                 <i class="fas fa-bars text-dark icon-single"></i>
                 </button>
                 <a class="navbar-brand" href="{% url 'home:home' %}" >
@@ -95,11 +96,13 @@
                     </div>
                     <div class="col-md-3 col-3 ">
                       <!-- Company Name -->
-                      <h2 class=" mx-2 text-green">PetsNClaws</span></h2>
+                      <h1 >
+                          <span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span>
+                      </h1> 
                     </div>
                   </div>
                 </a>
-                <ul class="navbar-nav ml-auto d-block d-md-none">
+                <ul class="navbar-nav ml-auto d-block d-lg-none">
                   <li class="nav-item" >
                       <a class="btn btn-link" href="/cart"><i class="fas fa-shopping-cart icon-single"></i>
                         <span class="badge badge-danger item-nb cart_qty">
@@ -133,9 +136,12 @@
                   </ul>
                 </div>
             </div>
+
+
+
           </nav>
 
-          <nav class="navbar navbar-expand-md navbar-light bg-light sub-menu">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light sub-menu">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbar">
                   <ul class="nav navbar-nav navbar-nav mx-auto">
@@ -148,7 +154,7 @@
             </div>
           </nav>
       
-          <div class="search-bar d-block d-md-none">
+          <div class="search-bar d-block d-lg-none">
             <div class="container">
                 <div class="row">
                   <div class="col-12">
@@ -243,11 +249,13 @@
       <footer class="footer-area bg-f">
           <div class="container">
               <div class="row justify-content-center">
-                  <div class="col-lg-3 col-md-6">
-                      <h3 class=" ">About Us</h3>
-                      <p class=" ">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  <div class="col-lg-5 col-md-6">
+                      <h3 >About Us</h3>
+                      <p>
+                        Welcome to our premier online pet store, where your furry friends’ happiness is our top priority.
+                        At our virtual haven for pets and pet owners, we offer a wide selection of high-quality products to cater to all your pet’s needs. 
+                        Whether you have a playful pup, a finicky feline, or a feathered friend, 
+                        you’ll find everything from nutritious pet food and stylish accessories to cozy beds and interactive toys.
                       </p>
             </p>
                   </div>
@@ -269,9 +277,9 @@
                       <h3 class=" ">follow</h3>
   
                       <ul class="list-inline f-social  ">
-                          <li class="list-inline-item"><a href="https://www.facebook.com/people/Pets-N-Claws"><i class="fa fa-facebook green-icon" aria-hidden="true"></i></a></li>
-                          <li class="list-inline-item"><a href="https://wa.me/+96103743061"><i class="fa fa-whatsapp green-icon" aria-hidden="true"></i></a></li>
-                          <li class="list-inline-item"><a href="https://www.instagram.com/pets_n_claws.lb"><i class="fa fa-instagram green-icon" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://www.facebook.com/people/Pets-N-Claws" target="_blank"><i class="fa fa-facebook green-icon" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://wa.me/+96103743061" target="_blank"><i class="fa fa-whatsapp green-icon" aria-hidden="true"></i></a></li>
+                          <li class="list-inline-item"><a href="https://www.instagram.com/pets_n_claws.lb" target="_blank"><i class="fa fa-instagram green-icon" aria-hidden="true"></i></a></li>
                       </ul>
                   </div>
               </div>

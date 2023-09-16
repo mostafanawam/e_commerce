@@ -226,8 +226,19 @@ body {
 
 .rounded-logo {
     /* Make the image circular */
-    max-width: 8rem;
-    max-height: 10vh;
+    max-width: 12rem;
+    max-height: 12vh;
+}
+
+
+/* Define styles for screens with a maximum width of 767 pixels (typical for phones) */
+
+@media screen and (max-width: 767px) {
+    .rounded-logo {
+        /* Make the image circular */
+        max-width: 8rem;
+        max-height: 8vh;
+    }
 }
 
 .prod-img {
@@ -258,10 +269,6 @@ body {
 
 .navbar-brand h2 {
     color: var(--green3);
-}
-
-.navbar-brand span {
-    color: var(--red1)
 }
 
 .form-control {
@@ -337,7 +344,7 @@ body {
 
 .sub-menu.navbar-light .navbar-nav .nav-link {
     color: #6b6b6b;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 .navbar .navbar-toggler {
@@ -424,7 +431,7 @@ body {
 }
 
 #sidebar ul li a:hover {
-    color: var(--green1);
+    color: var(--green3);
 }
 
 #sidebar ul li .active {
@@ -1670,4 +1677,51 @@ input[type=radio] {
     /* Set the background color to black */
     /* Adjust the height as needed */
     color: white;
+}
+
+.navbar-brand h1 .style1,
+.inner-column h1 .style1 {
+    color: var(--green4);
+    -webkit-text-stroke: 2px black;
+}
+
+.navbar-brand h1 .style2,
+.inner-column h1 .style2 {
+    color: black;
+    -webkit-text-stroke: 2px var(--green4);
+}
+
+.navbar-brand h1 .style3,
+.inner-column h1 .style3 {
+    color: white;
+    -webkit-text-stroke: 2.5px black;
+}
+
+.navbar-brand h1 {
+    font-size: 55px;
+}
+
+.inner-column h1 {
+    font-size: 55px;
+}
+
+
+/* Define styles for screens with a maximum width of 767 pixels (typical for phones) */
+
+@media screen and (max-width: 767px) {
+    .navbar-brand h1 {
+        font-size: 30px;
+    }
+    .navbar-brand h1 .style1 {
+        color: var(--green3);
+        -webkit-text-stroke: 1.5px black;
+    }
+    .navbar-brand h1 .style2 {
+        color: black;
+        -webkit-text-stroke: 1.5px var(--green3);
+    }
+    .navbar-brand h1 .style3 {
+        color: white;
+        -webkit-text-stroke: 1.5px black;
+    }
 }
