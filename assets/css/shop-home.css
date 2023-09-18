@@ -963,7 +963,7 @@ section {
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
-    font-size: 2em;
+    font-size: 2.5em;
     line-height: 7vh;
     color: white;
 }
@@ -998,6 +998,14 @@ section {
     }
     .inner-column p {
         font-size: 1rem;
+    }
+    #button {
+        width: 5vh;
+        height: 5vh;
+    }
+    #button::after {
+        font-size: 2em;
+        line-height: 5vh;
     }
 }
 
@@ -1669,7 +1677,6 @@ input[type=radio] {
 
 .img-caption {
     position: relative;
-    background-color: black;
     /* Set the background color to black */
     /* Adjust the height as needed */
 }
