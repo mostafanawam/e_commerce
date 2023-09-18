@@ -63,25 +63,39 @@
       <div class="carousel-item active">
 
         <div class="img-caption ">
-            <img src="assets/carousel/big-1.jpg" alt="Los Angeles" width="1100" height="500">
+            <img src="assets/carousel/IMG_3947.jpg" alt="Los Angeles" width="1100" height="500">
             
+
+            <div class="text-overlay transparent-div ">
+              <h1 class="">Welcome to  <span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span></h1>
+              <p class="">Your Pet's Paradise!!</p>
+            </div>
+
         </div>
 
-        {% comment %} <div class="img-caption  d-block d-md-none">
-          <img src="assets/carousel/mobile-1.jpg" alt="Los Angeles" width="1100" height="500">
-
-      </div> {% endcomment %}
-
-
       </div>
 
       <div class="carousel-item">
-        <img src="assets/carousel/carousel1.jpg" alt="Chicago" width="1100" height="500">
+        <img src="assets/carousel/IMG_3948.jpg" alt="Chicago" width="1100" height="500">
+
+        <div class="text-overlay  transparent-div">
+          <h1>Welcome to <span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span></h1>
+          <p>
+            Fulfill all your pet's needs!!
+            </p>
+        </div>
+
       </div>
 
 
       <div class="carousel-item">
-        <img src="assets/carousel/carousel1.jpg" alt="New York" width="1100" height="500">
+        <img src="assets/carousel/groming.jpg" alt="New York" width="1100" height="500">
+
+        <div class="text-overlay  transparent-div">
+          <h1>Welcome to <span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span></h1>
+          <p>Because Every Pet Deserves a Spa Day!!</p>
+        </div>
+
       </div>
 
 
@@ -262,6 +276,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 
+
+
+
+{% if brands|length > 0 %}
+<h2 class="title-sell"> Our Brands </h2>
+<div class="row row1 rowtable">
+
+  {% for brand in brands %}
+    <div class="col-md-3 column effect11 ">
+      <img src="{{ brand.image.url }}" class="  img1  ">
+
+    </div>
+
+    {% endfor %}
+</div>
+{% endif %}
+
+
+
 {% if gallery|length > 0 %}
  <h2 class="title-sell">Our Work</h2>
   <div class="row row1 rowtable">
@@ -276,19 +309,7 @@
   </div>
   {% endif %}
 
-  {% if brands|length > 0 %}
-  <h2 class="title-sell"> Our Brands </h2>
-  <div class="row mb-4">
 
-    {% for brand in brands %}
-      <div class="col-md-3 brands-img ">
-        <img src="{{ brand.image.url }}" class=" img-fluid ">
-
-      </div>
- 
-      {% endfor %}
-  </div>
-  {% endif %}
 
 
 
