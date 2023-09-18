@@ -172,13 +172,13 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-12">
                       <div class="inner-column">
-                          <h1 class="text-center ">
+                          {% comment %} <h1 class="text-center ">
                             
                             <span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span>
                            
                             
-                            </h1>
-                          <p class="text-center " >
+                            </h1> {% endcomment %}
+                          <p class="text-center mt-md-4 " >
                             Welcome to our premier online pet store, where your furry friends’ happiness is our top priority.
                             At our virtual haven for pets and pet owners, we offer a wide selection of high-quality products to cater to all your pet’s needs. 
                             Whether you have a playful pup, a finicky feline, or a feathered friend, 
@@ -266,7 +266,7 @@
   {% endfor %}
 
 </div>
-<div class="text-center m-4">
+<div class="text-center mt-md-5 mt-2">
   <a class="btn btn-outline" href="{% url 'home:products' %}">View All</a>
 </div>
 

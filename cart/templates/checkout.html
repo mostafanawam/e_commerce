@@ -487,6 +487,11 @@
                         }
                     });
                 }else{
+
+                    $("html, body").animate({
+                        scrollTop: $("#error").offset().top
+                      }, 1000); 
+
                     $('#error').removeClass('hidden')
                     $('#error').text(errors)
                 }
@@ -525,6 +530,11 @@
                         });
 
                     }else{
+
+                    $("html, body").animate({
+                        scrollTop: $("#error").offset().top
+                      }, 1000); 
+
                         $('#error').removeClass('hidden')
                         $('#error').text("Please choose from the saved addresses.")
                     }
@@ -570,10 +580,18 @@
                             }
                         });
                     }else{
+                        
+                    $("html, body").animate({
+                        scrollTop: $("#error").offset().top
+                      }, 1000); 
                         $('#error').removeClass('hidden')
                         $('#error').text(errors)
                     }
                 }else{
+
+                    $("html, body").animate({
+                        scrollTop: $("#error").offset().top
+                      }, 1000); 
                     $('#error').removeClass('hidden')
                     $('#error').text("Please fill the address information")
                 }
