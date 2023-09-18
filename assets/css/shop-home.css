@@ -1217,7 +1217,6 @@ h1 {
     line-height: 50px;
     display: inline-block;
     padding: 0 10px;
-    float: left;
     width: 100%;
     border: none;
     cursor: pointer;
@@ -1289,8 +1288,6 @@ h1 {
     font-size: 1rem;
     font-weight: 600;
 }
-
-.contactForm .form-control {}
 
 .submitting {
     float: left;
