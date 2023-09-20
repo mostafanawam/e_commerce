@@ -15,21 +15,33 @@ def add_to_cart(request, product_id):
         request.session['cart'] = []
     
     cart = request.session['cart']
-    cart.append({
-        'id': product.pk,
-        'name': product.name,
-        'description': product.description,
-        'price': str(product.price),
-        'image': product.image.url,
-        'qty':1
-    })
+
+
+    product_found=False
+    for item in cart:
+        if item['id'] == product_id:
+            item['qty'] += 1  # Increment the quantity by 1
+            item['total_price']=float(item['qty'])*float(item['price'])
+            product_found = True
+            break
+
+    if not product_found:
+        cart.append({
+            'id': product.pk,
+            'name': product.name,
+            'description': product.description,
+            'price': str(product.price),
+            'image': product.image.url,
+            'qty':1,
+            'total_price':str(product.price)
+        })
     request.session.modified = True
     
     return HttpResponse(len(cart))
 
 def view_cart(request):
     cart = request.session.get('cart', [])
-    total_price = sum(float(item['price']) for item in cart)
+    total_price = sum(float(item['total_price']) for item in cart)
     
     settings=Settings.objects.get()
     context = {
@@ -68,7 +80,7 @@ from decimal import Decimal
 def checkout(request):
         
     cart = request.session.get('cart', [])
-    total_price = sum(float(item['price']) for item in cart)
+    total_price = sum(float(item['total_price']) for item in cart)
     if(len(cart)==0):
         return redirect("/products/")
     settings=Settings.objects.get()
