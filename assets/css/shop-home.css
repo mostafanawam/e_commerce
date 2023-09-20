@@ -1326,8 +1326,8 @@
     
     .notify {
         position: fixed;
-        right: 50%;
         top: 5%;
+        right: 5%;
         z-index: 10;
     }
     

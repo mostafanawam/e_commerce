@@ -21,7 +21,7 @@ $(document).ready(function() {
             url: '/cart/add_to_cart/' + product_id + '/',
             data: {},
             success: function(data) {
-                $('.cart_qty').html(data);
+
 
 
                 window.setTimeout(function() {
@@ -29,11 +29,12 @@ $(document).ready(function() {
                     var popup = document.getElementById("myPopup");
 
                     popup.classList.toggle("show");
+                    $('.cart_qty').html(data);
 
                     window.setTimeout(function() {
                         popup.classList.toggle("show");
-                    }, 2000);
 
+                    }, 2000);
 
                 }, 2000);
 
