@@ -1,0 +1,31 @@
+[{
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "is_superuser": true,
+            "email": "mynawam@bluemint.ai",
+            "password": "pbkdf2_sha256$600000$bBg8NlgPTjUTLcJRzJmwLs$moN0x43S/+vI43gaDbHJmtlIq89UpvTVJicBzmqqWfg=",
+            "date_joined": "2022-09-13T10:00:33.175Z",
+            "last_login": "2023-09-20T18:05:03.795Z",
+            "is_staff": true,
+            "is_enabled": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "is_superuser": true,
+            "email": "petsnclaws2023@gmail.com",
+            "password": "pbkdf2_sha256$600000$rGbbobcXCAhPDuKX6q92Ll$YgwVLH+engWJKq+czYRMvOlu0Kj1qXaDePo1+J6sT+0=",
+            "date_joined": "2023-09-20T18:14:14.318Z",
+            "last_login": "2023-09-20T18:14:14.318Z",
+            "is_staff": true,
+            "is_enabled": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

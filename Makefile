@@ -3,6 +3,7 @@ pip = pip3
 
 
 test_fixtures = */fixtures/*.test.json
+static_fixtures = */fixtures/*.static.json 
 
 backend-server-start:
 	$(python) -u manage.py runserver localhost:8050
@@ -11,6 +12,8 @@ backend-server-start:
 install:
 	$(pip) install -r requirements.txt 
 
+static:
+	$(python) manage.py loaddata $(static_fixtures)
 
 testing:
 	$(python) manage.py loaddata $(test_fixtures)

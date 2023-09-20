@@ -1292,16 +1292,6 @@
         text-decoration: none;
     }
     /* Popup container - can be anything you want */
-    
-    .popup {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
     /* The actual popup */
     
     .popup .popuptext {
@@ -1336,7 +1326,7 @@
     
     .notify {
         position: fixed;
-        right: 0%;
+        right: 50%;
         top: 5%;
         z-index: 10;
     }

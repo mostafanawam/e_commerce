@@ -11,20 +11,36 @@ $(document).ready(function() {
 
 
     $('.add-to-cart').click(function(e) {
-        e.preventDefault();
         var product_id = $(this).data('product-id');
+
+        $(this).html("adding <i class='fas fa-spinner fa-spin'/>");
+
+        e.preventDefault();
         $.ajax({
             type: 'POST',
             url: '/cart/add_to_cart/' + product_id + '/',
             data: {},
             success: function(data) {
-                $('.cart_qty').text(data);
-                var popup = document.getElementById("myPopup");
-                popup.classList.toggle("show");
+                $('.cart_qty').html(data);
+
 
                 window.setTimeout(function() {
+                    $('.add-to-cart').text("Add to Cart");
+                    var popup = document.getElementById("myPopup");
+
                     popup.classList.toggle("show");
+
+                    window.setTimeout(function() {
+                        popup.classList.toggle("show");
+                    }, 2000);
+
+
                 }, 2000);
+
+
+
+
+
 
             }
         });

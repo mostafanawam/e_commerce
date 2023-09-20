@@ -75,7 +75,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Customer(models.Model):
     user=models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         null=True,blank=True
     )
     first_name = models.CharField(max_length=50)
@@ -107,7 +107,7 @@ class Regions(models.Model):
 class Address(models.Model):
     region=models.ForeignKey(
         Regions,
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT
     )
     address=models.TextField()
     phone_number = models.CharField(max_length=15,null=True,blank=True)

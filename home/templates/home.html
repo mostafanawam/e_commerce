@@ -62,16 +62,17 @@
       <div class="carousel-item active">
         <img src="assets/carousel/IMG_3947.jpg" alt="Los Angeles" width="1100" height="500">
         <div class="text-overlay ">
-          <h1>Welcome to <span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span></h1>
-          <p>Your Pet's Paradise!!</p>
-          <a class="btn btn-shop" href="/products/">SHOP NOW</a>
+          <h1 class="d-md-block d-none"><span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span>,Your Pet's Paradise!!</h1>
+          <h1 class="d-md-none d-block"><span class="style1">Pets</span><span class="style2">N</span><span class="style3">Claws</span>,Your Pet's Paradise!!</h1>
+          <a class="btn btn-shop my-md-4" href="/products/">SHOP NOW</a>
         </div>
       </div>
     
       <div class="carousel-item">
         <img src="assets/carousel/IMG_3948.jpg" alt="Chicago" width="1100" height="500">
         <div class="text-overlay ">
-          <h1>Fulfill all your <br>pet's needs!!</h1>
+          <h1 class="d-md-block d-none">Fulfill all your pet's needs!!</h1>
+          <h1 class="d-md-none d-block">Fulfill all your <br>pet's needs!!</h1>
           <a class="btn btn-shop my-md-4" href="/products/">SHOP NOW</a>
         </div>
       </div>
@@ -79,7 +80,8 @@
       <div class="carousel-item">
         <img src="assets/carousel/groming.jpg" alt="New York" width="1100" height="500">
         <div class="text-overlay">
-          <h1>Every Pet Deserves <br>a Spa Day!!</h1>
+          <h1 class="d-md-block d-none">Every Pet Deserves a Spa Day!!</h1>
+          <h1 class="d-md-none d-block">Every Pet Deserves <br>a Spa Day!!</h1>
           <a class="btn btn-shop my-md-4" href="/contact-us/">CONTACT US</a>
         </div>
       </div>
@@ -236,13 +238,13 @@
       </div>
       {% csrf_token %}
       {% if product.stock > 0 %}
-      <button  class="add-to-cart btn btn-sm btn-login"  data-product-id="{{ product.id }}" >
+      <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
         Add to Cart
       </button>
       
       {% else %}
-        <button  class="add-to-cart btn btn-sm  btn-disabled"  data-product-id="{{ product.id }}" disabled >
-          out of stock
+        <button  class="add-to-cart btn btn-sm  btn-disabled" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" disabled >
+          Out of Stock
         </button>
       {% endif %}
     </figure>

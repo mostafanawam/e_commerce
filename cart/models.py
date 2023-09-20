@@ -44,11 +44,11 @@ class Product(models.Model):
     name = models.CharField(max_length=100,unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE,null=True,blank=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT,null=True,blank=True)
     image=ResizedImageField(null=True,blank=True,upload_to=uploadedform)
     status=models.ForeignKey(
         Status,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         null=True,blank=True,default=1
     )
     stock = models.PositiveIntegerField()
@@ -64,11 +64,11 @@ class Product(models.Model):
 class Order(models.Model):
     order_id=models.CharField(max_length=15)
     customer = models.ForeignKey(
-        "users.Customer", on_delete=models.CASCADE,
+        "users.Customer", on_delete=models.PROTECT,
     )
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
     address= models.ForeignKey(
-        "users.Address", on_delete=models.CASCADE
+        "users.Address", on_delete=models.PROTECT
     )
     order_date = models.DateTimeField(auto_now_add=True)
 
@@ -77,10 +77,10 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(
-        Order, on_delete=models.CASCADE
+        Order, on_delete=models.PROTECT
     )
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE
+        Product, on_delete=models.PROTECT
     )
     quantity = models.PositiveIntegerField()
 

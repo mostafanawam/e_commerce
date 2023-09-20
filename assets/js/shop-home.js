@@ -214,6 +214,8 @@ function AddToCart(id) {
                 $('#btn' + id).html("Add to Cart"); //wait and change the value of button
             }, 1000);
             $('.item-nb').html(output.count); //change the value of cart
+
+
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
 
