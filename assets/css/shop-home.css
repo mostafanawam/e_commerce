@@ -970,7 +970,7 @@
             height: 5vh;
         }
         #button::after {
-            font-size: 2em;
+            font-size: 1.5em;
             line-height: 5vh;
         }
     }
@@ -1662,6 +1662,9 @@
         .navbar-brand h1 .style3 {
             color: white !important;
             -webkit-text-stroke: 1.5px black !important;
+        }
+        .btn-lg {
+            padding: 10px 15px;
         }
     }
     
