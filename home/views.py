@@ -17,14 +17,19 @@ def homepage(request):
 
     cart = request.session.get('cart', [])
     settings=Settings.objects.get()
-    
+
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
     context = {
         'products': products,
         'gallery':gallery,
         'brands':brands,
         "cart":cart,
         'delivery':int(settings.delivery),
-        'currency':settings.currency
+        'currency':settings.currency,
+        'total_qty':total_qty
     }
     return render(request, 'home.html',context)
 
@@ -40,9 +45,17 @@ def productsPage(request):
             products_list[category.name]=products
 
     cart = request.session.get('cart', [])
+
+
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
+
     context = {
         'products': products_list,
         "cart":cart,
+        'total_qty':total_qty
         # "categories":categories
     }
 
@@ -80,8 +93,14 @@ def contactUs(request):
         }
         return JsonResponse(context)
     cart = request.session.get('cart', [])
+
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
     context = {
         "cart":cart,
+        'total_qty':total_qty
     }
 
     return render(request, 'contact_us.html',context)
@@ -96,7 +115,12 @@ def searchProducts(request):
 
 
         cart = request.session.get('cart', [])
+        total_qty=0
+        for item in cart:
+            total_qty+=item['qty']
+
         context = {
+        'total_qty':total_qty,
             'products': products,
             "cart":cart,
             "query":query

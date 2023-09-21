@@ -36,19 +36,30 @@ def add_to_cart(request, product_id):
             'total_price':str(product.price)
         })
     request.session.modified = True
-    
-    return HttpResponse(len(cart))
+
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+    return HttpResponse(total_qty)
 
 def view_cart(request):
     cart = request.session.get('cart', [])
     total_price = sum(float(item['total_price']) for item in cart)
     
     settings=Settings.objects.get()
+
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
     context = {
+        'total_qty':total_qty,
         'cart': cart,
         'total_price': total_price,
         "settings":settings
     }
+
+    
     return render(request, 'view_cart.html', context)
 
 
@@ -301,7 +312,13 @@ def checkout(request):
         address=Customer.objects.get(user=request.user).address.all()
 
     regions=Regions.objects.all()
+
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
     context = {
+        'total_qty':total_qty,
         'cart': cart,
         'total_price': total_price,
         "settings":settings,

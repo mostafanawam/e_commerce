@@ -29,7 +29,12 @@ def user_login(request):
         
     cart = request.session.get('cart', [])
     
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
     context = {
+        'total_qty':total_qty,
         'cart': cart,
     }
     return render(request, 'login.html',context)
@@ -82,7 +87,12 @@ def user_register(request):
         
         
     cart = request.session.get('cart', [])  
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
     context = {
+        'total_qty':total_qty,
         'cart': cart,
     }
     return render(request, 'register.html',context)

@@ -58,31 +58,39 @@
 
 
   {% if products|length > 0 %}
-  <div class="row  mb-4 special-list">
-  {% for product in products %}
-  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 special-grid {{ product.category.name }}   ">
-    <figure class="snip1396 green hover prod-img">
-      {% if product.image %}
-      <img src="{{ product.image.url }}"  width="350" height="350" >
-  {% else %}
-      <img src="/assets/empty.png" >
-  {% endif %}   
-      <figcaption>
-        <h3>  {{ product.name }}</h3>
-        <p>All this modern technology just makes people try to do everything at once.</p>
-      </figcaption>
-      <div class="price">
-        {% comment %} <s>$24.00</s> {% endcomment %}
-        {{ product.price }} $
-      </div>
-      {% csrf_token %}
-      <button  class="add-to-cart btn btn-sm btn-login"  data-product-id="{{ product.id }}" id="btn{{ product.id }}" >
-        Add to Cart
-      </button>
-    </figure>
+  <div class="owl-carousel owl-theme">
+    {% for product in products %}
+    <div class="item">
+      <figure class="snip1396 green hover prod-img">
+        {% if product.image.url  %}
+        <img src="{{ product.image.url }}"  style="width:100%">
+    {% else %}
+        <img src="/assets/empty.png" >
+    {% endif %}   
+        <figcaption>
+          {% comment %} <p> </p> {% endcomment %}
+          <h3>  {{ product.name }}</h3>
+        </figcaption>
+        <div class="price">
+          {% comment %} <s>$24.00</s> {% endcomment %}
+          {{ product.price }}{{currency}}
+        </div>
+        {% csrf_token %}
+        {% if product.stock > 0 %}
+        <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
+          Add to Cart
+        </button>
+        
+        {% else %}
+          <button  class="add-to-cart btn btn-sm  btn-disabled" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" disabled >
+            Out of Stock
+          </button>
+        {% endif %}
+      </figure>
+    </div>
+    {% endfor %}
+  
   </div>
-  {% endfor %}
-</div>
   {% else %}
   <div class="text-center mb-4">
     <img src="/assets/no_found.jpg" class="w-25 h-25  "/>
@@ -99,4 +107,39 @@
 </div>
 
 </div>
+
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+<script>
+  $(document).ready(function(){
+      $(".owl-carousel").owlCarousel({
+          loop: true, // Enable looping
+          margin: 10, // Space between items
+          responsiveClass: true,
+          responsive:{
+              0:{
+                  items: 1, // Number of items to display at 0-576px screen width
+              },
+              576:{
+                  items: 2, // Number of items to display at 576px-768px screen width
+              },
+              768:{
+                  items: 2, // Number of items to display at 768px-992px screen width
+              },
+              992:{
+                  items: 3, // Number of items to display at 992px and above screen width
+              }
+          }
+      });
+  });
+</script>
+
 {% endblock %}
