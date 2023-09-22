@@ -69,7 +69,7 @@
         <div class="form-group item">
           <figure class="snip1396 green hover prod-img">
             {% if product.image.url  %}
-            <img src="{{ product.image.url }}"  style="width:100%">
+            <img src="{{ product.image.url }}">
         {% else %}
             <img src="/assets/empty.png" >
         {% endif %}     
@@ -127,8 +127,8 @@
           margin: 10, // Space between items
           responsiveClass: true,
           //nav: true, 
-          autoplay: true,
-          autoplayTimeout: 5000,
+          //autoplay: true,
+          //autoplayTimeout: 5000,
           smartSpeed: 450,
           responsive:{
               0:{
