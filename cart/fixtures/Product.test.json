@@ -8,7 +8,8 @@
             "category": 2,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 2,
-            "stock": 10
+            "stock": 10,
+            "color": "text-green"
         }
     },
     {
@@ -21,7 +22,8 @@
             "category": 1,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 2,
-            "stock": 10
+            "stock": 6,
+            "color": "text-green"
         }
     },
     {
@@ -34,7 +36,8 @@
             "category": 1,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
-            "stock": 10
+            "stock": 0,
+            "color": "text-green"
         }
     },
     {
@@ -47,7 +50,8 @@
             "category": 1,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 2,
-            "stock": 10
+            "stock": 2,
+            "color": "text-green"
         }
     },
     {
@@ -60,7 +64,8 @@
             "category": 2,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
-            "stock": 10
+            "stock": 10,
+            "color": "text-green"
         }
     },
     {
@@ -73,7 +78,8 @@
             "category": 1,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
-            "stock": 10
+            "stock": 10,
+            "color": "text-green"
         }
     },
     {
@@ -86,7 +92,8 @@
             "category": 1,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
-            "stock": 0
+            "stock": 0,
+            "color": "text-green"
         }
     },
     {
@@ -99,7 +106,8 @@
             "category": 2,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
-            "stock": 10
+            "stock": 10,
+            "color": "text-green"
         }
     },
     {
@@ -112,7 +120,8 @@
             "category": 1,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
-            "stock": 10
+            "stock": 7,
+            "color": "text-green"
         }
     },
     {
@@ -125,7 +134,36 @@
             "category": 1,
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
-            "stock": 10
+            "stock": 8,
+            "color": "text-green"
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 11,
+        "fields": {
+            "name": "dasdsada",
+            "description": "",
+            "price": "25.00",
+            "category": 1,
+            "image": "products/dasdsada/dasdsada.jpg",
+            "status": 1,
+            "stock": 10,
+            "color": "text-green"
+        }
+    },
+    {
+        "model": "cart.product",
+        "pk": 12,
+        "fields": {
+            "name": "sdad",
+            "description": "",
+            "price": "2.00",
+            "category": 1,
+            "image": "products/sdad/sdad.jpg",
+            "status": 2,
+            "stock": 10,
+            "color": "text-green"
         }
     }
 ]

@@ -33,6 +33,14 @@
         color: var(--green3);
     }
     
+    .text-black {
+        color: black;
+    }
+    
+    .text-white {
+        color: white;
+    }
+    
     .text-green:hover {
         color: black;
         text-decoration: none;
@@ -171,7 +179,6 @@
     .snip1396 h3 {
         font-weight: 700;
         /* margin-bottom: 5px; */
-        color: var(--green3);
     }
     
     .snip1396 p {
@@ -191,7 +198,6 @@
     
     .snip1396 .price {
         left: 0;
-        color: black;
         font-size: 1.3rem;
     }
     

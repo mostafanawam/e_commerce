@@ -74,10 +74,10 @@
             <img src="/assets/empty.png" >
         {% endif %}     
             <figcaption>
-              <h3>  {{ product.name }}</h3>
+              <h3 class="{{product.color}}">  {{ product.name }}</h3>
               {% comment %} <p>{{product.description}}</p> {% endcomment %}
             </figcaption>
-            <div class="price">
+            <div class="price {{product.color}}">
               {% comment %} <s>$24.00</s> {% endcomment %}
               {{ product.price }} $
             </div>

@@ -39,6 +39,14 @@ def uploadedform(object,filename):
 
 from django_resized import ResizedImageField
 
+
+TEXT_COLOR = [
+        ('text-green', 'text-green'),
+        ('text-black', 'text-black'),
+        ('text-white', 'text-white'),
+]
+
+
 # python manage.py dumpdata cart.Product --output cart/fixtures/Product.test.json
 class Product(models.Model):
     name = models.CharField(max_length=100,unique=True)
@@ -52,6 +60,7 @@ class Product(models.Model):
         null=True,blank=True,default=1
     )
     stock = models.IntegerField()
+    color=models.CharField(max_length=50, choices=TEXT_COLOR,default='text-black')
     def __str__(self):
         return self.name
     

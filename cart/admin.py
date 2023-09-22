@@ -13,7 +13,7 @@ admin.site.register(Category,CategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):  
-    list_display = ("id","name","description","price","stock","status","category")
+    list_display = ("id","name","description","price","stock","status",'color',"category")
 
     list_filter=["category","status"]
 admin.site.register(Product,ProductAdmin)

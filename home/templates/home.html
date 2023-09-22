@@ -230,9 +230,9 @@
   {% endif %}   
       <figcaption>
         {% comment %} <p> </p> {% endcomment %}
-        <h3>  {{ product.name }}</h3>
+        <h3 class="{{product.color}}">  {{ product.name }}</h3>
       </figcaption>
-      <div class="price">
+      <div class="price {{product.color}}">
         {% comment %} <s>$24.00</s> {% endcomment %}
         {{ product.price }}{{currency}}
       </div>
