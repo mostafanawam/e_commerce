@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from settings.models import Settings
 from users.models import Address, Customer, Regions
+from users.tasks import send_email
 from .models import Order, OrderItem, Product
 from django.http import HttpResponse
 
@@ -129,7 +130,7 @@ def checkout(request):
                     del request.session['cart']
 
                 html_customer=f"""
-                <p>Dear Customer,</p>
+                <p>Dear Customer {customer.first_name} {customer.last_name},</p>
                 <p>Your order has been processed</p>
                  <p>Order Number:{order.order_id}</p>
                  <p>Total price:{total_price}$</p>
@@ -137,18 +138,18 @@ def checkout(request):
                 """
             
                 try:
-                    send_email(f'PetsNClaws Order',html_customer,user.email)
+                    send_email.apply_async(args=(f'PetsNClaws Order',html_customer,user.email),countdown=120)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
 
                 try:
                     html=f"""
-                    <h3>New Order  from {firstname} {lastname} </h3>
-                    <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
+                    <h3>New Order  from {customer.first_name} {customer.last_name} </h3>
+                    <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {address.region.name},{address.address}</p>
                     <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
                     """
-                    send_email(f'PetsNClaws New Order',html,settings.reciever_email)
+                    send_email.delay(f'PetsNClaws New Order',html,settings.reciever_email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -209,18 +210,18 @@ def checkout(request):
                 <p>You will receive it within 2-3 days</p>
                 """
                 try:
-                    send_email(f'PetsNClaws Order',html_customer,user.email)
+                    send_email.apply_async(args=(f'PetsNClaws Order',html_customer,user.email),countdown=120)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
 
                 try:
                     html=f"""
-                    <h3>New Order  from {firstname} {lastname} </h3>
+                    <h3>New Order  from {customer.first_name} {customer.last_name} </h3>
                     <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
                     <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
                     """
-                    send_email(f'PetsNClaws New Order',html,settings.reciever_email)
+                    send_email.delay(f'PetsNClaws New Order',html,settings.reciever_email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -284,7 +285,7 @@ def checkout(request):
                 <p>You will receive it within 2-3 days</p>
                 """
             try:
-                send_email(f'PetsNClaws Order',html_customer,email)
+                send_email.apply_async(args=(f'PetsNClaws Order',html_customer,user.email),countdown=120)
             except Exception as e:
                 print(f"email didnt send,{e}")
 
@@ -294,7 +295,7 @@ def checkout(request):
                 <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
             """
             try:
-                send_email(f'PetsNClaws New Order',html,settings.reciever_email)
+                send_email.delay(f'PetsNClaws New Order',html,settings.reciever_email)
             except Exception as e:
                 print(f"email didnt send,{e}")
 
@@ -343,39 +344,3 @@ def generate_random_id(length=10):
 
 
 
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from settings.models import Settings
-
-
-
-def send_email(subject,html,reciever_email):
-    settings=Settings.objects.get()
-    gmail_user =settings.email
-    gmail_password = settings.password  # Use your App Password if you have 2FA enabled
-
-    # Email details
-    subject = subject
-
-    # Create the email message
-    msg = MIMEMultipart()
-    msg['From'] = gmail_user
-    msg['To'] = reciever_email
-    msg['Subject'] = subject
-
-    msg.attach(MIMEText(html, "html"))
-
-    email_string = msg.as_string()
-
-    # Connect to Gmail's SMTP server
-    with smtplib.SMTP('smtp.gmail.com', 587) as server:
-        server.starttls()  # Enable TLS (Transport Layer Security)
-        
-        # Log in to your Gmail account
-        server.login(gmail_user, gmail_password)
-        
-        # Send the email
-        server.sendmail(gmail_user,reciever_email,email_string)
-
-    print('Email sent successfully!')
