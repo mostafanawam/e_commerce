@@ -9,7 +9,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 2,
             "stock": 10,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -23,7 +23,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 2,
             "stock": 6,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -37,7 +37,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
             "stock": 0,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -51,7 +51,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 2,
             "stock": 2,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -65,7 +65,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
             "stock": 10,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -79,7 +79,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
             "stock": 10,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -93,7 +93,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
             "stock": 0,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -107,7 +107,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
             "stock": 10,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -121,7 +121,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
             "stock": 7,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -135,7 +135,7 @@
             "image": "products/dasd/dasd_jWr04zD.jpg",
             "status": 1,
             "stock": 8,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -149,7 +149,7 @@
             "image": "products/dasdsada/dasdsada.jpg",
             "status": 1,
             "stock": 10,
-            "color": "text-green"
+            "color": "text-black"
         }
     },
     {
@@ -163,7 +163,7 @@
             "image": "products/sdad/sdad.jpg",
             "status": 2,
             "stock": 10,
-            "color": "text-green"
+            "color": "text-black"
         }
     }
 ]

@@ -177,7 +177,13 @@
                 <div class="container">
                   <div class="row align-items-center">
                       <div class="col-10 pl-0">
-                        <a class="btn btn-login" href="{% url 'users:login' %}"><i class="fas fa-user-circle mr-1"></i>Log In / Register</a>
+
+                        {% if not user.is_authenticated %}
+                        <a class="btn btn-login"  href="{% url 'users:login' %}"><i class="fas fa-user-circle mr-1"></i>login</a>
+                        {% else %}
+                        <a class="btn btn-login"  href="{% url 'users:logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></i>logout</a>
+                        {% endif %}
+                        
                       </div>
                       <div class="col-2 text-left">
                         <button type="button" id="sidebarCollapseX" class="btn btn-link">
