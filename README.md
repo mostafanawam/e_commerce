@@ -7,10 +7,7 @@ A brief description of your Django application.
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 
@@ -22,8 +19,7 @@ List the prerequisites that users need to have before using your app. This could
 
 - Python 3.10
 - Django 4.2
-- Any specific database system (e.g., PostgreSQL, MySQL)
-- Dependencies and libraries
+- database system PostgreSQL(for production), SQLite(for dev)
 
 ## Installation
 
@@ -50,7 +46,7 @@ Provide step-by-step instructions on how to install your app:
 5. load static data:
     ```bash
     make static  
-    
+
 6. Start the development server:
     ```bash
     make backend-server-start
