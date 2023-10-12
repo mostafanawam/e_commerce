@@ -47,6 +47,11 @@ Provide step-by-step instructions on how to install your app:
     ```bash
     make setup
 
-5. Start the development server:
+5. load static data:
     ```bash
-    make backend-server-start   
+    make static  
+    
+6. Start the development server:
+    ```bash
+    make backend-server-start
+
