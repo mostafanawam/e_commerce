@@ -34,7 +34,7 @@ $(document).ready(function() {
                     window.setTimeout(function() {
                         popup.classList.toggle("show");
 
-                    }, 1000);
+                    }, 2000);
 
                 }, 1000);
 

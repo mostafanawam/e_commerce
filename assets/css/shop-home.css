@@ -50,6 +50,10 @@
         background-color: var(--green3);
     }
     
+    .bg-green2 {
+        background-color: var(--green4);
+    }
+    
     .text-black {
         color: var(--black);
     }
@@ -1391,7 +1395,7 @@
         border-radius: 50%;
         position: fixed;
         bottom: 30px;
-        left: 30px;
+        right: 30px;
         transition: background-color .3s, opacity .5s, visibility .5s;
         z-index: 1000;
     }
@@ -1430,7 +1434,7 @@
             width: 6vh;
             height: 6vh;
             bottom: 30px;
-            left: 30px;
+            right: 30px;
         }
         #button {
             font-size: 1em;
@@ -1440,7 +1444,7 @@
             width: 6vh;
             height: 6vh;
             bottom: 30px;
-            left: 30px;
+            right: 30px;
         }
     }
     
@@ -1642,6 +1646,10 @@
     /* Define styles for screens with a maximum width of 767 pixels (typical for phones) */
     
     @media screen and (max-width: 767px) {
+        .fixed-nav {
+            position: fixed;
+            z-index: 50;
+        }
         .navbar-brand h1 {
             font-size: 30px;
         }

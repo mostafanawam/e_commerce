@@ -63,16 +63,16 @@
 
         <div class="notify text-center" id="notify">
             <div class="popup">
-              <span class="popuptext alert alert-success p-2" id="myPopup">
-                <i class="fas fa-check-circle"></i>  Product added to cart
+              <span class="popuptext alert bg-green p-md-3 p-2" id="myPopup">
+                <i class="fas fa-check-circle"></i>  Product successfully added to your cart
               </span>
             </div>
         </div>
         
 
-        <a id="whatsapp" class="d-none d-md-block" href="https://wa.me/+96181602936" target="_blank"></a>
+        <a id="whatsapp" class="d-md-block" href="https://wa.me/+96181602936" target="_blank"></a>
 
-        <a id="button"></a>
+        {% comment %} <a id="button"></a> {% endcomment %}
         
   
         <div id="myDiv" ><!-- style="display:none;"-->
@@ -94,7 +94,7 @@
                 </button>
                 <a class="navbar-brand" href="{% url 'home:home' %}" >
                   <div class="row align-items-center">
-                    <div class="col-md-4 col-4">
+                    <div class="col-md-4 col-4" style="padding-right: 0px;">
                           <!-- Logo -->
                         <img src="/assets/logo-no_bg.png" alt="Logo" class="rounded-logo">
                     </div>
