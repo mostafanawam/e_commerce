@@ -20,8 +20,8 @@ A brief description of your Django application.
 
 List the prerequisites that users need to have before using your app. This could include:
 
-- Python 3.x
-- Django 3.x
+- Python 3.10
+- Django 4.2
 - Any specific database system (e.g., PostgreSQL, MySQL)
 - Dependencies and libraries
 
@@ -42,3 +42,11 @@ Provide step-by-step instructions on how to install your app:
 3. Install dependencies:
    ```bash
    make install
+
+4. Migrate the database:
+    ```bash
+    make setup
+
+5. Start the development server:
+    ```bash
+    make backend-server-start   
