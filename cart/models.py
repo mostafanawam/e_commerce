@@ -53,11 +53,11 @@ class Product(models.Model):
     description = models.TextField(null=True,blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,null=True,blank=True)
-    image=ResizedImageField(null=True,blank=True,upload_to=uploadedform)
+    image=ResizedImageField(upload_to=uploadedform)
     status=models.ForeignKey(
         Status,
         on_delete=models.PROTECT,
-        null=True,blank=True,default=1
+        default=1
     )
     stock = models.IntegerField()
     color=models.CharField(max_length=50, choices=TEXT_COLOR,default='text-black')

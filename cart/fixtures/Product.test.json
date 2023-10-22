@@ -48,7 +48,7 @@
             "description": "adsadsad",
             "price": "2131.00",
             "category": 1,
-            "image": "products/dasd/dasd_jWr04zD.jpg",
+            "image": "",
             "status": 2,
             "stock": 2,
             "color": "text-black"
@@ -62,7 +62,7 @@
             "description": "dsada",
             "price": "2131.00",
             "category": 2,
-            "image": "products/dasd/dasd_jWr04zD.jpg",
+            "image": "",
             "status": 1,
             "stock": 10,
             "color": "text-black"
@@ -76,7 +76,7 @@
             "description": "dasdad",
             "price": "213.00",
             "category": 1,
-            "image": "products/dasd/dasd_jWr04zD.jpg",
+            "image": "",
             "status": 1,
             "stock": 10,
             "color": "text-black"
@@ -90,7 +90,7 @@
             "description": "dasda",
             "price": "21.00",
             "category": 1,
-            "image": "products/dasd/dasd_jWr04zD.jpg",
+            "image": "",
             "status": 1,
             "stock": 0,
             "color": "text-black"
@@ -104,7 +104,7 @@
             "description": "dasdsad",
             "price": "23.00",
             "category": 2,
-            "image": "products/dasd/dasd_jWr04zD.jpg",
+            "image": "",
             "status": 1,
             "stock": 10,
             "color": "text-black"
@@ -118,7 +118,7 @@
             "description": "dasdsad",
             "price": "32.00",
             "category": 1,
-            "image": "products/dasd/dasd_jWr04zD.jpg",
+            "image": "",
             "status": 1,
             "stock": 7,
             "color": "text-black"
@@ -132,7 +132,7 @@
             "description": "adasd",
             "price": "2.00",
             "category": 1,
-            "image": "products/dasd/dasd_jWr04zD.jpg",
+            "image": "",
             "status": 1,
             "stock": 8,
             "color": "text-black"
@@ -146,7 +146,7 @@
             "description": "",
             "price": "25.00",
             "category": 1,
-            "image": "products/dasdsada/dasdsada.jpg",
+            "image": "",
             "status": 1,
             "stock": 10,
             "color": "text-black"
@@ -160,7 +160,7 @@
             "description": "",
             "price": "2.00",
             "category": 1,
-            "image": "products/sdad/sdad.jpg",
+            "image": "",
             "status": 2,
             "stock": 10,
             "color": "text-black"

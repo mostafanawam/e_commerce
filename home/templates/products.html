@@ -68,10 +68,10 @@
         {% for product in product_list %}
         <div class="form-group item">
           <figure class="snip1396 green hover prod-img">
-            {% if product.image.url  %}
+            {% if product.image  %}
             <img src="{{ product.image.url }}">
         {% else %}
-            <img src="/assets/empty.png" >
+            <img src="assets/empty.png" alt="test" >
         {% endif %}     
             <figcaption>
               <h3 class="{{product.color}}">  {{ product.name }}</h3>
