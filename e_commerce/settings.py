@@ -88,7 +88,6 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 DATABASE_NAME=os.getenv('DATABASE_NAME','sqlite')
 
 
-
 POSTGRES_HOST=os.getenv("POSTGRES_HOST", "127.0.0.1")
 POSTGRES_PASSWORD=os.getenv("POSTGRES_PASSWORD", "1234")
 POSTGRES_USER=os.getenv("POSTGRES_USER", "1234")
