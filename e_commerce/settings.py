@@ -27,10 +27,22 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '207.154.238.226',
-    'http://207.154.238.226:8081'
+    'localhost'
 ]
 
+CORS_ORIGIN_WHITELIST=(
+    'http://207.154.238.226:8081'
+)
 
+CORS_ALLOWED_ORIGINS = [
+    'http://207.154.238.226:8081'
+
+]
+
+CSRF_TRUSTED_ORIGINS = [
+        'http://207.154.238.226:8081'
+
+]
 # Application definition
 
 INSTALLED_APPS = [
