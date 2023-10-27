@@ -6,7 +6,7 @@ test_fixtures = */fixtures/*.test.json
 static_fixtures = */fixtures/*.static.json 
 
 backend-server-start:
-	$(python) -u manage.py runserver localhost:8081
+	$(python) -u manage.py runserver localhost:8050
 	tail -f django-server.log 
 
 install:
