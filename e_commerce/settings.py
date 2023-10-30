@@ -27,15 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '207.154.238.226',
-    'localhost'
+    'localhost',
+    'petsnclaws.com'
 ]
 
 CORS_ORIGIN_WHITELIST=(
-    'http://207.154.238.226:8081'
+    'http://207.154.238.226:8081',
+    'http://petsnclaws.com'
 )
 
 CORS_ALLOWED_ORIGINS = [
-    'http://207.154.238.226:8081'
+    'http://207.154.238.226:8081',
+    'http://petsnclaws.com'
+
 
 ]
 

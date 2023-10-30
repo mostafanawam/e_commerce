@@ -1,32 +1,46 @@
 .row1 {
-  margin: 15px;
+    margin: 15px;
 }
 
 .column {
-  float: left;
-  width: 33.3%;
-  padding: 5px;
+    float: left;
+    width: 33.3%;
+    padding: 5px;
 }
+
 
 /* Clearfix (clear floats) */
-.rowtable::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-.img1{
-  height:15rem;
-  width:100%;
 
-  transform: scale(1);
-	max-width: 100%;
-  transition: 0.5s ease all;
+.rowtable::after {
+    content: "";
+    clear: both;
+    display: table;
 }
+
+.cat-img {
+    height: 10rem;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 50% !important;
+}
+
+.img1 {
+    height: 15rem;
+    width: 100%;
+    transform: scale(1);
+    max-width: 100%;
+    transition: 0.5s ease all;
+}
+
 .effect11:hover .img1 {
-  transform: scale(0.9);
+    transform: scale(0.9);
 }
+
 @media screen and (max-width: 650px) {
-  .img1{
-    height: 6rem;
-  }
+    .img1 {
+        height: 6rem;
+    }
+    .cat-img {
+        height: 6rem;
+    }
 }

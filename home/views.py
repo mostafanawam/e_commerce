@@ -18,6 +18,9 @@ def homepage(request):
     cart = request.session.get('cart', [])
     settings=Settings.objects.get()
 
+
+    cats=Category.objects.all()
+
     total_qty=0
     for item in cart:
         total_qty+=item['qty']
@@ -29,7 +32,8 @@ def homepage(request):
         "cart":cart,
         'delivery':int(settings.delivery),
         'currency':settings.currency,
-        'total_qty':total_qty
+        'total_qty':total_qty,
+        'cats':cats
     }
     return render(request, 'home.html',context)
 

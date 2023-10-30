@@ -2,35 +2,40 @@
         "model": "cart.category",
         "pk": 1,
         "fields": {
-            "name": "Cats"
+            "name": "Cats",
+            "image": "categories/Cats.jpg"
         }
     },
     {
         "model": "cart.category",
         "pk": 2,
         "fields": {
-            "name": "Dogs"
+            "name": "Dogs",
+            "image": "categories/Dogs.jpg"
         }
     },
     {
         "model": "cart.category",
         "pk": 3,
         "fields": {
-            "name": "Birds"
+            "name": "Birds",
+            "image": "categories/Birds.jpg"
         }
     },
     {
         "model": "cart.category",
         "pk": 4,
         "fields": {
-            "name": "Fish"
+            "name": "Fish",
+            "image": "categories/Fish.jpg"
         }
     },
     {
         "model": "cart.category",
         "pk": 5,
         "fields": {
-            "name": "Others"
+            "name": "Others",
+            "image": "categories/Others.jpg"
         }
     }
 ]

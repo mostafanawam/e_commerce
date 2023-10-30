@@ -1,4 +1,5 @@
 from django.db import models
+from django_resized import ResizedImageField
 
 
 # python manage.py dumpdata cart.Status --output cart/fixtures/Status.test.json
@@ -14,10 +15,19 @@ class Status(models.Model):
         verbose_name_plural = "Status"
 
 
+def uploadCat(object,filename):
+    try:
+        import pathlib
+        file_extension = pathlib.Path(filename).suffix
+        return f'categories/{object.name}{file_extension}'
 
-# python manage.py dumpdata cart.Category --output cart/fixtures/Category.test.json
+    except Exception as e:
+        print(f"error uploading id to minio,{e}")
+
+# python manage.py dumpdata cart.Category --output cart/fixtures/Category.static.json
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    image=ResizedImageField(upload_to=uploadCat)
 
     def __str__(self):
         return self.name
@@ -37,7 +47,6 @@ def uploadedform(object,filename):
         print(f"error uploading id to minio,{e}")
         
 
-from django_resized import ResizedImageField
 
 
 TEXT_COLOR = [

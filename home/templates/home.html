@@ -218,6 +218,80 @@
           <a class="btn btn-outline" href="{% url 'home:products' %}">View All</a>
         </div>{% endcomment %}
 
+{% comment %} 
+
+  <div class="row">
+    {% for cat in cats %}
+    <div class="col text-center">
+   
+   
+      {% if cat.image  %}
+        <img src="{{ cat.image.url }}"  class="rounded-circle">
+      {% endif %}
+ 
+    </div>
+    {% endfor %}
+  </div> {% endcomment %}
+  
+
+
+
+ 
+ 
+  <h2 class="title-sell">Shop By Category</h2>
+
+
+  {% comment %} <div class="row">
+    {% for cat in cats %}
+      <div class="col">
+          <div class="d-flex justify-content-center">
+            <a href="/products/" style="text-decoration: none;">
+              <div class="category-card">
+                {% if cat.image  %}
+                  <img src="{{ cat.image.url }}" style="max-width: 200px;" class="rounded-circle" alt="Category 1">
+                {% endif %}
+                <h5 class="text-center mt-1 text-black">{{cat.name}}</h5>
+              </div>
+            </a>
+          </div>
+      </div>
+      {% endfor %}
+  </div> {% endcomment %}
+
+
+  {% comment %} <div class="row row1 rowtable ">
+
+    {% for cat in cats %}
+      <div class="col-md-3 column effect11 ">
+        {% if cat.image  %}
+          <img src="{{ cat.image.url }}"  class="rounded-circle h-75 cat-img" alt="Category 1">
+        {% endif %}
+        <div class="text-center">
+            {{cat.name}}
+        </div>
+      </div>
+  
+      {% endfor %}
+  </div> {% endcomment %}
+  
+  <div class="row row1 rowtable justify-content-md-between">
+
+    {% for cat in cats %}
+      <div class="col-md-2 column  ">
+        <a href="/products/" style="text-decoration: none;">
+        {% if cat.image  %}
+        <img src="{{ cat.image.url }}" class="cat-img  ">
+        {% endif %}
+        <h4 class="text-center text-black">{{cat.name}}</h4>
+      </a>
+      </div>
+  
+      {% endfor %}
+  </div>
+
+
+
+
   <h2 class="title-sell">Suggested Products</h2>
 <div class="owl-carousel owl-theme">
   {% for product in products %}
