@@ -25,6 +25,9 @@ setup:
 backend-db-refresh:
 	rm -rf db.sqlite3 2>/dev/null
 	find . -type d -name migrations | xargs -I {} find {} -type f -name "*.py" | grep -v '__init__.py' | grep -v 'postgres-dev' | xargs rm -f 2>/dev/null
+	
+remove-migartions:
+	find . -type d -name migrations | xargs -I {} find {} -type f -name "*.py" | grep -v '__init__.py' | grep -v 'postgres-dev' | xargs rm -f 2>/dev/null
 
 
 clear-cache:

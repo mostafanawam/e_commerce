@@ -27,7 +27,7 @@ def uploadCat(object,filename):
 # python manage.py dumpdata cart.Category --output cart/fixtures/Category.static.json
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    image=ResizedImageField(upload_to=uploadCat)
+    image=ResizedImageField(upload_to=uploadCat,null=True,blank=True)
 
     def __str__(self):
         return self.name
