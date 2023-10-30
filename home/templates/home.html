@@ -226,7 +226,7 @@
       {% if product.image  %}
           <img src="{{ product.image.url }}"  style="width:100%">
       {% else %}
-          <img src="/assets/empty.png" >
+          <img src="/assets/empty.png" style="width:100%">
       {% endif %}   
       <figcaption>
         {% comment %} <p> </p> {% endcomment %}
@@ -252,6 +252,8 @@
   {% endfor %}
 
 </div>
+
+
 <div class="text-center mt-md-5 mt-2">
   <a class="btn btn-outline" href="{% url 'home:products' %}">View All</a>
 </div>
@@ -329,7 +331,7 @@
                   items: 2, // Number of items to display at 768px-992px screen width
               },
               992:{
-                  items: 3, // Number of items to display at 992px and above screen width
+                  items: 4, // Number of items to display at 992px and above screen width
               }
           }
       });
