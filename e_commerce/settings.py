@@ -26,26 +26,20 @@ SECRET_KEY = 'django-insecure-99skm6in^^*!r27x&wx!&&5qlggyo0s$sevm=^x6-)h22_%hi5
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '207.154.238.226',
     'localhost',
     'petsnclaws.com',
-    'http://petsnclaws.com/'
+    'https://petsnclaws.com/'
 ]
 
 CORS_ORIGIN_WHITELIST=(
-    'http://207.154.238.226:8081',
-    'http://petsnclaws.com'
+    'https://petsnclaws.com'
 )
 
 CORS_ALLOWED_ORIGINS = [
-    'http://207.154.238.226:8081',
-    'http://petsnclaws.com'
-
-
+    'https://petsnclaws.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-        'http://207.154.238.226:8081'
 
 ]
 # Application definition
