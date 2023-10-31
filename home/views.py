@@ -6,7 +6,7 @@ from cart.models import *
 from cart.views import send_email
 from settings.models import Settings
 from .models import *
-
+import django_filters
 
 def homepage(request):
      
@@ -37,32 +37,32 @@ def homepage(request):
     }
     return render(request, 'home.html',context)
 
+
+
+class ProductFilter(django_filters.FilterSet):
+    category = django_filters.CharFilter(field_name='category__name', lookup_expr='exact')
+
+    class Meta:
+        model = Product
+        fields = ['category']
+
 def productsPage(request):
 
     categories=Category.objects.all()
-
-    products_list={}
-
-    for category in categories:
-        products = Product.objects.filter(status__listed=True,category=category)
-        if(products.count()> 0):
-            products_list[category.name]=products
-
+    
+    filter = ProductFilter(request.GET, queryset=Product.objects.filter(status__listed=True))
     cart = request.session.get('cart', [])
-
 
     total_qty=0
     for item in cart:
         total_qty+=item['qty']
 
-
     context = {
-        'products': products_list,
+        'products': filter.qs,
         "cart":cart,
-        'total_qty':total_qty
-        # "categories":categories
+        'total_qty':total_qty,
+        "categories":categories
     }
-
     return render(request, 'products.html',context)
 
 def contactUs(request):
@@ -91,7 +91,6 @@ def contactUs(request):
         except Exception as e:
             print(f"email didnt send,{e}")
 
-
         context={
             "success":'success',
         }
@@ -117,7 +116,6 @@ def searchProducts(request):
 
         products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
-
         cart = request.session.get('cart', [])
         total_qty=0
         for item in cart:
@@ -131,3 +129,9 @@ def searchProducts(request):
         }
 
         return render(request, 'search_products.html',context)
+    
+
+    # for category in categories:
+    #     products = Product.objects.filter(status__listed=True,category=category)
+    #     if(products.count()> 0):
+    #         products_list[category.name]=products

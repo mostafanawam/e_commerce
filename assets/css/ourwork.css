@@ -22,6 +22,8 @@
     width: 100%;
     max-width: 100%;
     border-radius: 50% !important;
+    transform: scale(1);
+    transition: 0.5s ease all;
 }
 
 .img1 {
@@ -33,6 +35,10 @@
 }
 
 .effect11:hover .img1 {
+    transform: scale(0.9);
+}
+
+.effect11:hover .cat-img {
     transform: scale(0.9);
 }
 

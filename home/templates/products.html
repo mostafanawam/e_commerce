@@ -46,7 +46,7 @@
 
 {% block main %} 
 
-<div class="container-main">
+ <div class="prod-container"> 
 
 
 {% comment %} <div class="row">
@@ -59,45 +59,92 @@
              {% endfor %}
           
 </div></div></div></div> {% endcomment %}
-
-  {% for category_name, product_list in products.items %}
-      <h2 class="title-sell mt-6">{{ category_name }}</h2> <!-- Display the category name -->
-
-      <div class="owl-carousel owl-theme  mb-4 ">
+<div class=" mt-4  text-center">
+  {% if not request.GET.category %}
+    <a class="badge  pointer-cursor badge-green  active-cat-link" href="/products/">All</a>
+  {% else %}
+    <a class="badge  pointer-cursor badge-green " href="/products/">All</a>
+  {% endif %}
   
-        {% for product in product_list %}
-        <div class="form-group item">
-          <figure class="snip1396 green hover prod-img">
-            {% if product.image  %}
-            <img src="{{ product.image.url }}">
-        {% else %}
-            <img src="assets/empty.png" alt="test" >
-        {% endif %}     
-            <figcaption>
-              <h3 class="{{product.color}}">  {{ product.name }}</h3>
-              {% comment %} <p>{{product.description}}</p> {% endcomment %}
-            </figcaption>
-            <div class="price {{product.color}}">
-              {% comment %} <s>$24.00</s> {% endcomment %}
-              {{ product.price }} $
-            </div>
-            {% csrf_token %}
-            {% if product.stock > 0 %}
-              <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
-                Add to Cart
-              </button>
-            {% else %}
-                <button  class="add-to-cart btn btn-sm  btn-disabled" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
-                  out of stock
-                </button>
-            {% endif %}
-          </figure>
-        </div>
-        {% endfor %}
+  {% for cat in categories %}
+  {% if request.GET.category == cat.name %}
+      <a class="badge  pointer-cursor badge-green  active-cat-link" href="/products/?category={{cat.name}}">{{cat.name}}</a>
+    {% else %}
+      <a class="badge  pointer-cursor badge-green " href="/products/?category={{cat.name}}">{{cat.name}}</a>
+    {% endif %}
+
+    
+  {% endfor %}
+
+
+</div>
+
+{% comment %} <div class="row ">
+  <div class="col-md-2  d-none d-md-block">
+
+      <div class="h3" style=" color: var(--green3);">
+        Categories 
       </div>
 
-     
-  {% endfor %}
+    {% for cat in categories %}
+    <div class="h4">
+      {% if request.GET.category == cat.name %}
+        <a href="/products/?category={{cat.name}}" style="text-decoration: none;" class="cat-links active-cat-link">{{cat.name}}</a>
+      {% else %}
+        <a href="/products/?category={{cat.name}}" style="text-decoration: none;" class="cat-links">{{cat.name}}</a>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    <div class="h4 ">
+      <a href="/products/" style="text-decoration: none; color: var(--green3);">Clear <i class="fas fa-times fa-xs"></i>
+      </a>
+    </div>
+
+  </div>  {% endcomment %}
+
+
+
+    <div class="row  ">
+
+      {% for product in products %}
+      <div class="col-md-2 col-12  effect11">
+        <figure class="snip1396 green hover prod-img">
+          {% if product.image  %}
+          <img src="{{ product.image.url }}" alt="test" style="width:100%">
+      {% else %}
+          <img src="assets/empty.png" alt="test" style="width:100%">
+      {% endif %}     
+          <figcaption>
+            <h3 class="{{product.color}}">  {{ product.name }}</h3>
+            {% comment %} <p>{{product.description}}</p> {% endcomment %}
+          </figcaption>
+          <div class="price {{product.color}}">
+            {% comment %} <s>$24.00</s> {% endcomment %}
+            {{ product.price }} $
+          </div>
+          {% csrf_token %}
+          {% if product.stock > 0 %}
+            <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
+              Add to Cart
+            </button>
+          {% else %}
+              <button  class="add-to-cart btn btn-sm  btn-disabled" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
+                out of stock
+              </button>
+          {% endif %}
+        </figure>
+      </div>
+      {% endfor %}
+    </div>
+  
+
+
+
+
+
+</div> 
+
 
 
 
@@ -105,7 +152,7 @@
 <script src="/assets/js/menu-filter.js" ></script>
 
 
-</div>
+ </div> 
 
 
 <!-- Owl Carousel CSS -->
@@ -138,10 +185,10 @@
                   items: 2, // Number of items to display at 576px-768px screen width
               },
               768:{
-                  items: 2, // Number of items to display at 768px-992px screen width
+                  items: 5, // Number of items to display at 768px-992px screen width
               },
               992:{
-                  items: 4, // Number of items to display at 992px and above screen width
+                  items: 5, // Number of items to display at 992px and above screen width
               }
           }
       });

@@ -102,9 +102,9 @@
     
     @media only screen and (max-width: 600px) {
         .container-main {
-            margin-left: 2rem;
+            margin-left: 1rem;
             /* Example padding value */
-            margin-right: 15px;
+            margin-right: 1rem;
             /* Example padding value */
         }
     }
@@ -114,7 +114,7 @@
         overflow: hidden;
         margin: 10px;
         min-width: 230px;
-        max-width: 315px;
+        max-width: 310px;
         width: 100%;
         /* background: black; */
         text-align: left;
@@ -1739,6 +1739,49 @@
     
     .nav-link {
         margin-right: 30px;
+    }
+    
+    .cat-links {
+        color: black;
+    }
+    
+    .cat-links:hover {
+        color: var(--green3);
+    }
+    
+    .prod-container {
+        margin-left: 5%;
+        /* Example padding value */
+        margin-right: 5%;
+        /* Example padding value */
+    }
+    
+    .badge-green {
+        border: 2px solid var(--green3);
+        background-color: transparent;
+        color: black;
+        padding: 8px;
+        font-size: 20px;
+        width: 75px;
+        /* Adjust the font-size as needed */
+    }
+    
+    .badge-green:hover {
+        color: black;
+    }
+    
+    .active-cat-link {
+        background-color: var(--green3);
+        color: white;
+        border: 2px solid var(--green3);
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .badge-green {
+            padding: 5px;
+            font-size: 13px;
+            width: 50px;
+        }
     }
     
     @media screen and (max-width: 767px) {

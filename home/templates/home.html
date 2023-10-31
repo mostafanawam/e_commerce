@@ -277,8 +277,8 @@
   <div class="row row1 rowtable justify-content-md-between">
 
     {% for cat in cats %}
-      <div class="col-md-2 column  ">
-        <a href="/products/" style="text-decoration: none;">
+      <div class="col-md-2 column effect11 ">
+        <a href="/products/?category={{cat.name}}" style="text-decoration: none;">
         {% if cat.image  %}
         <img src="{{ cat.image.url }}" class="cat-img  ">
         {% endif %}
@@ -343,7 +343,7 @@
 
 {% if brands|length > 0 %}
 <h2 class="title-sell"> Our Brands </h2>
-<div class="row row1 rowtable">
+<div class="row row1 rowtable ">
 
   {% for brand in brands %}
     <div class="col-md-3 column effect11 ">
@@ -359,7 +359,7 @@
 
 {% if gallery|length > 0 %}
  <h2 class="title-sell">Our Work</h2>
-  <div class="row row1 rowtable">
+  <div class="row row1 rowtable  justify-content-md-between">
 
     {% for img in gallery %}
 

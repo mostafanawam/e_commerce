@@ -65,7 +65,8 @@ INSTALLED_APPS += [
     'users',
     'home',
     'settings',
-    'django_celery_results'
+    'django_celery_results',
+    'django_filters',
 ]
     
 
