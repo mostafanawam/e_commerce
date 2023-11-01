@@ -112,9 +112,8 @@
     .snip1396 {
         position: relative;
         overflow: hidden;
-        margin: 10px;
-        min-width: 230px;
-        max-width: 310px;
+        /* min-width: 230px;
+        max-width: 310px; */
         width: 100%;
         /* background: black; */
         text-align: left;
