@@ -33,6 +33,10 @@
         color: var(--green3);
     }
     
+    .text-green2 {
+        color: var(--green4);
+    }
+    
     .text-black {
         color: black;
     }
@@ -1283,6 +1287,10 @@
         color: #cb5959;
     }
     
+    .bg-black {
+        background-color: black;
+    }
+    
     .loggin-in a:hover {
         text-decoration: none;
     }
@@ -1333,7 +1341,7 @@
     
     @media only screen and (max-width: 600px) {
         .notify {
-            right: 10%;
+            right: 5%;
             top: 5%;
         }
         .navbar-brand h2 {
