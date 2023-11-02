@@ -50,7 +50,7 @@ def uploadedform(object,filename):
 
 
 TEXT_COLOR = [
-        ('text-green', 'text-green'),
+        ('green', 'green'),
         ('text-black', 'text-black'),
         ('text-white', 'text-white'),
 ]
@@ -60,7 +60,7 @@ TEXT_COLOR = [
 class Product(models.Model):
     name = models.CharField(max_length=100,unique=True)
     description = models.TextField(null=True,blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.IntegerField(null=True,blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,null=True,blank=True)
     image=ResizedImageField(upload_to=uploadedform)
     status=models.ForeignKey(
