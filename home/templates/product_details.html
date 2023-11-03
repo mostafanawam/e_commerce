@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+
+
+{% block title %} Contact Us {% endblock %}
+
+
+{% block links1 %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link " href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link active" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+{% block links %} 
+<li class="nav-item ">
+  <a class="nav-link " href="{% url 'home:home' %}">Home <span class="sr-only">(current)</span></a>
+  </li>
+
+  <li class="nav-item">
+  <a class="nav-link " href="{% url 'home:products' %}">Products</a>
+  </li>
+  {% comment %} <li class="nav-item">
+  <a class="nav-link" href="/shop/customize">customize</a>
+  </li>
+{% endcomment %}
+  <li class="nav-item">
+  <a class="nav-link" href="{% url 'home:contactUs' %}">Contact Us</a>
+  </li>
+  
+{% endblock %}
+
+
+
+{% block main %} 
+<div class="container mt-4 p-4">
+
+
+
+
+<div class="about-section-box">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <img src="{{ product.image.url }}"  class="img-fluid rounded form-group">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-column mt-md-4 ">
+                    <h2 >
+                     {{product.name}}
+                    </h2>
+                    <h3 class="green">
+                      {{currency}} {{product.price}}
+                    </h3>
+                    <ul >
+                      {% for desc in  description %}
+                        {% if desc %}
+                          <li class="h5">{{desc}}</li>
+                        {% endif %}
+                      
+                      {% endfor %}
+                    </ul>
+
+                    <div class="text-center mt-4">
+                        {% csrf_token %}
+                        {% if product.stock > 0 %}
+                          <button  class="add-to-cart btn btn-sm btn-login w-100 p-2" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
+                            Add to Cart
+                          </button>
+                        {% else %}
+                            <button  class="add-to-cart btn btn-sm  btn-disabled  w-100 p-2" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
+                              out of stock
+                            </button>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

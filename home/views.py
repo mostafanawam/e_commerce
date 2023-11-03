@@ -130,7 +130,28 @@ def searchProducts(request):
 
         return render(request, 'search_products.html',context)
     
+def productDetails(request,pk):
 
+
+    cart = request.session.get('cart', [])
+    total_qty=0
+    for item in cart:
+        total_qty+=item['qty']
+
+    product=Product.objects.get(pk=pk)
+    settings=Settings.objects.get()
+
+    description=product.description.split("•")
+    context = {
+        'total_qty':total_qty,
+        "cart":cart,
+        'product':product,
+        'currency':settings.currency,
+        'description':description
+
+    }
+
+    return render(request, 'product_details.html',context)
     # for category in categories:
     #     products = Product.objects.filter(status__listed=True,category=category)
     #     if(products.count()> 0):
