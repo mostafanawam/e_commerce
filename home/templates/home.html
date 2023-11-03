@@ -304,7 +304,13 @@
       {% endif %}   
       <figcaption>
         {% comment %} <p> </p> {% endcomment %}
-        <h6 class="{{product.color}}">  {{ product.name }}</h6>
+        <a href="/product/{{product.id}}" style="text-decoration:none"> 
+
+          <h6 class="{{product.color}}">
+            {{ product.name }}
+            
+          
+          </h6></a>
       </figcaption>
       <div class="price {{product.color}}">
         {% comment %} <s>$24.00</s> {% endcomment %}

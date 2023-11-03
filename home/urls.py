@@ -11,6 +11,9 @@ urlpatterns = [
     path('contact-us/',contactUs, name='contactUs'),
 
 
+    path('product/<int:pk>/',productDetails, name='details'),
+
+
 
     
 ]
