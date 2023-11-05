@@ -1,6 +1,8 @@
 from django.db import models
 from django_resized import ResizedImageField
 
+from home.models import Brands
+
 
 # python manage.py dumpdata cart.Status --output cart/fixtures/Status.test.json
 class Status(models.Model):
@@ -70,6 +72,12 @@ class Product(models.Model):
     )
     stock = models.IntegerField()
     color=models.CharField(max_length=50, choices=TEXT_COLOR,default='text-black')
+    brand=models.ForeignKey(
+        Brands,
+        on_delete=models.PROTECT,
+        null=True,blank=True
+
+    )
     def __str__(self):
         return self.name
     
