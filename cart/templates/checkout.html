@@ -301,24 +301,26 @@
                 
 
                 {% for prod in cart %}
-                    <div class="row row2 text-center form-group" >
+                    <div class="row row2  form-group" >
                         <div class="col-3">
                             <img src="{{prod.image}}" class="img-fluid rounded-circle prd-img" >
                         </div>
                         <div class="col-3">
-                            {{prod.name}}
+
+                            {{ prod.name|slice:":8" }}{% if prod.name|length > 10 %}...{% endif %}
+
                         </div>
                         <div class="col-3">
                             {{prod.price}} x {{prod.qty}} 
                         </div>
-                        <div class="col-3 text-right">
-                          {{prod.total_price}} {{settings.currency}}
+                        <div class="col-3 ">
+                            {{settings.currency}} {{prod.total_price}} 
                         </div>  
                     </div>
                     {% endfor %}
 
 
-                    <div class="  row p-2">
+                    <div class="  row p-2 h5">
                         <div class="col-6 ">
                            Sub-Total 
                         </div>
@@ -327,8 +329,8 @@
                          </div>
                     </div>
 
-                    <div class="  row p-2">
-                        <div class="col-6 ">
+                    <div class="  row p-2 h5">
+                        <div class="col-6  ">
                             Delivery  
                         </div>
                         <div class="col-6 text-right">
@@ -336,7 +338,7 @@
                          </div>
                     </div>
                     <hr>
-                    <div class="  row p-2">
+                    <div class="  row p-2 h5">
                         <div class="col-6 text-green">
                             Total  
                         </div>
