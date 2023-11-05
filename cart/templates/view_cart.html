@@ -81,11 +81,11 @@
     
   
         <div class="product">
-          <div class="product-image">
+          <div class="product-image mt-2">
             <img src="{{prod.image}}" class="rounded-circle">
           </div>
-          <div class="product-details">
-            <div class="product-title h4">{{prod.name}} </div>
+          <div class="product-details mt-md-0 mt-3">
+            <div class="product-title h5">{{prod.name}} </div>
             {% comment %} <p class="product-description">{{prod.description}} </p> {% endcomment %}
           </div>
           <div class="product-price">{{prod.price}} {{settings.currency}}</div>
@@ -95,7 +95,7 @@
           </div>
           <div class="product-removal">
             <a href="/cart/delete/{{ forloop.counter }}/">
-              <i class="fas fa-trash text-danger"></i>
+              <i class="fas fa-trash green"></i>
             </a>
           </div>
           <div class="product-line-price">{{prod.total_price}} {{settings.currency}}</div>
@@ -106,8 +106,8 @@
 
 
   <div class="totals">
-    <div class="totals-item">
-      <label>Total</label>
+    <div class="totals-item h5">
+      <label class="">Total</label>
       <div class="totals-value" id="cart-subtotal">{{total_price}} {{settings.currency}}</div>
     </div>
   </div>
