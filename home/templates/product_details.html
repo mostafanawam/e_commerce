@@ -53,13 +53,18 @@
     <div class="container-fluid">
         <div class="row ">
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ product.image.url }}"  class="img-fluid rounded form-group">
+                <img src="{{ product.image.url }}"  class="prod-details-img rounded form-group  ">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="inner-column mt-md-4 ">
-                    <h2 >
+                    <h3 >
                      {{product.name}}
-                    </h2>
+                    </h3>
+                    {% if product.brand %}
+                    <p class="text-muted p-0 mb-0 mt-0">
+                      by {{product.brand.name}}
+                    </p>
+                    {% endif %}
                     <h3 class="green">
                       {{currency}} {{product.price}}
                     </h3>

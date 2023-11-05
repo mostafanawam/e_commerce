@@ -302,15 +302,15 @@
       {% else %}
           <img src="/assets/empty.png" style="width:100%">
       {% endif %}   
-      <figcaption>
+      <figcaption class="bg-muted">
         {% comment %} <p> </p> {% endcomment %}
         <a href="/product/{{product.id}}" style="text-decoration:none"> 
 
-          <h6 class="{{product.color}}">
+          <h5 class="{{product.color}}">
             {{ product.name }}
             
           
-          </h6></a>
+          </h5></a>
       </figcaption>
       <div class="price {{product.color}}">
         {% comment %} <s>$24.00</s> {% endcomment %}

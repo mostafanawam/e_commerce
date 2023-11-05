@@ -108,8 +108,10 @@
     <div class="row  mt-4   ">
 
       {% for product in products %}
-      <div class="col-md-2 col-12  effect11" >
-        <figure class="snip1396 green hover prod-img">
+      <div class="col-md-2 col-12  effect11"  >
+
+        
+        <figure class="snip1396 green hover prod-img" >
 
           {% if product.image  %}
           <img src="{{ product.image.url }}"  style="width:100%">
@@ -118,17 +120,14 @@
       {% endif %}     
    
 
-          <figcaption>
-            <a href="/product/{{product.id}}" style="text-decoration:none"> 
-
-            <h6 class="{{product.color}}">
+          <figcaption  class="bg-muted">
+            <a href="/product/{{product.id}}" style="text-decoration:none;z-index: 3;"> 
+            <h5 class="{{product.color}}">
               {{ product.name }}
-              
             
-            </h6></a>
-            {% comment %} <p>{{product.description}}</p> {% endcomment %}
+            </h5></a>
           </figcaption>
-          <div class="price {{product.color}}">
+          <div class="price {{product.color}}" >
             {% comment %} <s>$24.00</s> {% endcomment %}
             {{ product.price }} $
           </div>
