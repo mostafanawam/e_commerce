@@ -176,7 +176,7 @@ body {
     position: absolute;
     top: 55%;
     bottom: 46px;
-    padding-top: 20px;
+    padding-top: 15px;
     padding-left: 5px;
     z-index: 1;
 }
@@ -266,15 +266,14 @@ body {
     }
 }
 
-.prod-img {
+
+/* .prod-img {
     transition: transform .3s;
-    /* Animation */
 }
 
 .prod-img:hover {
     transform: scale(1.05);
-    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
+} */
 
 .btn .fas {
     vertical-align: inherit;
@@ -1024,17 +1023,17 @@ h1 {
 }
 
 .services-container {
-    margin-left: 15%;
+    margin-left: 5%;
     /* Example padding value */
-    margin-right: 15px;
+    margin-right: 5%;
     /* Example padding value */
 }
 
 @media only screen and (max-width: 600px) {
     .services-container {
-        margin-left: 2rem;
+        margin-left: 2%;
         /* Example padding value */
-        margin-right: 15px;
+        margin-right: 2%;
         /* Example padding value */
     }
 }
@@ -1845,6 +1844,10 @@ input[type=radio] {
 
 .about-section-box .prod-details-img {
     width: 75%;
+}
+
+.prod-name {
+    font-size: 1.1rem;
 }
 
 @media only screen and (max-width: 600px) {
