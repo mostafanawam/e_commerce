@@ -1127,6 +1127,10 @@ h1 {
     padding-bottom: 0px;
 }
 
+.foot-shadow {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
 .bg-f {
     background-attachment: scroll;
     background-clip: initial;
