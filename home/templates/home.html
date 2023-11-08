@@ -97,9 +97,9 @@
   </div>
   <!-- Start Contact info -->
 <div class="services p-2  ">
-  <div class="services-container mt-md-0 mt-4">
+  <div class="container mt-md-0 mt-4">
     <div class="row">
-      <div class="col-md-3 form-group mt-md-4 ">
+      <div class="col-lg-3 col-md-6 col-12 form-group mt-md-2 ">
         <i class="fa fa-truck  "></i>
         <div class="overflow-hidden" >
           <h5> Shipping Fee </h5>
@@ -108,7 +108,7 @@
           </p>
         </div>
       </div>
-      <div class="col-md-3 form-group mt-md-4  " >
+      <div class="col-lg-3 col-md-6 col-12  form-group mt-md-2  " >
         <i class="fas fa-money-check"></i>
         <div class="overflow-hidden">
           <h5> Easy Payment </h5>
@@ -118,7 +118,7 @@
           </p>
         </div>
       </div>
-      <div class="col-md-3 form-group mt-md-4  ">
+      <div class="col-lg-3 col-md-6 col-12  form-group mt-md-2  ">
         <i class="fas fa-shipping-fast  "></i>
         <div class="overflow-hidden">
           <h5> Fast Delivery </h5>
@@ -127,7 +127,7 @@
           </p>
         </div>
       </div>
-      <div class="col-md-3 form-group  mt-md-4 ">
+      <div class="col-lg-3 col-md-6 col-12  form-group  mt-md-4 ">
         <i class="fa fa-comments  "></i>
         <div class="overflow-hidden">
           <h5> Contact our Experts </h5>
@@ -151,12 +151,12 @@
     <h2 class="title-sell">About Us</h2>
       <!-- Start About -->
       <div class="about-section-box">
-          <div class="container-fluid">
-              <div class="row justify-content-center">
-                  <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="">
+              <div class="row ">
+                  <div class="col-lg-4 col-md-4 col-sm-12">
                       <img src="/assets/logo.png" alt="" class="img-fluid rounded form-group">
                   </div>
-                  <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="col-lg-6 col-md-8 col-sm-12">
                       <div class="inner-column">
                           {% comment %} <h1 class="text-center ">
                             
@@ -305,12 +305,10 @@
       <figcaption class="bg-muted">
         {% comment %} <p> </p> {% endcomment %}
         <a href="/product/{{product.id}}" style="text-decoration:none"> 
-
-          <h5 class="{{product.color}}">
+          <div class="{{product.color}} prod-name" >
             {{ product.name }}
-            
-          
-          </h5></a>
+          </div>
+        </a>
       </figcaption>
       <div class="price {{product.color}}">
         {% comment %} <s>$24.00</s> {% endcomment %}
@@ -411,6 +409,9 @@
                   items: 2, // Number of items to display at 768px-992px screen width
               },
               992:{
+                  items: 3, // Number of items to display at 992px and above screen width
+              },
+              1300:{
                   items: 4, // Number of items to display at 992px and above screen width
               }
           }
