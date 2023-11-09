@@ -97,3 +97,6 @@ def user_register(request):
     }
     return render(request, 'register.html',context)
 
+
+def custom_404(request, exception):
+    return render(request, 'error404.html', status=404)

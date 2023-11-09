@@ -22,6 +22,9 @@ from django.conf.urls.static import static
 
 from cart import views
 
+handler404 = 'users.views.custom_404'
+
+from users.views import custom_404
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -29,7 +32,9 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("", include("home.urls")),
 
+
 ]
+
 
 
 if settings.DEBUG:
