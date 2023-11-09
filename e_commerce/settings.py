@@ -102,9 +102,9 @@ DATABASE_NAME=os.getenv('DATABASE_NAME','sqlite')
 
 
 POSTGRES_HOST=os.getenv("POSTGRES_HOST", "127.0.0.1")
-POSTGRES_PASSWORD=os.getenv("POSTGRES_PASSWORD", "postgres1")
-POSTGRES_USER=os.getenv("POSTGRES_USER", "postgres1")
-POSTGRES_NAME=os.getenv("POSTGRES_NAME", "postgres1")
+POSTGRES_PASSWORD=os.getenv("POSTGRES_PASSWORD", "postgres")
+POSTGRES_USER=os.getenv("POSTGRES_USER", "postgres")
+POSTGRES_NAME=os.getenv("POSTGRES_NAME", "postgres")
 POSTGRES_PORT=os.getenv("POSTGRES_PORT", "5432")
 POSTGRES_ENGINE=os.getenv("POSTGRES_ENGINE", 'django.db.backends.postgresql')
 
