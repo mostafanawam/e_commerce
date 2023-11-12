@@ -141,7 +141,7 @@ def productDetails(request,pk):
     product=Product.objects.get(pk=pk)
     settings=Settings.objects.get()
 
-    description=product.description.split("•")
+    description=product.description.split("\n")
     context = {
         'total_qty':total_qty,
         "cart":cart,

@@ -123,8 +123,9 @@
           <figcaption  class="bg-muted">
             <a href="/product/{{product.id}}" style="text-decoration:none;z-index: 3;"> 
             <h5 class="{{product.color}}">
-              {{ product.name }}
-            
+              
+              {{ product.name|slice:":30" }}{% if product.name|length > 30 %}...{% endif %}
+
             </h5></a>
           </figcaption>
           <div class="price {{product.color}}" >
