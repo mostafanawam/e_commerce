@@ -41,10 +41,10 @@ def homepage(request):
 
 class ProductFilter(django_filters.FilterSet):
     category = django_filters.CharFilter(field_name='category__name', lookup_expr='exact')
-
+    brand= django_filters.CharFilter(field_name='brand__name', lookup_expr='exact')
     class Meta:
         model = Product
-        fields = ['category']
+        fields = ['category','brand']
 
 def productsPage(request):
 

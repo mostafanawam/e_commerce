@@ -351,8 +351,10 @@
 
   {% for brand in brands %}
     <div class="col-md-2 col-4 column effect11 ">
-      <img src="{{ brand.image.url }}" class="  img1  ">
+      <a href="/products/?brand={{brand.name}}" style="text-decoration: none;">
 
+      <img src="{{ brand.image.url }}" class="  img1  ">
+      </a>
     </div>
 
     {% endfor %}
