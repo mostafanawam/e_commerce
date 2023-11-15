@@ -177,4 +177,7 @@ package-lock.json
 
 assets/brands/*.jpg
 assets/gallery/*.jpg
-assets/products/*.jpg
+**/products/*.jpg
+
+
+**/products
