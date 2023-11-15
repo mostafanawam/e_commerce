@@ -175,9 +175,8 @@ package-lock.json
 !**/migrations/postgres-local/__init__.py
 
 
-assets/brands/*.jpg
-assets/gallery/*.jpg
-**/products/*.jpg
 
 
 **/products
+**/gallery
+**/brands
