@@ -120,6 +120,12 @@ if(DATABASE_NAME=="postgres"):
             'CONN_MAX_AGE': 20,
         }
     }
+    MIGRATION_MODULES={
+        'cart': f'cart.migrations.postgres-dev',
+        'home': f'home.migrations.postgres-dev',
+        'settings': f'settings.migrations.postgres-dev',
+        'users': f'users.migrations.postgres-dev',
+    }
 else:
     DATABASES = {
         'default': {
@@ -127,7 +133,12 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
+    MIGRATION_MODULES={
+        'cart': f'cart.migrations.postgres-local',
+        'home': f'home.migrations.postgres-local',
+        'settings': f'settings.migrations.postgres-local',
+        'users': f'users.migrations.postgres-local',
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -238,4 +249,6 @@ LOGGING = {
 
 
 CELERY_broker_connection_retry_ON_STARTUP = True
+
+
 

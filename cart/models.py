@@ -58,11 +58,11 @@ TEXT_COLOR = [
 ]
 
 
-# python manage.py dumpdata cart.Product --output cart/fixtures/Product.test.json
+# python3 manage.py dumpdata cart.Product --output cart/fixtures/Product.test-3.json
 class Product(models.Model):
     name = models.CharField(max_length=100,unique=True)
     description = models.TextField(null=True,blank=True)
-    price = models.IntegerField(null=True,blank=True)
+    price = models.DecimalField(null=True,blank=True,decimal_places=2,max_digits=10)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,null=True,blank=True)
     image=ResizedImageField(upload_to=uploadedform)
     status=models.ForeignKey(
