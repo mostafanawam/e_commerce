@@ -62,7 +62,7 @@ TEXT_COLOR = [
 class Product(models.Model):
     name = models.CharField(max_length=100,unique=True)
     description = models.TextField(null=True,blank=True)
-    price = models.DecimalField(null=True,blank=True,decimal_places=1,max_digits=5)
+    price = models.FloatField(null=True,blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,null=True,blank=True)
     image=ResizedImageField(upload_to=uploadedform)
     status=models.ForeignKey(
