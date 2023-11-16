@@ -323,7 +323,7 @@ def checkout(request):
         'cart': cart,
         'total_price': total_price,
         "settings":settings,
-        "grand_total":Decimal(total_price)+settings.delivery,
+        "grand_total":(Decimal(total_price)+settings.delivery).quantize(Decimal('0.00')),
         'regions':regions,
         'address':address
     }

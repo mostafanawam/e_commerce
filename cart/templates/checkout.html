@@ -123,7 +123,7 @@
 
         {% if not user.is_authenticated %}
             <div class="alert alert-secondary " style="padding: 20px">
-                Returning customer? Click <a href="{% url 'users:login' %}" class="text-green">here</a> to login
+                Returning customer? Click <a href="{% url 'users:login' %}" class="green" style="text-decoration: none;">here</a> to login
             </div>
 
         {% endif %}
@@ -217,7 +217,7 @@
 
 
                 {% if address|length > 0 %}
-                    <h5 class="text-green"> 
+                    <h5 class="green"> 
                         <input type="radio" value="saved" name="delivery"  class="mx-2" id="saved" checked /> 
                        <label for="saved" class="pointer-cursor"> Choose From Saved Address</label> 
                     </h5>
@@ -234,7 +234,7 @@
                         {% endfor %}
                     </div>
 
-                    <h5 class="mt-md-0 mt-4 text-green" > 
+                    <h5 class="mt-md-0 mt-4 green" > 
                         <input type="radio" class="mx-2" value="new_address" name="delivery" id="new_address" />
                         
                         <label for="new_address" class="pointer-cursor"> Add New Address</label> 
@@ -242,7 +242,7 @@
                     </h5>
                 
                 {% else %}
-                    <h5 class="mt-md-0 mt-4 text-green" > 
+                    <h5 class="mt-md-0 mt-4 green" > 
                         
                         <label for="new_address" class="pointer-cursor"> Add New Address</label> 
                         
@@ -338,10 +338,10 @@
                     </div>
                     <hr>
                     <div class="  row p-2 h5">
-                        <div class="col-6 text-green">
+                        <div class="col-6 green">
                             Total  
                         </div>
-                        <div class="col-6 text-right text-green">
+                        <div class="col-6 text-right green">
                             {{grand_total}} {{settings.currency}}
                          </div>
                     </div>
