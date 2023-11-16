@@ -13,7 +13,7 @@
   </li>
 
   <li class="nav-item">
-  <a class="nav-link active" href="{% url 'home:products' %}">Products</a>
+  <a class="nav-link active" href="/products/?page=10">Products</a>
   </li>
   {% comment %} <li class="nav-item">
   <a class="nav-link" href="/shop/customize">customize</a>
@@ -31,7 +31,7 @@
   </li>
 
   <li class="nav-item">
-  <a class="nav-link active" href="{% url 'home:products' %}">Products</a>
+  <a class="nav-link active" href="/products/?page=10">Products</a>
   </li>
   {% comment %} <li class="nav-item">
   <a class="nav-link" href="/shop/customize">customize</a>
@@ -105,31 +105,23 @@
 
 
 
-    <div class="row  mt-4   ">
+    <div class="row  mt-4" >
 
       {% for product in products %}
       <div class="col-lg-2 col-md-4 col-12  effect11"  >
-
-        
         <figure class="snip1396 green hover prod-img" >
-
-          {% if product.image  %}
-          <img src="{{ product.image.url }}"  style="width:100%">
-      {% else %}
-          <img src="assets/empty.png" style="width:100%">
-      {% endif %}     
-   
-
+        {% if product.image  %}
+            <img src="{{ product.image.url }}"  style="width:100%">
+        {% else %}
+            <img src="assets/empty.png" style="width:100%">
+        {% endif %}     
           <figcaption  class="bg-muted">
             <a href="/product/{{product.id}}" style="text-decoration:none;z-index: 3;"> 
             <h5 class="{{product.color}}">
               {{ product.name }}
-              {% comment %} {{ prod.name|slice:":8" }}{% if prod.name|length > 10 %}...{% endif %} {% endcomment %}
-
             </h5></a>
           </figcaption>
           <div class="price {{product.color}}" >
-            {% comment %} <s>$24.00</s> {% endcomment %}
             {{ currency }}{{ product.price }} 
           </div>
           {% csrf_token %}
@@ -147,62 +139,40 @@
       {% endfor %}
     </div>
   
+  {% comment %} {% if  hasMore%}
+    {% if request.GET.page %}
+      {% with next_page=request.GET.page|add:10 %}
+      <div class="text-center">
+          <a href="/products/?page={{ next_page }}" style="text-decoration:none" class="text-green h5 ">Display More <i class="fas fa-arrow-down"></i></a>
+      </div>
+      {% endwith %}
+    {% endif %}
+  {% endif %}
+</div>  {% endcomment %}
 
 
 
+<div class=" text-center green h5">
+  <span class="step-links">
+      {% if paginated_items.has_previous %}
+          {% comment %} <a href="?page=1" style="text-decoration: none;"  class="text-black">&laquo; first</a> {% endcomment %}
+          <a href="?page={{ paginated_items.previous_page_number }}"  class="text-green" style="text-decoration: none;"> &laquo; previous</a>
+      {% endif %}
 
+      <span class="current text-black">
+          Page {{ paginated_items.number }} of {{ paginated_items.paginator.num_pages }}
+      </span>
 
-</div> 
+      {% if paginated_items.has_next %}
+          <a href="?page={{ paginated_items.next_page_number }}"  style="text-decoration: none;" class="text-green">next  &raquo;</a>
+          {% comment %} <a href="?page={{ paginated_items.paginator.num_pages }}" style="text-decoration: none;"  class="text-black">last &raquo;</a> {% endcomment %}
+      {% endif %}
+  </span>
+</div>
 
-
-
-
-
-<script src="/assets/js/menu-filter.js" ></script>
 
 
  </div> 
-
-
-<!-- Owl Carousel CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
-
-
-<!-- Owl Carousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-
-
-
-<script>
-  $(document).ready(function(){
-      $(".owl-carousel").owlCarousel({
-          loop: true, // Enable looping
-          margin: 10, // Space between items
-          responsiveClass: true,
-          //nav: true, 
-          //autoplay: true,
-          //autoplayTimeout: 5000,
-          smartSpeed: 450,
-          responsive:{
-              0:{
-                  items: 1, // Number of items to display at 0-576px screen width
-              },
-              576:{
-                  items: 2, // Number of items to display at 576px-768px screen width
-              },
-              768:{
-                  items: 5, // Number of items to display at 768px-992px screen width
-              },
-              992:{
-                  items: 5, // Number of items to display at 992px and above screen width
-              }
-          }
-      });
-  });
-</script>
 
 
 {% endblock %}

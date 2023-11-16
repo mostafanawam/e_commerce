@@ -45,12 +45,31 @@ class ProductFilter(django_filters.FilterSet):
     class Meta:
         model = Product
         fields = ['category','brand']
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def productsPage(request):
 
     categories=Category.objects.all()
     
-    filter = ProductFilter(request.GET, queryset=Product.objects.filter(status__listed=True))
+    items_per_page = 2
+
+    page= request.GET.get('page', 1)
+     
+    queryset=Product.objects.filter(status__listed=True)
+    
+    filter = ProductFilter(request.GET,queryset=queryset)
+
+    paginator = Paginator(filter.qs, items_per_page)
+
+    try:
+        paginated_items = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver the first page
+        paginated_items = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g., 9999), deliver the last page
+        paginated_items = paginator.page(paginator.num_pages)
+
+
     cart = request.session.get('cart', [])
 
     total_qty=0
@@ -59,11 +78,12 @@ def productsPage(request):
 
     settings=Settings.objects.get()
     context = {
-        'products': filter.qs,
+        'products': paginated_items,
         "cart":cart,
         'total_qty':total_qty,
         'currency':settings.currency,
-        "categories":categories
+        "categories":categories,
+        'paginated_items': paginated_items,
     }
     return render(request, 'products.html',context)
 
@@ -122,7 +142,7 @@ def searchProducts(request):
         total_qty=0
         for item in cart:
             total_qty+=item['qty']
-            
+
         settings=Settings.objects.get()
         context = {
         'total_qty':total_qty,
