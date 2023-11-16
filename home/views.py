@@ -122,12 +122,15 @@ def searchProducts(request):
         total_qty=0
         for item in cart:
             total_qty+=item['qty']
-
+            
+        settings=Settings.objects.get()
         context = {
         'total_qty':total_qty,
             'products': products,
             "cart":cart,
-            "query":query
+            "query":query,
+                    'currency':settings.currency,
+
         }
 
         return render(request, 'search_products.html',context)

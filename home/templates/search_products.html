@@ -51,45 +51,55 @@
 
 
 
-
-
-
-
-
-
   {% if products|length > 0 %}
-  <div class="owl-carousel owl-theme">
-    {% for product in products %}
-    <div class="item">
-      <figure class="snip1396 green hover prod-img">
-        {% if product.image  %}
-        <img src="{{ product.image.url }}"  style="width:100%">
-    {% else %}
-        <img src="/assets/empty.png" >
-    {% endif %}   
-        <figcaption>
-          {% comment %} <p> </p> {% endcomment %}
-          <h3 class="{{product.color}}">  {{ product.name }}</h3>
-        </figcaption>
-        <div class="price {{product.color}}">
-          {% comment %} <s>$24.00</s> {% endcomment %}
-          {{currency}} {{ product.price }}
-        </div>
-        {% csrf_token %}
-        {% if product.stock > 0 %}
-        <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
-          Add to Cart
-        </button>
+
+
+
+
+
+    <div class="row  mt-4   ">
+
+      {% for product in products %}
+      <div class="col-lg-3 col-md-4 col-12  effect11"  >
+
         
-        {% else %}
-          <button  class="add-to-cart btn btn-sm  btn-disabled" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" disabled >
-            Out of Stock
-          </button>
-        {% endif %}
-      </figure>
+        <figure class="snip1396 green hover prod-img" >
+
+          {% if product.image  %}
+          <img src="{{ product.image.url }}"  style="width:100%">
+      {% else %}
+          <img src="assets/empty.png" style="width:100%">
+      {% endif %}     
+   
+
+          <figcaption  class="bg-muted">
+            <a href="/product/{{product.id}}" style="text-decoration:none;z-index: 3;"> 
+            <h5 class="{{product.color}}">
+              {{ product.name }}
+              {% comment %} {{ prod.name|slice:":8" }}{% if prod.name|length > 10 %}...{% endif %} {% endcomment %}
+
+            </h5></a>
+          </figcaption>
+          <div class="price {{product.color}}" >
+            {% comment %} <s>$24.00</s> {% endcomment %}
+            {{ currency }}{{ product.price }} 
+          </div>
+          {% csrf_token %}
+          {% if product.stock > 0 %}
+            <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
+              Add to Cart
+            </button>
+          {% else %}
+              <button  class="add-to-cart btn btn-sm  btn-disabled" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
+                out of stock
+              </button>
+          {% endif %}
+        </figure>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   
+
   </div>
   {% else %}
   <div class="text-center mb-4">
