@@ -30,7 +30,7 @@ def homepage(request):
         'gallery':gallery,
         'brands':brands,
         "cart":cart,
-        'delivery':int(settings.delivery),
+        'delivery':settings.delivery,
         'currency':settings.currency,
         'total_qty':total_qty,
         'cats':cats
