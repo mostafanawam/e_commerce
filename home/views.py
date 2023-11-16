@@ -50,7 +50,7 @@ def productsPage(request):
 
     categories=Category.objects.all()
     
-    items_per_page = 2
+    items_per_page = 20
 
     page= request.GET.get('page', 1)
      
