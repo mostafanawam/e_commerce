@@ -57,10 +57,12 @@ def productsPage(request):
     for item in cart:
         total_qty+=item['qty']
 
+    settings=Settings.objects.get()
     context = {
         'products': filter.qs,
         "cart":cart,
         'total_qty':total_qty,
+        'currency':settings.currency,
         "categories":categories
     }
     return render(request, 'products.html',context)

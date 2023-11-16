@@ -88,7 +88,7 @@
             <div class="product-title h5">{{prod.name}} </div>
             {% comment %} <p class="product-description">{{prod.description}} </p> {% endcomment %}
           </div>
-          <div class="product-price">{{prod.price}} {{settings.currency}}</div>
+          <div class="product-price">{{settings.currency}} {{prod.price}} </div>
           <div class="product-quantity">
             {% comment %} <input type="text" value="{{prod.qty}}" class="text-center" readonly> {% endcomment %}
             x {{prod.qty}}
@@ -98,7 +98,7 @@
               <i class="fas fa-trash green"></i>
             </a>
           </div>
-          <div class="product-line-price">{{prod.total_price}} {{settings.currency}}</div>
+          <div class="product-line-price">{{settings.currency}} {{prod.total_price}} </div>
           
         </div>
     {% endfor %}
@@ -108,7 +108,7 @@
   <div class="totals">
     <div class="totals-item h5">
       <label class="">Total</label>
-      <div class="totals-value" id="cart-subtotal">{{total_price}} {{settings.currency}}</div>
+      <div class="totals-value" id="cart-subtotal">{{settings.currency}} {{total_price}} </div>
     </div>
   </div>
 

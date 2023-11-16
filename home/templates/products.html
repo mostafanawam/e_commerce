@@ -130,7 +130,7 @@
           </figcaption>
           <div class="price {{product.color}}" >
             {% comment %} <s>$24.00</s> {% endcomment %}
-            {{ product.price }} $
+            {{ currency }}{{ product.price }} 
           </div>
           {% csrf_token %}
           {% if product.stock > 0 %}
