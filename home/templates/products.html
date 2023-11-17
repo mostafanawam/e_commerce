@@ -139,32 +139,41 @@
       {% endfor %}
     </div>
   
-  {% comment %} {% if  hasMore%}
-    {% if request.GET.page %}
-      {% with next_page=request.GET.page|add:10 %}
-      <div class="text-center">
-          <a href="/products/?page={{ next_page }}" style="text-decoration:none" class="text-green h5 ">Display More <i class="fas fa-arrow-down"></i></a>
-      </div>
-      {% endwith %}
-    {% endif %}
-  {% endif %}
-</div>  {% endcomment %}
-
 
 
 <div class=" text-center green h5">
   <span class="step-links h5">
       {% if paginated_items.has_previous %}
           {% comment %} <a href="?page=1" style="text-decoration: none;"  class="text-black">&laquo; first</a> {% endcomment %}
-          <a href="?page={{ paginated_items.previous_page_number }}"  class="text-green" style="text-decoration: none;"> &laquo; previous</a>
+
+          {% if request.GET.category  %}
+            <a href="?page={{ paginated_items.previous_page_number }}&category={{ request.GET.category}}"  class="text-green" style="text-decoration: none;"> &laquo; previous</a>
+            {% else %}
+            <a href="?page={{ paginated_items.previous_page_number }}"  class="text-green" style="text-decoration: none;"> &laquo; previous</a>
+
+          {% endif %}
       {% endif %}
 
       <span class="current text-black h5">
           Page {{ paginated_items.number }} of {{ paginated_items.paginator.num_pages }}
       </span>
 
+
+
+
+
       {% if paginated_items.has_next %}
+
+          {% if request.GET.category  %}
+
+          <a href="?page={{ paginated_items.next_page_number }}&category={{ request.GET.category}}"  style="text-decoration: none;" class="text-green">next  &raquo;</a>
+          {% else %}
+          
           <a href="?page={{ paginated_items.next_page_number }}"  style="text-decoration: none;" class="text-green">next  &raquo;</a>
+
+        {% endif %}
+
+
           {% comment %} <a href="?page={{ paginated_items.paginator.num_pages }}" style="text-decoration: none;"  class="text-black">last &raquo;</a> {% endcomment %}
       {% endif %}
   </span>
