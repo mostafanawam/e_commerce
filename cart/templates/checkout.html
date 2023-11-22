@@ -62,7 +62,7 @@
  
     <div id="success" class="hidden">
         <div class="text-center mb-4">
-            <img src="/assets/place_order.png" />
+            <img src="/assets/place_order.png" alt="order_placed"/>
             <h3>Order Placed</h3>
             <h5>
                 Your order has been placed successfully
@@ -302,7 +302,7 @@
                 {% for prod in cart %}
                     <div class="row row2  form-group text-center h6" >
                         <div class="col-3">
-                            <img src="{{prod.image}}" class="img-fluid rounded-circle prd-img" >
+                            <img src="{{prod.image}}" class="img-fluid rounded-circle prd-img"  alt="prod_{{prod.name}}">
                         </div>
                         <div class="col-3 mt-2">
 

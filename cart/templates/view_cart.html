@@ -82,7 +82,7 @@
   
         <div class="product">
           <div class="product-image mt-2">
-            <img src="{{prod.image}}" class="rounded-circle">
+            <img src="{{prod.image}}" class="rounded-circle" alt="prod_{{prod.name}}">
           </div>
           <div class="product-details mt-md-0 mt-3">
             <div class="product-title h5">{{prod.name}} </div>
@@ -132,7 +132,7 @@
   
   {% else %}
   <div class="empty-cart text-center">
-   <img src="/assets/empty-cart.png"  class="img-fluid" alt="">
+   <img src="/assets/empty-cart.png"  class="img-fluid" alt="empty_cart">
    <h3>Empty cart</h3>
    <p>Add something to make me happy :)</p>
    <a class="btn btn-outline" href="{% url 'home:products' %}">Go Shopping</a>

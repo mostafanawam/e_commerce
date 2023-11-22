@@ -111,9 +111,9 @@
       <div class="col-lg-2 col-md-4 col-12  effect11"  >
         <figure class="snip1396 green hover prod-img" >
         {% if product.image  %}
-            <img src="{{ product.image.url }}"  style="width:100%">
+            <img src="{{ product.image.url }}"  style="width:100%" alt="prod_{{product.name}}">
         {% else %}
-            <img src="assets/empty.png" style="width:100%">
+            <img src="assets/empty.png" style="width:100%" alt="empty">
         {% endif %}     
           <figcaption  class="bg-muted">
             <a href="/product/{{product.id}}" style="text-decoration:none;z-index: 3;"> 
