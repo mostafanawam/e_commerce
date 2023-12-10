@@ -13,7 +13,7 @@ admin.site.register(Category,CategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):  
-    list_display = ("id","name","brand","price","stock","status",'color',"category")
+    list_display = ("id","name","brand","old_price","price","stock","status",'color',"category")
 
     list_filter=["category","status"]
 admin.site.register(Product,ProductAdmin)
@@ -35,7 +35,7 @@ class OrderAdmin(admin.ModelAdmin):
     )
     list_filter=["customer"]
 
-    actions = ['delivery_notify']
+    actions = ['delivery_notify','received_order']
 
 
     def delivery_notify(self, request, queryset):
@@ -51,7 +51,24 @@ class OrderAdmin(admin.ModelAdmin):
             try:
                 send_email(f'PetsNClaws Order Update',html,email)
             except Exception as e:
-                print(f"email didnt send,{e}")                         
+                print(f"delivery_notify:email didnt send,{e}")    
+
+
+    def received_order(self, request, queryset):
+        for obj in queryset:
+            html=f"""
+                <h3>Dear {obj.customer.first_name} {obj.customer.last_name} </h3>
+                <p>Your order with id=#{obj.pk} is recieved</p>
+            """
+            if(obj.customer.email):
+                email=obj.customer.email
+            else:
+                email=obj.customer.user.email
+            try:
+                send_email(f'PetsNClaws Order Recieved',html,email)
+            except Exception as e:
+                print(f"received_order:email didnt send,{e}")   
+
 admin.site.register(Order,OrderAdmin)
 
 

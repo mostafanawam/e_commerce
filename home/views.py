@@ -18,6 +18,7 @@ def homepage(request):
     cart = request.session.get('cart', [])
     settings=Settings.objects.get()
 
+    sale_products=Product.objects.filter(status__name="promotion")
 
     cats=Category.objects.all()
 
@@ -26,6 +27,7 @@ def homepage(request):
         total_qty+=item['qty']
 
     context = {
+        'sale_products':sale_products,
         'products': products,
         'gallery':gallery,
         'brands':brands,

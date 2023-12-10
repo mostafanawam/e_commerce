@@ -108,7 +108,7 @@
     <div class="row  mt-4" >
 
       {% for product in products %}
-      <div class="col-lg-2 col-md-4 col-12  effect11"  >
+      <div class="col-lg-3 col-md-4 col-12  effect11"  >
         <figure class="snip1396 green hover prod-img" >
         {% if product.image  %}
             <img src="{{ product.image.url }}"  style="width:100%" alt="prod_{{product.name}}">
@@ -121,9 +121,13 @@
               {{ product.name }}
             </h5></a>
           </figcaption>
-          <div class="price {{product.color}}" >
-            {{ currency }}{{ product.price }} 
-          </div>
+        </figcaption>
+        <div class="price {{product.color}}">
+          {% if product.old_price %}
+          <s>{{currency}}{{ product.old_price }}</s>
+          {% endif %}
+          {{currency}}{{ product.price }}
+        </div>
           {% csrf_token %}
           {% if product.stock > 0 %}
             <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >

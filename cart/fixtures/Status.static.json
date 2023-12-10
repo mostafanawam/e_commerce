@@ -21,5 +21,13 @@
             "name": "removed",
             "listed": false
         }
+    },
+    {
+        "model": "cart.status",
+        "pk": 4,
+        "fields": {
+            "name": "promotion",
+            "listed": true
+        }
     }
 ]

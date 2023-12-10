@@ -80,9 +80,11 @@
 
             </h5></a>
           </figcaption>
-          <div class="price {{product.color}}" >
-            {% comment %} <s>$24.00</s> {% endcomment %}
-            {{ currency }}{{ product.price }} 
+          <div class="price {{product.color}}">
+            {% if product.old_price %}
+            <s>{{currency}}{{ product.old_price }}</s>
+            {% endif %}
+            {{currency}}{{ product.price }}
           </div>
           {% csrf_token %}
           {% if product.stock > 0 %}
