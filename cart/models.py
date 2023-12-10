@@ -63,7 +63,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100,unique=True)
     description = models.TextField(null=True,blank=True)
     price = models.DecimalField(null=True,blank=True,max_digits=5, decimal_places=2)
-    # old_price = models.DecimalField(null=True,blank=True,max_digits=5, decimal_places=2)
+    old_price = models.DecimalField(null=True,blank=True,max_digits=5, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,null=True,blank=True)
     image=ResizedImageField(upload_to=uploadedform)
     status=models.ForeignKey(
