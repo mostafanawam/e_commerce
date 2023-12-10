@@ -17,7 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
         "id",
         "name",
         "brand",
-        # "old_price",
+        "old_price",
         "price",
         "stock",
         "status",
