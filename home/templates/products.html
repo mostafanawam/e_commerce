@@ -67,18 +67,28 @@
   {% endif %}
   
   {% for cat in categories %}
-  {% if request.GET.category == cat.name %}
+    {% if request.GET.category == cat.name %}
       <a class="badge  pointer-cursor badge-green  active-cat-link" href="/products/?category={{cat.name}}">{{cat.name}}</a>
+
     {% else %}
       <a class="badge  pointer-cursor badge-green " href="/products/?category={{cat.name}}">{{cat.name}}</a>
     {% endif %}
 
-    
   {% endfor %}
 
-
 </div>
+<div class=" mt-4  text-center">
+  {% for subcategory in sub_cat %}
+    {% if request.GET.category == subcategory.category.name %}
 
+      {% if request.GET.sub_category == subcategory.name %}
+        <a class="badge  pointer-cursor badge-sub active-sub-link" href="/products/?category={{subcategory.category.name}}&sub_category={{subcategory.name}}">{{subcategory.name }}</a>
+      {% else %}
+        <a class="badge  pointer-cursor badge-sub " href="/products/?category={{subcategory.category.name}}&sub_category={{subcategory.name}}">{{subcategory.name }}</a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
 {% comment %} <div class="row ">
   <div class="col-md-2  d-none d-md-block">
 

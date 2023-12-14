@@ -1846,6 +1846,26 @@ input[type=radio] {
     border: 2px solid var(--green3);
 }
 
+.badge-sub {
+    border: 2px solid var(--green3);
+    background-color: transparent;
+    color: black;
+    padding: 8px;
+    font-size: 20px;
+    width: 120px;
+    /* Adjust the font-size as needed */
+}
+
+.badge-sub:hover {
+    color: black;
+}
+
+.active-sub-link {
+    background-color: var(--green3);
+    color: white;
+    border: 2px solid var(--green3);
+}
+
 .about-section-box .prod-details-img {
     width: 75%;
 }

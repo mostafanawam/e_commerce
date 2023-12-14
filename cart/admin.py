@@ -32,6 +32,10 @@ class StatusAdmin(admin.ModelAdmin):
     list_display = ("id","name")
 admin.site.register(Status,StatusAdmin)
 
+class SubCategoryAdmin(admin.ModelAdmin):  
+    list_display = ("id","category",'name')
+admin.site.register(SubCategory,SubCategoryAdmin)
+
 
 
 class OrderAdmin(admin.ModelAdmin):  

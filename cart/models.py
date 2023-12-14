@@ -39,6 +39,23 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
+# python manage.py dumpdata cart.SubCategory --output cart/fixtures/SubCategory.static.json
+class SubCategory(models.Model):
+    category=models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name} - {self.category.name}"
+
+    class Meta:
+        verbose_name = "Sub Category"
+        verbose_name_plural = "Sub Category"
+
+
+
 def uploadedform(object,filename):
     try:
         import pathlib
@@ -48,15 +65,11 @@ def uploadedform(object,filename):
     except Exception as e:
         print(f"error uploading id to minio,{e}")
         
-
-
-
 TEXT_COLOR = [
         ('green', 'green'),
         ('text-black', 'text-black'),
         ('text-white', 'text-white'),
 ]
-
 
 # python3 manage.py dumpdata cart.Product --output cart/fixtures/Product.test-3.json
 class Product(models.Model):
@@ -64,7 +77,16 @@ class Product(models.Model):
     description = models.TextField(null=True,blank=True)
     price = models.DecimalField(null=True,blank=True,max_digits=5, decimal_places=2)
     old_price = models.DecimalField(null=True,blank=True,max_digits=5, decimal_places=2)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT,null=True,blank=True)
+    category = models.ForeignKey(
+        Category, 
+        on_delete=models.PROTECT,
+        null=True,blank=True
+    )
+    sub_category = models.ForeignKey(
+        SubCategory, 
+        on_delete=models.PROTECT,
+        null=True,blank=True
+    )
     image=ResizedImageField(upload_to=uploadedform)
     status=models.ForeignKey(
         Status,
@@ -77,7 +99,6 @@ class Product(models.Model):
         Brands,
         on_delete=models.PROTECT,
         null=True,blank=True
-
     )
     rank=models.IntegerField(default=100)
     def __str__(self):

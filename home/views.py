@@ -44,14 +44,21 @@ def homepage(request):
 class ProductFilter(django_filters.FilterSet):
     category = django_filters.CharFilter(field_name='category__name', lookup_expr='exact')
     brand= django_filters.CharFilter(field_name='brand__name', lookup_expr='exact')
+    sub_category= django_filters.CharFilter(field_name='sub_category__name', lookup_expr='exact')
     class Meta:
         model = Product
         fields = ['category','brand']
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def productsPage(request):
 
+    # categories = Category.objects.prefetch_related('subcategory_set').all()
+    # print(categories)
     categories=Category.objects.all()
-    
+    # for cat in categories:
+    #     for subcategory in category.subcategory_set.all
+
+    sub_cat=SubCategory.objects.all()
+
     items_per_page = 12
 
     page= request.GET.get('page', 1)
@@ -86,6 +93,7 @@ def productsPage(request):
         'currency':settings.currency,
         "categories":categories,
         'paginated_items': paginated_items,
+        'sub_cat':sub_cat
     }
     return render(request, 'products.html',context)
 
