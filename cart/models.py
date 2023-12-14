@@ -79,7 +79,7 @@ class Product(models.Model):
         null=True,blank=True
 
     )
-    rank=models.IntegerField(default=0)
+    rank=models.IntegerField(default=100)
     def __str__(self):
         return self.name
     
