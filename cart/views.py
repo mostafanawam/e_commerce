@@ -129,16 +129,23 @@ def checkout(request):
                 if 'cart'  in request.session:
                     del request.session['cart']
 
+         
+
                 html_customer=f"""
-                <p>Dear Customer {customer.first_name} {customer.last_name},</p>
-                <p>Your order has been processed</p>
-                 <p>Order Number:{order.order_id}</p>
-                 <p>Total price:{total_price}$</p>
-                <p>You will receive it within 2-3 days</p>
-                """
+                    <p>Dear Customer,</p>
+                    <p>Thank you for choosing PetsNClaws for your pet's nutritional needs! We are delighted to inform you that your order has been successfully processed and is now on its way.</p>
+                    <br>
+                    <p>Order Number:{order.order_id}</p>
+                    <p>Total:${total_price}</p>
+                    <p>You will receive it within 2 to 3 days</p>
+                    <br>
+                    <p>If you have any questions or concerns about your order, please feel free to contact our customer service team at {settings.email} or +961 3 743061. We are here to assist you!</p>
+                    <p>Thank you once again for choosing PetsNClaws for your pet's nutrition. We look forward to being a part of your pet's wellness journey.</p>
+                    <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
+                    """
             
                 try:
-                    send_email.apply_async(args=(f'PetsNClaws Order',html_customer,user.email),countdown=120)
+                    send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,user.email),countdown=120)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -149,7 +156,7 @@ def checkout(request):
                     <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {address.region.name},{address.address}</p>
                     <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
                     """
-                    send_email.delay(f'PetsNClaws New Order',html,settings.reciever_email)
+                    send_email.delay(f'PetsNClaws - New Order',html,settings.reciever_email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -202,15 +209,22 @@ def checkout(request):
                     "address":f"{region.name},{address}"
                 }
 
+
                 html_customer=f"""
-                <p>Dear Customer,</p>
-                <p>Your order has been processed</p>
-                 <p>Order Number:{order.order_id}</p>
-                 <p>Total price:{total_price}$</p>
-                <p>You will receive it within 2-3 days</p>
-                """
+                    <p>Dear Customer,</p>
+                    <p>Thank you for choosing PetsNClaws for your pet's nutritional needs! We are delighted to inform you that your order has been successfully processed and is now on its way.</p>
+                    <br>
+                    <p>Order Number:{order.order_id}</p>
+                    <p>Total:${total_price}</p>
+                    <p>You will receive it within 2 to 3 days</p>
+                    <br>
+                    <p>If you have any questions or concerns about your order, please feel free to contact our customer service team at {settings.email} or +961 3 743061. We are here to assist you!</p>
+                    <p>Thank you once again for choosing PetsNClaws for your pet's nutrition. We look forward to being a part of your pet's wellness journey.</p>
+                    <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
+                    """
+                
                 try:
-                    send_email.apply_async(args=(f'PetsNClaws Order',html_customer,user.email),countdown=120)
+                    send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,user.email),countdown=120)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -221,7 +235,7 @@ def checkout(request):
                     <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
                     <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
                     """
-                    send_email.delay(f'PetsNClaws New Order',html,settings.reciever_email)
+                    send_email.delay(f'PetsNClaws - New Order',html,settings.reciever_email)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -279,13 +293,18 @@ def checkout(request):
 
             html_customer=f"""
                 <p>Dear Customer,</p>
-                <p>Your order has been processed</p>
-                 <p>Order Number:{order.order_id}</p>
-                 <p>Total price:{total_price}$</p>
-                <p>You will receive it within 2-3 days</p>
+                <p>Thank you for choosing PetsNClaws for your pet's nutritional needs! We are delighted to inform you that your order has been successfully processed and is now on its way.</p>
+                 <br>
+                <p>Order Number:{order.order_id}</p>
+                 <p>Total:${total_price}</p>
+                <p>You will receive it within 2 to 3 days</p>
+                <br>
+                 <p>If you have any questions or concerns about your order, please feel free to contact our customer service team at {settings.email} or +961 3 743061. We are here to assist you!</p>
+                 <p>Thank you once again for choosing PetsNClaws for your pet's nutrition. We look forward to being a part of your pet's wellness journey.</p>
+                  <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
                 """
             try:
-                send_email.apply_async(args=(f'PetsNClaws Order',html_customer,user.email),countdown=120)
+                send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,user.email),countdown=120)
             except Exception as e:
                 print(f"email didnt send,{e}")
 
@@ -295,7 +314,7 @@ def checkout(request):
                 <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
             """
             try:
-                send_email.delay(f'PetsNClaws New Order',html,settings.reciever_email)
+                send_email.delay(f'PetsNClaws - New Order',html,settings.reciever_email)
             except Exception as e:
                 print(f"email didnt send,{e}")
 

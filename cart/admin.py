@@ -41,43 +41,37 @@ class OrderAdmin(admin.ModelAdmin):
         "customer",
         "total_price",
         "address",
+        'isReceived',
         "order_date"
     )
     list_filter=["customer"]
 
-    actions = ['delivery_notify','received_order']
-
-
-    def delivery_notify(self, request, queryset):
-        for obj in queryset:
-            html=f"""
-                <h3>Dear {obj.customer.first_name} {obj.customer.last_name} </h3>
-                <p>Your order with id=#{obj.pk} is now with the delivery company</p>
-            """
-            if(obj.customer.email):
-                email=obj.customer.email
-            else:
-                email=obj.customer.user.email
-            try:
-                send_email(f'PetsNClaws Order Update',html,email)
-            except Exception as e:
-                print(f"delivery_notify:email didnt send,{e}")    
+    actions = [
+        # 'delivery_notify',
+        'received_order'
+    ]
 
 
     def received_order(self, request, queryset):
         for obj in queryset:
-            html=f"""
-                <h3>Dear {obj.customer.first_name} {obj.customer.last_name} </h3>
-                <p>Your order with id=#{obj.pk} is recieved</p>
-            """
-            if(obj.customer.email):
-                email=obj.customer.email
-            else:
-                email=obj.customer.user.email
-            try:
-                send_email(f'PetsNClaws Order Recieved',html,email)
-            except Exception as e:
-                print(f"received_order:email didnt send,{e}")   
+            if(not obj.isReceived):
+                html=f"""<p>Dear Customer,</p>
+                <p>Exciting news! Your pet's treats from PetsNClaws have just arrived. We hope they love them!</p>
+                <p>Share your experience with us by leaving a quick review on our social media platforms. Got a cute pic? Spread the joy on Instagram, mentioning us @pets_n_claws.lb and using #PetJoy. Your pet might even become a star on our page!</p>
+                <p>Thanks for choosing PetsNClaws. Here's to happy, healthy pets!</p>
+                <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
+                """
+
+                if(obj.customer.email):
+                    email=obj.customer.email
+                else:
+                    email=obj.customer.user.email
+                try:
+                    send_email(f'PetsNClaws - Order Received',html,email)
+                except Exception as e:
+                    print(f"received_order:email didnt send,{e}")   
+                obj.isReceived=True
+                obj.save()
 
 admin.site.register(Order,OrderAdmin)
 

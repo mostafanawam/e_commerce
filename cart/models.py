@@ -79,6 +79,7 @@ class Product(models.Model):
         null=True,blank=True
 
     )
+    rank=models.IntegerField(default=0)
     def __str__(self):
         return self.name
     
@@ -98,7 +99,7 @@ class Order(models.Model):
         "users.Address", on_delete=models.PROTECT
     )
     order_date = models.DateTimeField(auto_now_add=True)
-
+    isReceived=models.BooleanField(default=False)
     def __str__(self):
         return f"#{self.order_id}"
 

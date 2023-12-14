@@ -10,7 +10,7 @@ import django_filters
 
 def homepage(request):
      
-    products = Product.objects.filter(status__name="suggested")
+    products = Product.objects.filter(status__name="suggested").order_by('rank')
 
     gallery=Gallery.objects.all()
     brands=Brands.objects.all()
@@ -18,7 +18,7 @@ def homepage(request):
     cart = request.session.get('cart', [])
     settings=Settings.objects.get()
 
-    sale_products=Product.objects.filter(status__name="promotion")
+    sale_products=Product.objects.filter(status__name="promotion").order_by('rank')
 
     cats=Category.objects.all()
 
@@ -56,7 +56,7 @@ def productsPage(request):
 
     page= request.GET.get('page', 1)
      
-    queryset=Product.objects.filter(status__listed=True)
+    queryset=Product.objects.filter(status__listed=True).order_by('rank')
     
     filter = ProductFilter(request.GET,queryset=queryset)
 
@@ -138,7 +138,7 @@ def searchProducts(request):
     if request.method == 'POST':
         query = request.POST['query']
 
-        products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query)).order_by('rank')
 
         cart = request.session.get('cart', [])
         total_qty=0
@@ -147,11 +147,11 @@ def searchProducts(request):
 
         settings=Settings.objects.get()
         context = {
-        'total_qty':total_qty,
+            'total_qty':total_qty,
             'products': products,
             "cart":cart,
             "query":query,
-                    'currency':settings.currency,
+            'currency':settings.currency,
 
         }
 
