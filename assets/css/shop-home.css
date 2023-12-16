@@ -1850,9 +1850,9 @@ input[type=radio] {
     border: 2px solid var(--green3);
     background-color: transparent;
     color: black;
-    padding: 8px;
-    font-size: 20px;
-    width: 120px;
+    padding: 6px;
+    font-size: 18px;
+    width: 100px;
     /* Adjust the font-size as needed */
 }
 
@@ -1877,8 +1877,13 @@ input[type=radio] {
 @media only screen and (max-width: 600px) {
     .badge-green {
         padding: 5px;
-        font-size: 13px;
+        font-size: 14px;
         width: 50px;
+    }
+    .badge-sub {
+        padding: 5px;
+        font-size: 14px;
+        width: 75px;
     }
     .about-section-box .prod-details-img {
         width: 100%;
