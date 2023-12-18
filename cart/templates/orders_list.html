@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        PetsNClaws | OrdersList
+      
+      </title>
+      <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-4">
+    <h1 class="text-center ">PetsNClaws Orders List</h1>
+    <table id="myDataTable" class="table table-bordered table-responsive-sm text-center ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Address</th>
+                <th>Total Price</th>
+                <th>Order date</th>
+                <th>isReceived</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+       {% for order in orders %}
+            <tr>
+                <td>
+                    {{order.order_id}}
+                </td>
+                <td>
+                    {{order.customer}}
+                </td>
+                <td>
+                    {{order.address}}
+                </td>
+                <td>
+                    ${{order.total_price}}
+                </td>
+                <td>
+                    {{order.order_date}}
+                </td>
+                <td class="text-center">
+                    <input type="checkbox" {% if order.isReceived %}checked{% endif %} disabled>
+                </td>
+                <td>
+                    <a href="/cart/orders/{{order.order_id}}/">Details</a>
+                </td>
+            </tr>
+       {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Initialize DataTable
+    $('#myDataTable').DataTable({
+        // Your DataTable options go here
+        // For example:
+        "paging": true,
+        "ordering": true,
+        "info": true
+    });
+
+    // Add data to DataTable dynamically
+    var table = $('#myDataTable').DataTable();
+});
+</script>
+
+</body>
+</html>

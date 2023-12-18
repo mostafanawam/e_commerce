@@ -3,10 +3,10 @@
     "pk": 1,
     "fields": {
         "currency": "$",
-        "delivery": "3.00",
+        "delivery": "4.00",
         "email": "petsnclaws2023@gmail.com",
         "password": "itylhyqyegfygipc",
         "reciever_email": "petsnclaws2023@gmail.com",
-        "admin_link": "https://petsnclaws.com/admin"
+        "admin_link": "https://petsnclaws.com"
     }
 }]

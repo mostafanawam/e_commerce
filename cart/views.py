@@ -8,7 +8,33 @@ from django.http import HttpResponse
 
 
 
+def orders_list(request):
+    if request.user.is_authenticated:
 
+        orders=Order.objects.all().order_by('-order_date')
+
+        context={
+            "orders":orders,
+        }
+        return render(request, 'orders_list.html', context)
+    return HttpResponse("you need to be logged in")
+
+def order_details(request, id):
+    if request.user.is_authenticated:
+
+        try:
+            order=Order.objects.get(order_id=id)
+        except:
+            return HttpResponse(f"order with id={id} not found")
+        items=OrderItem.objects.filter(order=order)
+
+        context={
+            "order":order,
+            "items":items,
+        }
+        return render(request, 'order_details.html', context)
+    
+    return HttpResponse("you need to be logged in")
 def add_to_cart(request, product_id):
     product = Product.objects.get(pk=product_id)
     
@@ -16,7 +42,6 @@ def add_to_cart(request, product_id):
         request.session['cart'] = []
     
     cart = request.session['cart']
-
 
     product_found=False
     for item in cart:
@@ -154,7 +179,7 @@ def checkout(request):
                     html=f"""
                     <h3>New Order  from {customer.first_name} {customer.last_name} </h3>
                     <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {address.region.name},{address.address}</p>
-                    <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
+                    <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orders/{order.order_id}/' >click here</a></p>
                     """
                     send_email.delay(f'PetsNClaws - New Order',html,settings.reciever_email)
                 except Exception as e:
@@ -233,7 +258,7 @@ def checkout(request):
                     html=f"""
                     <h3>New Order  from {customer.first_name} {customer.last_name} </h3>
                     <p>Hello Dear,<br> You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
-                    <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
+                    <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orders/{order.order_id}/' >click here</a></p>
                     """
                     send_email.delay(f'PetsNClaws - New Order',html,settings.reciever_email)
                 except Exception as e:
@@ -311,7 +336,7 @@ def checkout(request):
             html=f"""
                 <h3>New Order  from {firstname} {lastname} </h3>
                 <p>You have new order with id=#{order.order_id} <br>total price={total_price}$<br>Delivery address= {region.name},{address}</p>
-                <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orderitem/?order__id__exact={order.pk}' >click here</a></p>
+                    <p>For more details <a style="color:red" href='{settings.admin_link}/cart/orders/{order.order_id}/' >click here</a></p>
             """
             try:
                 send_email.delay(f'PetsNClaws - New Order',html,settings.reciever_email)
