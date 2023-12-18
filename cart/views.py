@@ -170,7 +170,11 @@ def checkout(request):
                     """
             
                 try:
-                    send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,user.email),countdown=120)
+                    if(request.user.email):
+                        email=request.user.email
+                    else:
+                        email=customer.email
+                    send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,email),countdown=120)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -249,7 +253,12 @@ def checkout(request):
                     """
                 
                 try:
-                    send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,user.email),countdown=120)
+                    if(request.user.email):
+                        email=request.user.email
+                    else:
+                        email=customer.email
+                
+                    send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,email),countdown=120)
                 except Exception as e:
                     print(f"email didnt send,{e}")
 
@@ -329,7 +338,7 @@ def checkout(request):
                   <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
                 """
             try:
-                send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,user.email),countdown=120)
+                send_email.apply_async(args=(f'PetsNClaws - Order Confirmation',html_customer,email),countdown=120)
             except Exception as e:
                 print(f"email didnt send,{e}")
 
