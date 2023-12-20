@@ -4,5 +4,14 @@ register=template.Library()
 
 @register.filter
 def multiply(val1,val2):
+    try:
+        return val1*val2
+    except:
+        return "error"
 
-    return val1*val2
+@register.filter
+def sum(val1,val2):
+    try:
+        return val1+val2
+    except:
+        return "error"
