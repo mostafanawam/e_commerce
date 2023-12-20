@@ -60,9 +60,12 @@
                     <input type="checkbox" {% if order.isReceived %}checked{% endif %} disabled>
                 </td>
                 <td>
+                    <div class="form-group">
                     <a href="/cart/orders/{{order.order_id}}/" class="btn btn-sm btn-primary">Details</a>
-                   
+                    </div>
+                    <div>
                     <a href="/cart/orders/{{order.order_id}}/received/" class="btn btn-sm btn-success">Received</a>
+                    </div>
                 </td>
             </tr>
        {% endfor %}
