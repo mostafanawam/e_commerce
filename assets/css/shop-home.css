@@ -664,10 +664,7 @@ ul.social-icons li {
     transition: all ease 0.4s;
 }
 
-.btn-cart {
-    background-color: var(--green3);
-    color: white;
-}
+
 
 .card:hover img {
     margin-top: -80px
@@ -704,6 +701,11 @@ ul.social-icons li {
 .card:hover .content {
     bottom: 0%
 }*/
+
+.btn-cart {
+    background-color: var(--green3);
+    color: white;
+}
 
 .buttons button {
     border-radius: 1px;
