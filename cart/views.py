@@ -35,6 +35,22 @@ def order_details(request, id):
         return render(request, 'order_details.html', context)
     
     return HttpResponse("you need to be logged in")
+
+def received_order(request, id):
+
+    try:
+        order=Order.objects.get(order_id=id)
+    except:
+        return HttpResponse(f"order with id={id} not found")
+    order.isReceived=True
+    order.save()
+    orders=Order.objects.all().order_by('-order_date')
+
+    context={
+        "orders":orders,
+    }
+    return render(request, 'orders_list.html', context)
+
 def add_to_cart(request, product_id):
     product = Product.objects.get(pk=product_id)
     
