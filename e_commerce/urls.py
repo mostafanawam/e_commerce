@@ -24,6 +24,12 @@ from cart import views
 
 handler404 = 'users.views.custom_404'
 
+
+admin.site.index_title = 'PetsNClaws'
+admin.site.site_title = 'Admin Panel'
+admin.site.site_header = 'PetsNClaws Admin'
+admin.site.site_url="http://petsnclaws.com"
+
 from users.views import custom_404
 urlpatterns = [
     path('admin/', admin.site.urls),
