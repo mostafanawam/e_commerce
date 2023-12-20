@@ -89,11 +89,11 @@
                     <div class="text-center mt-4">
                         {% csrf_token %}
                         {% if product.stock > 0 %}
-                          <button  class="add-to-cart btn btn-sm btn-login w-100 p-2" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
-                            Add to Cart
+                          <button  class="add_to_cart btn btn-sm btn-login w-100 p-2" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
+                            Add to Cart <i class="fas fa-cart-plus"></i>
                           </button>
                         {% else %}
-                            <button  class="add-to-cart btn btn-sm  btn-disabled  w-100 p-2" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
+                            <button  class="add_to_cart btn btn-sm  btn-disabled  w-100 p-2" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
                               out of stock
                             </button>
                         {% endif %}

@@ -60,44 +60,50 @@
     <div class="row  mt-4   ">
 
       {% for product in products %}
-      <div class="col-lg-3 col-md-4 col-12  effect11"  >
-
-        
-        <figure class="snip1396 green hover prod-img" >
-
+      <div class="col-lg-3 col-md-4 col-12 form-group" >
+        <div class="card" style="box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);">
+  
           {% if product.image  %}
-          <img src="{{ product.image.url }}"  style="width:100%" alt="prod_{{product.name}}">
-      {% else %}
-          <img src="assets/empty.png" style="width:100%"  alt="empty">
-      {% endif %}     
-   
-
-          <figcaption  class="bg-muted">
-            <a href="/product/{{product.id}}" style="text-decoration:none;z-index: 3;"> 
-            <h5 class="{{product.color}}">
-              {{ product.name }}
-              {% comment %} {{ prod.name|slice:":8" }}{% if prod.name|length > 10 %}...{% endif %} {% endcomment %}
-
-            </h5></a>
-          </figcaption>
-          <div class="price {{product.color}}">
-            {% if product.old_price %}
-            <s>{{currency}}{{ product.old_price }}</s>
-            {% endif %}
-            {{currency}}{{ product.price }}
-          </div>
-          {% csrf_token %}
-          {% if product.stock > 0 %}
-            <button  class="add-to-cart btn btn-sm btn-login" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
-              Add to Cart
-            </button>
+              <img src="{{ product.image.url }}"   class="card-img-top" style="height:18rem" alt="prod_{{product.name}}" >
           {% else %}
-              <button  class="add-to-cart btn btn-sm  btn-disabled" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
-                out of stock
-              </button>
-          {% endif %}
-        </figure>
-      </div>
+              <img src="assets/empty.png"  class="card-img-top" alt="empty" >
+          {% endif %}  
+  
+              <div class="product-detail">
+                  <h4 class="card-title heading  {{product.color}}">
+                    {{ product.name|slice:":15" }}{% if product.name|length > 15 %}...{% endif %}
+                  </h4>
+                  <h5 class="subheading green">
+                    {% if product.old_price %}
+                    <s style="opacity: 0.6;">{{currency}}{{ product.old_price }}</s>
+                    {% endif %}
+                    {{currency}}{{ product.price }}
+  
+                  </h5>
+                  {% comment %} <blockquote>
+                <p>'Little Bit Of Description About The Product Like Size Color And Care.'</p>
+                  </blockquote> {% endcomment %}
+                  <p></p>
+                  {% comment %} <button type="button" class="btn btn-outline-dark"></button>   {% endcomment %}
+                  
+                  {% csrf_token %}
+                  {% if product.stock > 0 %}
+                    <button  class=" btn btn-sm btn-login add_to_cart" id="btn_{{product.id}}"  data-product-id="{{ product.id }}" >
+                      Add <i class="fas fa-cart-plus"></i>
+                    </button>
+                  {% else %}
+                      <button  class=" btn btn-sm  btn-disabled" id="btn_{{product.id}}"   data-product-id="{{ product.id }}" disabled >
+                        out of stock
+                      </button>
+                  {% endif %}
+  
+                  <a href="/product/{{product.id}}"  class="btn btn-sm btn-outline"> 
+                    View <i class="fa fa-eye" aria-hidden="true"></i>
+                  </a>
+  
+                </div>
+          </div>
+        </div>
       {% endfor %}
     </div>
   
