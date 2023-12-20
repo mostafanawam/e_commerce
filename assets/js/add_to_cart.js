@@ -10,10 +10,10 @@ $(document).ready(function() {
     });
 
 
-    $('.add-to-cart').click(function(e) {
+    $('.add_to_cart').click(function(e) {
         var product_id = $(this).data('product-id');
 
-        $(this).html("adding <i class='fas fa-spinner fa-spin'/>");
+        $(this).html("Adding <i class='fas fa-spinner fa-spin'/>");
 
         e.preventDefault();
         $.ajax({
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
                 window.setTimeout(function() {
-                    $('.add-to-cart').text("Add to Cart");
+                    $('.add_to_cart').html('Add <i class="fas fa-cart-plus"></i>');
                     var popup = document.getElementById("myPopup");
 
                     popup.classList.toggle("show");
