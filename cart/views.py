@@ -28,9 +28,11 @@ def order_details(request, id):
             return HttpResponse(f"order with id={id} not found")
         items=OrderItem.objects.filter(order=order)
 
+        settings=Settings.objects.get()
         context={
             "order":order,
             "items":items,
+            "settings":settings
         }
         return render(request, 'order_details.html', context)
     

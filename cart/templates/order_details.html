@@ -106,7 +106,7 @@
                     <tr>
                         <td class="d-none d-md-block">
                             {% if item.product.image %}
-                            <img src="{{ item.product.image.url }}" width="150" class=" rounded-circle" alt="item_{{product.name}}" class="">
+                            <img src="{{ item.product.image.url }}" width="150" height="100" class=" rounded-circle" alt="item_{{product.name}}" class="">
                             {% endif %}
                         </td>
                         <td>
@@ -131,8 +131,11 @@
 
 
         
-            <h4 class="text-right">Total Price=<b>${{order.total_price}}</b></h4>
-    
+            <h4>Net Price &nbsp;&nbsp;= <b>${{order.total_price}}</b></h4>
+            <h4>Delivery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <b>${{settings.delivery}}</b></h4>
+
+            <h4>Total Price = <b>${{order.total_price|add:settings.delivery}}</b></h4>
+
         </div>
 
 
