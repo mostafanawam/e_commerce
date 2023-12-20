@@ -42,24 +42,25 @@ def received_order(request, id):
         order=Order.objects.get(order_id=id)
     except:
         return HttpResponse(f"order with id={id} not found")
-    order.isReceived=True
-    order.save()
 
-    html=f"""<p>Dear Customer,</p>
-                <p>Exciting news! Your pet's treats from PetsNClaws have just arrived. We hope they love them!</p>
-                <p>Share your experience with us by leaving a quick review on our social media platforms. Got a cute pic? Spread the joy on Instagram, mentioning us @pets_n_claws.lb and using #PetJoy. Your pet might even become a star on our page!</p>
-                <p>Thanks for choosing PetsNClaws. Here's to happy, healthy pets!</p>
-                <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
-                """
+    if(not order.isReceived):
+        order.isReceived=True
+        order.save()
+        html=f"""<p>Dear Customer,</p>
+                    <p>Exciting news! Your pet's treats from PetsNClaws have just arrived. We hope they love them!</p>
+                    <p>Share your experience with us by leaving a quick review on our social media platforms. Got a cute pic? Spread the joy on Instagram, mentioning us @pets_n_claws.lb and using #PetJoy. Your pet might even become a star on our page!</p>
+                    <p>Thanks for choosing PetsNClaws. Here's to happy, healthy pets!</p>
+                    <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
+                    """
 
-    if(order.customer.email):
-        email=order.customer.email
-    else:
-        email=order.customer.user.email
-    try:
-        send_email(f'PetsNClaws - Order Received',html,email)
-    except Exception as e:
-        print(f"received_order:email didnt send,{e}")   
+        if(order.customer.email):
+            email=order.customer.email
+        else:
+            email=order.customer.user.email
+        try:
+            send_email(f'PetsNClaws - Order Received',html,email)
+        except Exception as e:
+            print(f"received_order:email didnt send,{e}")   
 
     orders=Order.objects.all().order_by('-order_date')
     context={
