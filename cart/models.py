@@ -116,6 +116,7 @@ class Order(models.Model):
         "users.Customer", on_delete=models.PROTECT,
     )
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    delivery=models.DecimalField(max_digits=10, decimal_places=2,null=True,blank=True)
     address= models.ForeignKey(
         "users.Address", on_delete=models.PROTECT
     )

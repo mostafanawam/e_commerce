@@ -33,6 +33,7 @@
                 <th>Customer</th>
                 <th>Address</th>
                 <th>Total Price</th>
+                <th>Delivery</th>
                 <th>Order date</th>
                 <th>isReceived</th>
                 <th>Actions</th>
@@ -53,6 +54,14 @@
                 <td>
                     ${{order.total_price}}
                 </td>
+                <td>
+                    {% if  order.delivery %}
+                        ${{order.delivery}}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+
                 <td>
                     {{order.order_date}}
                 </td>

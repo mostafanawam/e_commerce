@@ -44,6 +44,7 @@ class OrderAdmin(admin.ModelAdmin):
         "order_id",
         "customer",
         "total_price",
+        'delivery',
         "address",
         'isReceived',
         "order_date"

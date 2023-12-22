@@ -2,21 +2,24 @@
         "model": "users.regions",
         "pk": 1,
         "fields": {
-            "name": "Saida"
+            "name": "Saida",
+            "delivery": "1.00"
         }
     },
     {
         "model": "users.regions",
         "pk": 2,
         "fields": {
-            "name": "Beirut"
+            "name": "Beirut",
+            "delivery": "4.00"
         }
     },
     {
         "model": "users.regions",
         "pk": 3,
         "fields": {
-            "name": "Tyre"
+            "name": "Tyre",
+            "delivery": "4.00"
         }
     }
 ]

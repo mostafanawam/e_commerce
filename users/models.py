@@ -93,10 +93,10 @@ class Customer(models.Model):
 
 
 
-# python manage.py dumpdata users.Regions --output users/fixtures/Regions.test.json
+# python manage.py dumpdata users.Regions --output users/fixtures/Regions.static.json
 class Regions(models.Model):
     name=models.CharField(max_length=100)
-
+    delivery=models.DecimalField(decimal_places=2,max_digits=5,default=3)
     def __str__(self):
         return self.name
     class Meta:

@@ -7,6 +7,16 @@ from .models import Order, OrderItem, Product
 from django.http import HttpResponse
 
 
+def get_delivery(request,region):
+    region=Regions.objects.get(name=region)
+    context={
+        "success":'success',
+        "delivery":region.delivery,
+
+    }
+    # print(region.delivery)
+    return JsonResponse(context)
+
 
 def orders_list(request):
     if request.user.is_authenticated:
@@ -175,7 +185,8 @@ def checkout(request):
                     total_price=total_price,
                     customer=customer,
                     address=address,
-                    order_id=order_id
+                    order_id=order_id,
+                    delivery=address.region.delivery
                 )
                 for item in cart:
                     product=Product.objects.get(id=item['id'])
@@ -253,7 +264,8 @@ def checkout(request):
                     total_price=total_price,
                     customer=customer,
                     address=address,
-                    order_id=order_id
+                    order_id=order_id,
+                    delivery=region.delivery
                 )
                 for item in cart:
                     product=Product.objects.get(id=item['id'])
@@ -344,7 +356,9 @@ def checkout(request):
                 total_price=total_price,
                 customer=customer,
                 address=address,
-                order_id=order_id
+                order_id=order_id,
+                delivery=region.delivery
+
             )
             for item in cart:
                 product=Product.objects.get(id=item['id'])

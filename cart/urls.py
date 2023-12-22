@@ -12,6 +12,10 @@ urlpatterns = [
     path('delete/<int:id>/',remove_from_cart, name='remove_from_cart'),
 
     
+
+
+    path('get-delivery/<str:region>/',get_delivery, name='get_delivery'),
+
     path('empty/',empty_cart, name='empty_cart'),
     
     path('checkout/',checkout, name='checkout'),

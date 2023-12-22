@@ -132,9 +132,9 @@
 
         
             <h4>Net Price &nbsp;&nbsp;= <b>${{order.total_price}}</b></h4>
-            <h4>Delivery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <b>${{settings.delivery}}</b></h4>
+            <h4>Delivery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <b>${{order.delivery}}</b></h4>
 
-            <h4>Total Price = <b>${{order.total_price | sum:settings.delivery}}</b></h4>
+            <h4>Total Price = <b>${{order.total_price | sum:order.delivery}}</b></h4>
 
         </div>
         

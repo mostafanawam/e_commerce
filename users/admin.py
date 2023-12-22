@@ -39,6 +39,7 @@ class RegionsAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "name",
+        "delivery"
 
     )
 admin.site.register(Regions,RegionsAdmin)
