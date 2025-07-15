@@ -37,6 +37,11 @@ class SubCategoryAdmin(admin.ModelAdmin):
 admin.site.register(SubCategory,SubCategoryAdmin)
 
 
+class OrderItemInline(admin.TabularInline):  # or admin.StackedInline for more vertical layout
+    model = OrderItem
+    extra = 0  # Number of empty forms shown by default
+    readonly_fields = ('product', 'quantity')  # optional, make fields read-only if needed
+    can_delete = False  # optional, prevent deleting from inline
 
 class OrderAdmin(admin.ModelAdmin):  
     list_display = (
@@ -50,6 +55,7 @@ class OrderAdmin(admin.ModelAdmin):
         "order_date"
     )
     list_filter=["customer"]
+    inlines = [OrderItemInline]  # ✅ Add this line
 
     actions = [
         # 'delivery_notify',
