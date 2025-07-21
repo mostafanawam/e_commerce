@@ -16,3 +16,13 @@ class ContactUsAdmin(admin.ModelAdmin):
     list_display = ("id","name","email","subject")
 admin.site.register(ContactUs,ContactUsAdmin)
 
+
+
+class SocialLinksAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'link',
+        'icon',
+        'color'
+    )
+admin.site.register(SocialLinks, SocialLinksAdmin)
