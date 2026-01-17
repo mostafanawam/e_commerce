@@ -295,7 +295,7 @@ def checkout(request):
                     <p>Total:${total_price}</p>
                     <p>You will receive it within 2 to 3 days</p>
                     <br>
-                    <p>If you have any questions or concerns about your order, please feel free to contact our customer service team at {settings.email} or +961 3 743061. We are here to assist you!</p>
+                    <p>If you have any questions or concerns about your order, please feel free to contact our customer service team at {settings.email} or {settings.phone}. We are here to assist you!</p>
                     <p>Thank you once again for choosing PetsNClaws for your pet's nutrition. We look forward to being a part of your pet's wellness journey.</p>
                     <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
                     """
