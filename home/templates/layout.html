@@ -84,7 +84,7 @@
         </div>
         
 
-        <a id="whatsapp" class="d-md-block" href="https://wa.me/+96103743061" target="_blank"></a>
+        <a id="whatsapp" class="d-md-block" href="https://wa.me/{{settings.phone}}" target="_blank"></a>
 
         {% comment %} <a id="button"></a> {% endcomment %}
         
@@ -239,7 +239,7 @@
           <div class="overflow-hidden" >
             <h4 >Phone</h4>
             <p class="lead ">
-              +961 03 743 061
+              {{settings.phone}}
             </p>
           </div>
         </div>
@@ -248,7 +248,7 @@
           <div class="overflow-hidden">
             <h4>Instagram</h4>
             <p class="lead">
-              pets_n_claws.lb
+              {{settings.instagram}}
             </p>
           </div>
         </div>
@@ -293,8 +293,8 @@
                   <div class="col-lg-4 col-md-3  ">
                       <h3 >contact us</h3>
                       <p class="lead">  <i class="fa fa-map-marker green-icon  "></i> Saida-Hlalieh </p>
-                      <p class="lead"><i class="fa fa-phone  green-icon"></i> +961 03 743 061</p>
-                      <p class="lead"> <i class="fas fa-envelope green-icon"></i> petsnclaws2023@gmail.com</p>
+                      <p class="lead"><i class="fa fa-phone  green-icon"></i> {{settings.phone}}</p>
+                      <p class="lead"> <i class="fas fa-envelope green-icon"></i> {{settings.email}}</p>
                   </div>
                   <div class="col-lg-4 col-md-3">
                       <h3 class=" ">follow</h3>

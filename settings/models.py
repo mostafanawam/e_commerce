@@ -8,6 +8,9 @@ class Settings(models.Model):
     password=models.CharField(max_length=50)
     reciever_email=models.EmailField(max_length=50)
     admin_link=models.CharField(max_length=50,null=True,blank=True)
+    phone=models.CharField(max_length=50,null=True,blank=True)
+    instagram=models.CharField(max_length=50,null=True,blank=True)
+    
     # def __str__(self):
     #     return self.name
 

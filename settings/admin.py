@@ -6,5 +6,5 @@ from .models import *
 
 
 class SettingsAdmin(admin.ModelAdmin):  
-    list_display = ("id","currency","delivery","email","reciever_email")
+    list_display = ("id","currency","delivery","email","reciever_email","phone","instagram")
 admin.site.register(Settings,SettingsAdmin)

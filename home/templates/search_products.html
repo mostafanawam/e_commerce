@@ -75,9 +75,9 @@
                   </h4>
                   <h5 class="subheading green">
                     {% if product.old_price %}
-                    <s style="opacity: 0.6;">{{currency}}{{ product.old_price }}</s>
+                    <s style="opacity: 0.6;">{{settings.currency}}{{ product.old_price }}</s>
                     {% endif %}
-                    {{currency}}{{ product.price }}
+                    {{settings.currency}}{{ product.price }}
   
                   </h5>
                   {% comment %} <blockquote>

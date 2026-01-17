@@ -54,13 +54,14 @@ def received_order(request, id):
         order=Order.objects.get(order_id=id)
     except:
         return HttpResponse(f"order with id={id} not found")
-
+    settings=Settings.objects.get()
+    instagram=settings.instagram
     if(not order.isReceived):
         order.isReceived=True
         order.save()
         html=f"""<p>Dear Customer,</p>
                     <p>Exciting news! Your pet's treats from PetsNClaws have just arrived. We hope they love them!</p>
-                    <p>Share your experience with us by leaving a quick review on our social media platforms. Got a cute pic? Spread the joy on Instagram, mentioning us @pets_n_claws.lb and using #PetJoy. Your pet might even become a star on our page!</p>
+                    <p>Share your experience with us by leaving a quick review on our social media platforms. Got a cute pic? Spread the joy on Instagram, mentioning us @{instagram} and using #PetJoy. Your pet might even become a star on our page!</p>
                     <p>Thanks for choosing PetsNClaws. Here's to happy, healthy pets!</p>
                     <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
                     """
@@ -210,7 +211,7 @@ def checkout(request):
                     <p>Total:${total_price}</p>
                     <p>You will receive it within 2 to 3 days</p>
                     <br>
-                    <p>If you have any questions or concerns about your order, please feel free to contact our customer service team at {settings.email} or +961 3 743061. We are here to assist you!</p>
+                    <p>If you have any questions or concerns about your order, please feel free to contact our customer service team at {settings.email} or {settings.phone}. We are here to assist you!</p>
                     <p>Thank you once again for choosing PetsNClaws for your pet's nutrition. We look forward to being a part of your pet's wellness journey.</p>
                     <p>Best Regards,<br>PetsNClaws Customer Service Team</p>
                     """

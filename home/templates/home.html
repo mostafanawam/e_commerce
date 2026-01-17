@@ -134,7 +134,7 @@
         <div class="overflow-hidden">
           <h5> Contact our Experts </h5>
           <p class="text-services">
-            +961 03 743 061
+            {{settings.phone}}
           </p>
         </div>
       </div>
@@ -309,9 +309,9 @@
             </h4>
             <h5 class="subheading green">
               {% if product.old_price %}
-              <s style="opacity: 0.6;">{{currency}}{{ product.old_price }}</s>
+              <s style="opacity: 0.6;">{{settings.currency}}{{ product.old_price }}</s>
               {% endif %}
-              {{currency}}{{ product.price }}
+              {{settings.currency}}{{ product.price }}
 
             </h5>
             {% comment %} <blockquote>
@@ -362,9 +362,9 @@
               </h4>
               <h5 class="subheading green">
                 {% if product.old_price %}
-                <s style="opacity: 0.6;">{{currency}}{{ product.old_price }}</s>
+                <s style="opacity: 0.6;">{{settings.currency}}{{ product.old_price }}</s>
                 {% endif %}
-                {{currency}}{{ product.price }}
+                {{settings.currency}}{{ product.price }}
 
               </h5>
               {% comment %} <blockquote>

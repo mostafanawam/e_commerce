@@ -16,7 +16,6 @@ def homepage(request):
     brands=Brands.objects.all()
 
     cart = request.session.get('cart', [])
-    settings=Settings.objects.get()
 
     sale_products=Product.objects.filter(status__name="promotion").order_by('rank')
 
@@ -32,8 +31,6 @@ def homepage(request):
         'gallery':gallery,
         'brands':brands,
         "cart":cart,
-        'delivery':settings.delivery,
-        'currency':settings.currency,
         'total_qty':total_qty,
         'cats':cats
     }
@@ -85,12 +82,11 @@ def productsPage(request):
     for item in cart:
         total_qty+=item['qty']
 
-    settings=Settings.objects.get()
+    
     context = {
         'products': paginated_items,
         "cart":cart,
         'total_qty':total_qty,
-        'currency':settings.currency,
         "categories":categories,
         'paginated_items': paginated_items,
         'sub_cat':sub_cat
@@ -153,14 +149,11 @@ def searchProducts(request):
         for item in cart:
             total_qty+=item['qty']
 
-        settings=Settings.objects.get()
         context = {
             'total_qty':total_qty,
             'products': products,
             "cart":cart,
             "query":query,
-            'currency':settings.currency,
-
         }
 
         return render(request, 'search_products.html',context)
