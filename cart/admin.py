@@ -13,7 +13,16 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category,CategoryAdmin)
 
 
-class ProductAdmin(admin.ModelAdmin):  
+from import_export import resources
+
+from import_export.admin import ImportExportModelAdmin
+class MyModelResource(resources.ModelResource):
+    class Meta:
+        model = Product
+        
+        
+class ProductAdmin(ImportExportModelAdmin):  
+    resource_class = MyModelResource
     list_display = (
         "id",
         "name",
@@ -100,3 +109,4 @@ class OrderItemAdmin(admin.ModelAdmin):
     )
     list_filter=["order","order__customer","product"]
 admin.site.register(OrderItem,OrderItemAdmin)
+

@@ -62,6 +62,7 @@ INSTALLED_APPS += [
     'settings',
     'django_celery_results',
     'django_filters',
+    "import_export",
 ]
     
 
@@ -181,10 +182,14 @@ STATIC_URL = 'static/'
 
 
 
+STATIC_ROOT = BASE_DIR / "assets"
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'assets')
 
 # Define the base URL to serve media files from
 MEDIA_URL = '/assets/'
+
+
 
 
 
@@ -255,3 +260,7 @@ CELERY_broker_connection_retry_ON_STARTUP = True
 
 
 
+
+
+from import_export.formats.base_formats import XLSX,CSV
+EXPORT_FORMATS = [XLSX,CSV]
