@@ -14,9 +14,27 @@ admin.site.register(Category,CategoryAdmin)
 
 
 from import_export import resources
-
+from import_export import resources, fields
+from import_export.widgets import ForeignKeyWidget
 from import_export.admin import ImportExportModelAdmin
+
 class MyModelResource(resources.ModelResource):
+    brand = fields.Field(
+        column_name="brand",
+        attribute="brand",
+        widget=ForeignKeyWidget(Brands, "name"),   # ⭐ export brand.name
+    )
+
+    category = fields.Field(
+        column_name="category",
+        attribute="category",
+        widget=ForeignKeyWidget(Category, "name"),  # ⭐ export category.name
+    )
+    sub_category = fields.Field(
+        column_name="sub_category",
+        attribute="sub_category",
+        widget=ForeignKeyWidget(SubCategory, "name"),  # ⭐ export category.name
+    )
     class Meta:
         model = Product
         
